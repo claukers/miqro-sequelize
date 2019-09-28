@@ -1,0 +1,47 @@
+{
+  "name": "miqro-sequelize",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/claukers/miqro.git"
+  },
+  "scripts": {
+    "miqro": "node dist/cli/cli.js",
+    "prepare": "npm run build",
+    "build": "rimraf dist/ && tsc",
+    "test": "NODE_ENV=test nyc mocha test/*.test.ts",
+    "testfile": "NODE_ENV=test nyc mocha",
+    "lint": "tslint -c ./tslint.json -p ./tsconfig.json",
+    "fixlint": "tslint --fix -c ./tslint.json -p ./tsconfig.json"
+  },
+  "author": "claukers",
+  "license": "ISC",
+  "dependencies": {
+    "miqro-core": "git+ssh://git@github.com/claukers/miqro-core.git#develop",
+    "sequelize": "^5.19.1",
+    "sequelize-auto-migrations": "git+https://github.com/claukers/sequelize-auto-migrations.git#master",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.3",
+    "@types/jsonwebtoken": "^8.3.4",
+    "@types/sinon": "^7.0.13",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "lodash.template": ">=4.5.0",
+    "rewiremock": "^3.13.7",
+    "rimraf": "^2.7.1",
+    "sinon": "^7.5.0",
+    "sqlite3": "^4.1.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  },
+  "engines": {
+    "node": "^ 10.0.0",
+    "npm": "^ 6.0.0"
+  }
+}
