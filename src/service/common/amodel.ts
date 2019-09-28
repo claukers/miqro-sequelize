@@ -1,5 +1,5 @@
-import { IServiceArgs } from "miqro-core";
-import { IModelService, MethodNotImplementedError } from "./model";
+import { IServiceArgs, MethodNotImplementedError } from "miqro-core";
+import { IModelService } from "./model";
 
 export abstract class AbstractModelService implements IModelService {
   public async get(options: IServiceArgs): Promise<any> {

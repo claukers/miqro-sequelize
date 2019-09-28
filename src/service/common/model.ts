@@ -1,12 +1,5 @@
 import { IServiceArgs } from "miqro-core";
 
-export class MethodNotImplementedError extends Error {
-  public isMethodNotImplementedError = true;
-  constructor(method: string) {
-    super(`method ${method} not implemented!`);
-  }
-}
-
 export interface IModelService {
   get(options: IServiceArgs): Promise<any>;
   post(options: IServiceArgs): Promise<any>;
