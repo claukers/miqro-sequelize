@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/claukers/miqro.git"
+    "url": "https://github.com/claukers/miqro-sequelize.git"
   },
   "scripts": {
     "miqro": "node dist/cli/cli.js",
