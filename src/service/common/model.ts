@@ -1,4 +1,4 @@
-import { IServiceArgs } from "../../../../miqro-core";
+import { IServiceArgs } from "miqro-core";
 
 export class MethodNotImplementedError extends Error {
   public isMethodNotImplementedError = true;
