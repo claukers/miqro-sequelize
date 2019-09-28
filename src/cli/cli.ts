@@ -14,7 +14,7 @@ const cmds: ISimpleMap<{ module: string; description: string }> = {
 const main = async () => {
   const cmdArg = process.argv[2];
   if (!cmdArg) {
-    logger.info(`usage: miqro-sequelize <command> [args]`);
+    logger.info(`usage: miqro-db <command> [args]`);
     logger.info(`Available commands:`);
     for (const cmd of Object.keys(cmds)) {
       logger.info(`\t${cmd}\t${cmds[cmd].description}`);
@@ -40,7 +40,7 @@ const main = async () => {
 };
 
 main().catch((e) => {
-  logger.error(`usage: miqro-sequelize <command> [args]`);
+  logger.error(`usage: miqro-db <command> [args]`);
   logger.error(e.message);
   process.exit(1);
 });
