@@ -1,6 +1,7 @@
 import * as fs from "fs";
-import * as path from "path";
 import { Util } from "miqro-core";
+import * as path from "path";
+import {makemigrations, migrate} from "../db/migrations";
 
 const modulePath = process.argv[3];
 
@@ -19,5 +20,5 @@ if (!fs.existsSync(service)) {
 
 Util.setupInstanceEnv("automigrate", service);
 Util.loadConfig();
-/*lib.makemigrations();
-lib.migrate();*/
+makemigrations();
+migrate();
