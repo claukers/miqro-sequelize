@@ -22,7 +22,7 @@
   "author": "claukers",
   "license": "ISC",
   "dependencies": {
-    "miqro-core": "git+ssh://git@github.com/claukers/miqro-core.git#develop",
+    "miqro-core": "^0.1.0",
     "sequelize": "^5.19.1",
     "sequelize-auto-migrations": "git+https://github.com/claukers/sequelize-auto-migrations.git#master",
     "sequelize-cli": "^5.5.1"
