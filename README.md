@@ -27,15 +27,15 @@ const db = Database.getInstance();
 
 to use **sequelize-auto-migrations** and seek for changes in model and create migrations.
 
-```miqro-db makemigrations service.js```
+```miqro-sequelize makemigrations service.js```
 
 to apply migrations
 
-```miqro-db migrate service.js```
+```miqro-sequelize migrate service.js```
 
 for making and running the migrations
 
-```miqro-db automigrate service.js```
+```miqro-sequelize automigrate service.js```
 
 ## configuration
 

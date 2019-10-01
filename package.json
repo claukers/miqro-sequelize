@@ -8,10 +8,9 @@
     "url": "https://github.com/claukers/miqro-sequelize.git"
   },
   "bin": {
-    "miqro-db": "dist/cli/cli.js"
+    "miqro-sequelize": "dist/cli/cli.js"
   },
   "scripts": {
-    "miqro-db": "node dist/cli/cli.js",
     "prepare": "npm run build",
     "build": "rimraf dist/ && tsc",
     "test": "NODE_ENV=test nyc mocha test/*.test.ts",
@@ -22,7 +21,7 @@
   "author": "claukers",
   "license": "ISC",
   "dependencies": {
-    "miqro-core": "^0.1.3",
+    "miqro-core": "^0.1.5",
     "sequelize": "^5.19.2",
     "sequelize-auto-migrations": "git+https://github.com/claukers/sequelize-auto-migrations.git#master",
     "sequelize-cli": "^5.5.1"
