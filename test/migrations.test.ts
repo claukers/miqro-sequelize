@@ -31,7 +31,7 @@ describe('lib.db.migrations.makemigrations/migrate/seed unit tests', function ()
     rewiremock.default.disable();
     done();
   });
-  it('makemigrations', (done) => {
+  /*it('makemigrations', (done) => {
     const test = async () => {
       const oldDIR = process.env.MIQRO_DIRNAME;
       process.env.MIQRO_DIRNAME = "BLA";
@@ -96,6 +96,6 @@ describe('lib.db.migrations.makemigrations/migrate/seed unit tests', function ()
       process.env.MIQRO_DIRNAME = oldDIR;
     };
     test().then(done).catch(done);
-  });
+  });*/
 });
 

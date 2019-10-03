@@ -1,19 +1,13 @@
 import * as child_process from "child_process";
 import * as path from "path";
+import { sequelizeDirs } from "../util/loader";
+import { makemigrationsImpl } from "./automigrations";
 
 const logger = console;
 
 export const makemigrations = () => {
   try {
-    const dbFolder = path.resolve(process.env.MIQRO_DIRNAME);
-    logger.log(child_process.execSync(
-      "npx makemigration",
-      {
-        cwd: dbFolder,
-        env: process.env,
-        windowsHide: true
-      }
-    ).toString());
+    return makemigrationsImpl();
   } catch (e) {
     logger.error(e.message);
   }
@@ -21,11 +15,13 @@ export const makemigrations = () => {
 
 export const migrate = () => {
   try {
-    const dbFolder = path.resolve(process.env.MIQRO_DIRNAME);
+    const {
+      sequelizercPath
+    } = sequelizeDirs();
     logger.log(child_process.execSync(
-      "npx sequelize db:migrate",
+      "npx sequelize-cli db:migrate",
       {
-        cwd: dbFolder,
+        cwd: path.dirname(sequelizercPath),
         env: process.env,
         windowsHide: true
       }
@@ -37,11 +33,13 @@ export const migrate = () => {
 
 export const seed = () => {
   try {
-    const dbFolder = path.resolve(process.env.MIQRO_DIRNAME);
+    const {
+      sequelizercPath
+    } = sequelizeDirs();
     logger.log(child_process.execSync(
-      "npx sequelize db:seed:all",
+      "npx sequelize-cli db:seed:all",
       {
-        cwd: dbFolder,
+        cwd: path.dirname(sequelizercPath),
         env: process.env,
         windowsHide: true
       }

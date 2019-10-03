@@ -1,52 +1,7 @@
 import { IServiceArgs, ParseOptionsError, Util } from "miqro-core";
-import * as Sequelize from "sequelize";
-import { Database } from "../db";
-import { AbstractModelService } from "./common";
+import { AbstractModelService, Op, parseIncludeQuery } from "./common";
 
 let logger = null;
-
-const parseIncludeQuery = (includeQuery: any[]): any[] => {
-  const ret = [];
-  for (const includeModel of includeQuery) {
-    if (typeof includeModel === "string") {
-      const model = Database.getInstance().models[includeModel];
-      if (model) {
-        ret.push(model);
-      } else {
-        throw new ParseOptionsError(`query.include[${includeModel}] model doesnt exists!`);
-      }
-    } else if (typeof includeModel === "object") {
-      const includeO = Util.parseOptions("query.include[n]", includeModel, [
-        { name: "model", type: "string", required: true },
-        { name: "required", type: "boolean", required: true },
-        { name: "where", type: "object", required: true },
-        { name: "include", type: "array", arrayType: "any", required: false }
-      ], "no_extra");
-      const model = Database.getInstance().models[includeO.model];
-      if (model) {
-        if (includeO.include) {
-          ret.push({
-            model,
-            required: includeO.required,
-            where: includeO.where,
-            include: parseIncludeQuery(includeO.include)
-          });
-        } else {
-          ret.push({
-            model,
-            required: includeO.required,
-            where: includeO.where
-          });
-        }
-      } else {
-        throw new ParseOptionsError(`query.include[${includeO.model}] model doesnt exists!`);
-      }
-    } else {
-      throw new ParseOptionsError(`problem with your query.include!`);
-    }
-  }
-  return ret;
-};
 
 export class ModelService extends AbstractModelService {
   constructor(protected model: any) {
@@ -98,12 +53,12 @@ export class ModelService extends AbstractModelService {
             const searchParams = {};
             for (const column of paginationJSON.search.columns) {
               searchParams[column] = {
-                [Sequelize.Op.like]: "%" + paginationJSON.search.query + "%"
+                [Op.like]: "%" + paginationJSON.search.query + "%"
               };
             }
             params = {
-              [Sequelize.Op.and]: params,
-              [Sequelize.Op.or]: searchParams
+              [Op.and]: params,
+              [Op.or]: searchParams
             };
           }
         }
@@ -127,11 +82,11 @@ export class ModelService extends AbstractModelService {
             const searchParams = {};
             for (const column of paginationJSON.search.columns) {
               searchParams[column] = {
-                [Sequelize.Op.like]: "%" + paginationJSON.search.query + "%"
+                [Op.like]: "%" + paginationJSON.search.query + "%"
               };
             }
             params2 = {
-              [Sequelize.Op.or]: searchParams
+              [Op.or]: searchParams
             };
           }
         }
