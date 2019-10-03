@@ -1,14 +1,9 @@
 import { IServiceArgs, ParseOptionsError, Util } from "miqro-core";
 import { AbstractModelService, Op, parseIncludeQuery } from "./common";
 
-let logger = null;
-
 export class ModelService extends AbstractModelService {
   constructor(protected model: any) {
     super();
-    if (!logger) {
-      logger = Util.getLogger("ModelService");
-    }
   }
   public async get({ body, query, params, session }: IServiceArgs): Promise<any> {
     const { pagination, include } = Util.parseOptions("query", query, [
