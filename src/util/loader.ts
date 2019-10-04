@@ -75,5 +75,5 @@ export const setupDB = () => {
   const {
     modelsFolder
   } = sequelizeDirs();
-  return require(modelsFolder["models-path"]);
+  return require(modelsFolder);
 };
