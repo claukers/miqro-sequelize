@@ -21,14 +21,14 @@
   "author": "claukers",
   "license": "ISC",
   "dependencies": {
-    "miqro-core": "git+http://github.com/claukers/miqro-core.git#develop",
-    "sequelize": "^5.19.2",
-    "js-beautify": "^1.10.2",
-    "object-hash": "^1.3.1",
     "deep-diff": "^0.3.8",
+    "js-beautify": "^1.10.2",
     "lodash.assignin": "^4.2.0",
     "lodash.clone": "^4.5.0",
-    "lodash.foreach": "^4.5.0"
+    "lodash.foreach": "^4.5.0",
+    "miqro-core": "^0.1.6",
+    "object-hash": "^1.3.1",
+    "sequelize": "^5.19.4"
   },
   "devDependencies": {
     "@types/chai": "^4.2.3",
