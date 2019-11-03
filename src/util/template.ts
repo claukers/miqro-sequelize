@@ -1,3 +1,4 @@
+// noinspection SpellCheckingInspection
 const modelsIndex =
   `'use strict';
 
@@ -32,6 +33,7 @@ Object.keys(db).forEach((modelName) => {
 });
 module.exports = db;
 `;
+// noinspection SpellCheckingInspection
 const dbConfig =
   `["DB_DIALECT_SSL", "DB_PORT", "DB_NAME", "DB_USER", "DB_PASS", "DB_HOST", ` +
   `"DB_DIALECT", "DB_POOL_MAX", "DB_POOL_MIN", "DB_POOL_ACQUIRE", "DB_POOL_IDDLE", "DB_STORAGE"].forEach((envName) => {
@@ -59,7 +61,7 @@ module.exports = {
   storage: process.env.DB_STORAGE
 };
 `;
-
+// noinspection SpellCheckingInspection
 const sequelizerc =
   `const path = require("path");
 
@@ -71,6 +73,7 @@ module.exports = {
 };
 `;
 
+// noinspection SpellCheckingInspection
 export const templates = {
   modelsIndex,
   dbConfig,

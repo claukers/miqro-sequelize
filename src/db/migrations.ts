@@ -5,6 +5,7 @@ import { makemigrationsImpl } from "./automigrations";
 
 const logger = console;
 
+// noinspection SpellCheckingInspection
 export const makemigrations = () => {
   try {
     return makemigrationsImpl();
@@ -15,6 +16,7 @@ export const makemigrations = () => {
 
 export const migrate = () => {
   try {
+    // noinspection SpellCheckingInspection
     const {
       sequelizercPath
     } = sequelizeDirs();
@@ -33,6 +35,7 @@ export const migrate = () => {
 
 export const seed = () => {
   try {
+    // noinspection SpellCheckingInspection
     const {
       sequelizercPath
     } = sequelizeDirs();

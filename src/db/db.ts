@@ -3,6 +3,7 @@ import { ISimpleMap, Util } from "miqro-core";
 import { Sequelize, Transaction } from "sequelize";
 import { setupDB } from "../util/loader";
 
+// noinspection SpellCheckingInspection
 export type DataBaseState = "stopped" | "starting" | "started" | "startstop" | "error";
 
 export interface IModelMap extends ISimpleMap<any> {
@@ -11,6 +12,7 @@ export interface IModelMap extends ISimpleMap<any> {
 let logger = null;
 
 export class Database extends EventEmitter {
+  // noinspection SpellCheckingInspection
   public static events: DataBaseState[] = ["stopped", "starting", "started", "startstop", "error"];
   public static getInstance(): Database {
     if (!Database.instance) {
@@ -27,6 +29,7 @@ export class Database extends EventEmitter {
     if (logger === null) {
       logger = Util.getLogger("Database");
     }
+    // noinspection SpellCheckingInspection
     const requiredEnvVariables = ["DB_DROPTABLES"];
     Util.checkEnvVariables(requiredEnvVariables);
     const models = setupDB();
@@ -87,6 +90,7 @@ export class Database extends EventEmitter {
       throw err;
     }
     try {
+      // noinspection SpellCheckingInspection
       this.stateChange("startstop");
       await this.sequelize.close();
       this.stateChange("stopped");
@@ -101,7 +105,7 @@ export class Database extends EventEmitter {
       this.state = state;
       this.emit(this.state, args);
     } else {
-      throw new Error("Unknow state");
+      throw new Error("Unknown state");
     }
   }
 }

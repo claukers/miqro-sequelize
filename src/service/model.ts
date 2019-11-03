@@ -110,6 +110,7 @@ export class ModelService extends AbstractModelService {
   public async post({ body, query, params, session }: IServiceArgs): Promise<any> {
     Util.parseOptions("params", params, [], "no_extra");
     Util.parseOptions("query", query, [], "no_extra");
+    // noinspection JSDeprecatedSymbols
     return this.model.create(body);
   }
   public async patch({ body, query, params, session }: IServiceArgs): Promise<any> {

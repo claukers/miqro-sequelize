@@ -1,6 +1,6 @@
-import { diff } from "deep-diff";
+import {diff} from "deep-diff";
 import * as  fs from "fs";
-import { js_beautify } from "js-beautify";
+import {js_beautify} from "js-beautify";
 import * as assignIn from "lodash.assignin";
 import * as clone from "lodash.clone";
 import * as forEach from "lodash.foreach";
@@ -17,6 +17,7 @@ const reverseSequelizeColType = (col, prefix = "Sequelize.") => {
 
   const DataTypes = Sequelize.DataTypes;
 
+  // noinspection SpellCheckingInspection,DuplicateCaseLabelJS
   switch (attrName) {
     // CHAR(length, binary)
     case DataTypes.CHAR.key:
@@ -137,15 +138,15 @@ const reverseSequelizeColType = (col, prefix = "Sequelize.") => {
 const reverseSequelizeDefValueType = (defaultValue, prefix = "Sequelize.") => {
   if (typeof defaultValue === "object") {
     if (defaultValue.constructor && defaultValue.constructor.name) {
-      return { internal: true, value: prefix + defaultValue.constructor.name };
+      return {internal: true, value: prefix + defaultValue.constructor.name};
     }
   }
 
   if (typeof defaultValue === "function") {
-    return { notSupported: true, value: "" };
+    return {notSupported: true, value: ""};
   }
 
-  return { value: defaultValue };
+  return {value: defaultValue};
 };
 
 const parseIndex = (idx) => {
@@ -187,84 +188,111 @@ export const reverseModels = (sequelize, models, logger) => {
   delete models.default;
 
   for (const model in models) {
+    // noinspection JSUnfilteredForInLoop
     const attributes = models[model].attributes || models[model].rawAttributes;
 
     for (const column in attributes) {
+      // noinspection JSUnfilteredForInLoop
       delete attributes[column].Model;
+      // noinspection JSUnfilteredForInLoop
       delete attributes[column].fieldName;
       // delete attributes[column].field;
 
+      // noinspection JSUnfilteredForInLoop
       for (const property in attributes[column]) {
+        // noinspection JSUnfilteredForInLoop
         if (property.startsWith("_")) {
+          // noinspection JSUnfilteredForInLoop
           delete attributes[column][property];
           continue;
         }
 
         if (property === "defaultValue") {
+          // noinspection JSUnfilteredForInLoop
           const _val = reverseSequelizeDefValueType(attributes[column][property]);
           if (_val.notSupported) {
+            // noinspection JSUnfilteredForInLoop
             logger.info(`[Not supported] Skip defaultValue column of attribute ${model}:${column}`);
+            // noinspection JSUnfilteredForInLoop
             delete attributes[column][property];
             continue;
           }
+          // noinspection JSUnfilteredForInLoop
           attributes[column][property] = _val;
         }
 
         // remove getters, setters...
+        // noinspection JSUnfilteredForInLoop
         if (typeof attributes[column][property] == "function") {
+          // noinspection JSUnfilteredForInLoop
           delete attributes[column][property];
         }
       }
-
+      // noinspection JSUnfilteredForInLoop
       if (typeof attributes[column].type === "undefined") {
+        // noinspection JSUnfilteredForInLoop
         if (!attributes[column].seqType) {
+          // noinspection JSUnfilteredForInLoop
           logger.info(`[Not supported] Skip column with undefined type ${model}:${column}`);
+          // noinspection JSUnfilteredForInLoop
           delete attributes[column];
           continue;
         } else {
+          // noinspection JSUnfilteredForInLoop
           if (!["Sequelize.ARRAY(Sequelize.INTEGER)", "Sequelize.ARRAY(Sequelize.STRING)"].includes(attributes[column].seqType)) {
+            // noinspection JSUnfilteredForInLoop
             delete attributes[column];
             continue;
           }
+          // noinspection JSUnfilteredForInLoop
           attributes[column].type = {
             key: Sequelize.ARRAY.key
           };
         }
       }
-
+      // noinspection JSUnfilteredForInLoop
       let seqType = reverseSequelizeColType(attributes[column]);
 
       // NO virtual types in migration
       if (seqType === "Sequelize.VIRTUAL") {
+        // noinspection JSUnfilteredForInLoop
         logger.info(`[SKIP] Skip Sequelize.VIRTUAL column "${column}"", defined in model "${model}"`);
+        // noinspection JSUnfilteredForInLoop
         delete attributes[column];
         continue;
       }
 
       if (!seqType) {
+        // noinspection JSUnfilteredForInLoop
         if (typeof attributes[column].type.options !== "undefined" && typeof attributes[column].type.options.toString === "function") {
+          // noinspection JSUnfilteredForInLoop
           seqType = attributes[column].type.options.toString(sequelize);
         }
-
+        // noinspection JSUnfilteredForInLoop
         if (typeof attributes[column].type.toString === "function") {
+          // noinspection JSUnfilteredForInLoop
           seqType = attributes[column].type.toString(sequelize);
         }
       }
-
+      // noinspection JSUnfilteredForInLoop
       attributes[column].seqType = seqType;
-
+      // noinspection JSUnfilteredForInLoop
       delete attributes[column].type;
+      // noinspection JSUnfilteredForInLoop
       delete attributes[column].values; // ENUM
     }
-
+    // noinspection JSUnfilteredForInLoop
     tables[models[model].tableName] = {
+      // noinspection JSUnfilteredForInLoop
       tableName: models[model].tableName,
       schema: attributes
     };
-
+    // noinspection JSUnfilteredForInLoop
     if (models[model].options.indexes.length > 0) {
       const idx_out = {};
+      // noinspection JSUnfilteredForInLoop
       for (const _i in models[model].options.indexes) {
+        // noinspection JSUnfilteredForInLoop
         const index = parseIndex(models[model].options.indexes[_i]);
         idx_out[index.hash + ""] = index;
         delete index.hash;
@@ -272,13 +300,15 @@ export const reverseModels = (sequelize, models, logger) => {
         // make it immutable
         Object.freeze(index);
       }
+      // noinspection JSUnfilteredForInLoop
       models[model].options.indexes = idx_out;
     }
-
+    // noinspection JSUnfilteredForInLoop
     if (typeof models[model].options.charset !== "undefined") {
+      // noinspection JSUnfilteredForInLoop
       tables[models[model].tableName].charset = models[model].options.charset;
     }
-
+    // noinspection JSUnfilteredForInLoop
     tables[models[model].tableName].indexes = models[model].options.indexes;
   }
 
@@ -291,131 +321,73 @@ export const parseDifference = (previousState, currentState, logger) => {
   const difference = diff(previousState, currentState);
 
   for (const _d in difference) {
+    // noinspection JSUnfilteredForInLoop
     const df = difference[_d];
     //    log (JSON.stringify(df, null, 4));
     switch (df.kind) {
       // add new
-      case "N":
-        {
-          // new table created
-          if (df.path.length === 1) {
-            const depends = [];
-            const tableName = df.rhs.tableName;
-            forEach(df.rhs.schema, (v) => { if (v.references) { depends.push(v.references.model); } });
+      case "N": {
+        // new table created
+        if (df.path.length === 1) {
+          const depends = [];
+          const tableName = df.rhs.tableName;
+          forEach(df.rhs.schema, (v) => {
+            if (v.references) {
+              depends.push(v.references.model);
+            }
+          });
 
-            const options: any = {};
-            if (typeof df.rhs.charset !== "undefined") {
-              options.charset = df.rhs.charset;
+          const options: any = {};
+          if (typeof df.rhs.charset !== "undefined") {
+            options.charset = df.rhs.charset;
+          }
+
+          actions.push({
+            actionType: "createTable",
+            tableName,
+            attributes: df.rhs.schema,
+            options,
+            depends
+          });
+
+          // create indexes
+          if (df.rhs.indexes) {
+            for (const _i in df.rhs.indexes) {
+              // noinspection JSUnfilteredForInLoop
+              actions.push(assignIn({
+                actionType: "addIndex",
+                tableName,
+                depends: [tableName]
+              }, clone(df.rhs.indexes[_i])));
+            }
+          }
+          break;
+        }
+
+        const tableName = df.path[0];
+        const depends = [tableName];
+
+        if (df.path[1] === "schema") {
+          // if (df.path.length === 3) - new field
+          if (df.path.length === 3) {
+            // new field
+            if (df.rhs && df.rhs.references) {
+              depends.push(df.rhs.references.model);
             }
 
             actions.push({
-              actionType: "createTable",
+              actionType: "addColumn",
               tableName,
-              attributes: df.rhs.schema,
-              options,
+              attributeName: df.path[2],
+              options: df.rhs,
               depends
             });
-
-            // create indexes
-            if (df.rhs.indexes) {
-              for (const _i in df.rhs.indexes) {
-                actions.push(assignIn({
-                  actionType: "addIndex",
-                  tableName,
-                  depends: [tableName]
-                }, clone(df.rhs.indexes[_i])));
-              }
-            }
             break;
           }
 
-          const tableName = df.path[0];
-          const depends = [tableName];
-
-          if (df.path[1] === "schema") {
-            // if (df.path.length === 3) - new field
-            if (df.path.length === 3) {
-              // new field
-              if (df.rhs && df.rhs.references) {
-                depends.push(df.rhs.references.model);
-              }
-
-              actions.push({
-                actionType: "addColumn",
-                tableName,
-                attributeName: df.path[2],
-                options: df.rhs,
-                depends
-              });
-              break;
-            }
-
-            // if (df.path.length > 3) - add new attribute to column (change col)
-            if (df.path.length > 3) {
-              if (df.path[1] === "schema") {
-                // new field attributes
-                const options = currentState[tableName].schema[df.path[2]];
-                if (options.references) {
-                  depends.push(options.references.nodel);
-                }
-
-                actions.push({
-                  actionType: "changeColumn",
-                  tableName,
-                  attributeName: df.path[2],
-                  options,
-                  depends
-                });
-                break;
-              }
-            }
-          }
-
-          // new index
-          if (df.path[1] === "indexes") {
-            const tableName = df.path[0];
-            const index = clone(df.rhs);
-            index.actionType = "addIndex";
-            index.tableName = tableName;
-            index.depends = [tableName];
-            actions.push(index);
-            break;
-          }
-        }
-        break;
-
-      // drop
-      case "D":
-        {
-          const tableName = df.path[0];
-          const depends = [tableName];
-
-          if (df.path.length === 1) {
-            // drop table
-            actions.push({
-              actionType: "dropTable",
-              tableName,
-              depends: []
-            });
-            break;
-          }
-
-          if (df.path[1] === "schema") {
-            // if (df.path.length === 3) - drop field
-            if (df.path.length === 3) {
-              // drop column
-              actions.push({
-                actionType: "removeColumn",
-                tableName,
-                columnName: df.path[2],
-                depends: [tableName],
-                options: df.lhs
-              });
-              break;
-            }
-
-            // if (df.path.length > 3) - drop attribute from column (change col)
-            if (df.path.length > 3) {
+          // if (df.path.length > 3) - add new attribute to column (change col)
+          if (df.path.length > 3) {
+            if (df.path[1] === "schema") {
               // new field attributes
               const options = currentState[tableName].schema[df.path[2]];
               if (options.references) {
@@ -432,28 +404,52 @@ export const parseDifference = (previousState, currentState, logger) => {
               break;
             }
           }
+        }
 
-          if (df.path[1] === "indexes") {
-            //                    log(df)
+        // new index
+        if (df.path[1] === "indexes") {
+          const tableName = df.path[0];
+          const index = clone(df.rhs);
+          index.actionType = "addIndex";
+          index.tableName = tableName;
+          index.depends = [tableName];
+          actions.push(index);
+          break;
+        }
+      }
+        break;
+
+      // drop
+      case "D": {
+        const tableName = df.path[0];
+        const depends = [tableName];
+
+        if (df.path.length === 1) {
+          // drop table
+          actions.push({
+            actionType: "dropTable",
+            tableName,
+            depends: []
+          });
+          break;
+        }
+
+        if (df.path[1] === "schema") {
+          // if (df.path.length === 3) - drop field
+          if (df.path.length === 3) {
+            // drop column
             actions.push({
-              actionType: "removeIndex",
+              actionType: "removeColumn",
               tableName,
-              fields: df.lhs.fields,
-              options: df.lhs.options,
-              depends: [tableName]
+              columnName: df.path[2],
+              depends: [tableName],
+              options: df.lhs
             });
             break;
           }
-        }
-        break;
 
-      // edit
-      case "E":
-        {
-          const tableName = df.path[0];
-          const depends = [tableName];
-
-          if (df.path[1] === "schema") {
+          // if (df.path.length > 3) - drop attribute from column (change col)
+          if (df.path.length > 3) {
             // new field attributes
             const options = currentState[tableName].schema[df.path[2]];
             if (options.references) {
@@ -467,52 +463,90 @@ export const parseDifference = (previousState, currentState, logger) => {
               options,
               depends
             });
+            break;
           }
-
-          // updated index
-          // only support updating and dropping indexes
-          if (df.path[1] === "indexes") {
-            const tableName = df.path[0];
-            let keys = Object.keys(df.rhs);
-
-            for (const k in keys) {
-              const key = keys[k];
-              const index = clone(df.rhs[key]);
-              actions.push({
-                actionType: "addIndex",
-                tableName,
-                fields: df.rhs[key].fields,
-                options: df.rhs[key].options,
-                depends: [tableName]
-              });
-              break;
-            }
-
-            keys = Object.keys(df.lhs);
-            for (const k in keys) {
-              const key = keys[k];
-              const index = clone(df.lhs[key]);
-              actions.push({
-                actionType: "removeIndex",
-                tableName,
-                fields: df.lhs[key].fields,
-                options: df.lhs[key].options,
-                depends: [tableName]
-              });
-              break;
-            }
-          }
-
         }
+
+        if (df.path[1] === "indexes") {
+          //                    log(df)
+          actions.push({
+            actionType: "removeIndex",
+            tableName,
+            fields: df.lhs.fields,
+            options: df.lhs.options,
+            depends: [tableName]
+          });
+          break;
+        }
+      }
+        break;
+
+      // edit
+      case "E": {
+        const tableName = df.path[0];
+        const depends = [tableName];
+
+        if (df.path[1] === "schema") {
+          // new field attributes
+          const options = currentState[tableName].schema[df.path[2]];
+          if (options.references) {
+            depends.push(options.references.nodel);
+          }
+
+          actions.push({
+            actionType: "changeColumn",
+            tableName,
+            attributeName: df.path[2],
+            options,
+            depends
+          });
+        }
+
+        // updated index
+        // only support updating and dropping indexes
+        if (df.path[1] === "indexes") {
+          const tableName = df.path[0];
+          let keys = Object.keys(df.rhs);
+
+          // noinspection LoopStatementThatDoesntLoopJS
+          for (const k in keys) {
+            const key = keys[k];
+            const index = clone(df.rhs[key]);
+            actions.push({
+              actionType: "addIndex",
+              tableName,
+              fields: df.rhs[key].fields,
+              options: df.rhs[key].options,
+              depends: [tableName]
+            });
+            break;
+          }
+
+          keys = Object.keys(df.lhs);
+          // noinspection LoopStatementThatDoesntLoopJS
+          for (const k in keys) {
+            const key = keys[k];
+            const index = clone(df.lhs[key]);
+            actions.push({
+              actionType: "removeIndex",
+              tableName,
+              fields: df.lhs[key].fields,
+              options: df.lhs[key].options,
+              depends: [tableName]
+            });
+            break;
+          }
+        }
+
+      }
         break;
 
       // array change indexes
-      case "A":
-        {
-          logger.info("[Not supported] Array model changes! Problems are possible. Please, check result more carefully!");
-          logger.info("[Not supported] Difference: ");
-          logger.info(JSON.stringify(df, null, 4));
-        }
+      case "A": {
+        logger.info("[Not supported] Array model changes! Problems are possible. Please, check result more carefully!");
+        logger.info("[Not supported] Difference: ");
+        logger.info(JSON.stringify(df, null, 4));
+      }
         break;
 
       default:
@@ -590,32 +624,39 @@ export const sortActions = (actions) => {
     }
   }
 };
-
+// noinspection SpellCheckingInspection
 export const getMigration = (actions) => {
   const propertyToStr = (obj) => {
+    // noinspection SpellCheckingInspection
     const vals = [];
     for (const k in obj) {
       if (k === "seqType") {
+        // noinspection JSUnfilteredForInLoop
         vals.push('"type": ' + obj[k]);
         continue;
       }
 
       if (k === "defaultValue") {
+        // noinspection JSUnfilteredForInLoop
         if (obj[k].internal) {
+          // noinspection JSUnfilteredForInLoop
           vals.push('"defaultValue": ' + obj[k].value);
           continue;
         }
+        // noinspection JSUnfilteredForInLoop
         if (obj[k].notSupported) {
           continue;
         }
 
         const x = {};
+        // noinspection JSUnfilteredForInLoop
         x[k] = obj[k].value;
         vals.push(JSON.stringify(x).slice(1, -1));
         continue;
       }
 
       const x = {};
+      // noinspection JSUnfilteredForInLoop
       x[k] = obj[k];
       vals.push(JSON.stringify(x).slice(1, -1));
     }
@@ -626,6 +667,7 @@ export const getMigration = (actions) => {
   const getAttributes = (attrs) => {
     const ret = [];
     for (const attrName in attrs) {
+      // noinspection JSUnfilteredForInLoop
       ret.push(`      "${attrName}": ${propertyToStr(attrs[attrName])}`);
     }
     return " { \n" + ret.join(", \n") + "\n     }";
@@ -635,78 +677,74 @@ export const getMigration = (actions) => {
   const consoleOut = [];
 
   for (const _i in actions) {
+    // noinspection JSUnfilteredForInLoop
     const action = actions[_i];
+    // noinspection FallThroughInSwitchStatementJS,FallThroughInSwitchStatementJS
     switch (action.actionType) {
-      case "createTable":
-        {
-          const resUp = `{ fn: "createTable", params: [
+      case "createTable": {
+        const resUp = `{ fn: "createTable", params: [
     "${action.tableName}",
     ${getAttributes(action.attributes)},
     ${JSON.stringify(action.options)}
 ] }`;
-          commandsUp.push(resUp);
+        commandsUp.push(resUp);
 
-          consoleOut.push(`createTable "${action.tableName}", deps: [${action.depends.join(", ")}]`);
-        }
+        consoleOut.push(`createTable "${action.tableName}", deps: [${action.depends.join(", ")}]`);
+      }
         break;
 
-      case "dropTable":
-        {
-          const res = `{ fn: "dropTable", params: ["${action.tableName}"] }`;
-          commandsUp.push(res);
+      case "dropTable": {
+        const res = `{ fn: "dropTable", params: ["${action.tableName}"] }`;
+        commandsUp.push(res);
 
-          consoleOut.push(`dropTable "${action.tableName}"`);
-        }
+        consoleOut.push(`dropTable "${action.tableName}"`);
+      }
         break;
 
-      case "addColumn":
-        {
-          const resUp = `{ fn: "addColumn", params: [
+      case "addColumn": {
+        const resUp = `{ fn: "addColumn", params: [
     "${action.tableName}",
     "${(action.options && action.options.field) ? action.options.field : action.attributeName}",
     ${propertyToStr(action.options)}
 ] }`;
 
-          commandsUp.push(resUp);
+        commandsUp.push(resUp);
 
-          consoleOut.push(`addColumn "${action.attributeName}" to table "${action.tableName}"`);
-        }
+        consoleOut.push(`addColumn "${action.attributeName}" to table "${action.tableName}"`);
+      }
         break;
 
-      case "removeColumn":
-        {
-          const res = `{ fn: "removeColumn", params: ["${action.tableName}", "${(action.options && action.options.field) ? action.options.field : action.columnName}"] }`;
-          commandsUp.push(res);
+      case "removeColumn": {
+        const res = `{ fn: "removeColumn", params: ["${action.tableName}", "${(action.options && action.options.field) ? action.options.field : action.columnName}"] }`;
+        commandsUp.push(res);
 
-          consoleOut.push(`removeColumn "${(action.options && action.options.field) ? action.options.field : action.columnName}" from table "${action.tableName}"`);
-        }
+        consoleOut.push(`removeColumn "${(action.options && action.options.field) ? action.options.field : action.columnName}" from table "${action.tableName}"`);
+      }
         break;
 
-      case "changeColumn":
-        {
-          const res = `{ fn: "changeColumn", params: [
+      case "changeColumn": {
+        const res = `{ fn: "changeColumn", params: [
     "${action.tableName}",
     "${(action.options && action.options.field) ? action.options.field : action.attributeName}",
     ${propertyToStr(action.options)}
 ] }`;
-          commandsUp.push(res);
+        commandsUp.push(res);
 
-          consoleOut.push(`changeColumn "${action.attributeName}" on table "${action.tableName}"`);
-        }
+        consoleOut.push(`changeColumn "${action.attributeName}" on table "${action.tableName}"`);
+      }
         break;
 
-      case "addIndex":
-        {
-          const res = `{ fn: "addIndex", params: [
+      case "addIndex": {
+        const res = `{ fn: "addIndex", params: [
     "${action.tableName}",
     ${JSON.stringify(action.fields)},
     ${JSON.stringify(action.options)}
 ] }`;
-          commandsUp.push(res);
+        commandsUp.push(res);
 
-          const nameOrAttrs = (action.options && action.options.indexName && action.options.indexName != "") ? `"${action.options.indexName}"` : JSON.stringify(action.fields);
-          consoleOut.push(`addIndex ${nameOrAttrs} to table "${action.tableName}"`);
-        }
+        const nameOrAttrs = (action.options && action.options.indexName && action.options.indexName != "") ? `"${action.options.indexName}"` : JSON.stringify(action.fields);
+        consoleOut.push(`addIndex ${nameOrAttrs} to table "${action.tableName}"`);
+      }
         break;
 
       case "removeIndex": {
@@ -727,7 +765,7 @@ export const getMigration = (actions) => {
     }
   }
 
-  return { commandsUp, consoleOut };
+  return {commandsUp, consoleOut};
 };
 
 export const writeMigration = (revision, migration, migrationsDir, name = "", comment = "") => {
@@ -786,7 +824,7 @@ module.exports = {
 
   fs.writeFileSync(filename, template);
 
-  return { filename, info };
+  return {filename, info};
 };
 
 export const executeMigration = (queryInterface, filename, pos, cb, logger) => {

@@ -4,7 +4,9 @@ import { Util } from "miqro-core";
 import * as  path from "path";
 import { templates } from "./template";
 
+// noinspection SpellCheckingInspection
 export const sequelizeDirs = (): {
+  // noinspection SpellCheckingInspection
   sequelizercPath,
   dbConfigFilePath: string;
   migrationsFolder: string;
@@ -13,6 +15,7 @@ export const sequelizeDirs = (): {
 } => {
   Util.checkEnvVariables(["MIQRO_DIRNAME"]);
   const logger = Util.getLogger("loader");
+  // noinspection SpellCheckingInspection
   const sequelizercPath = path.resolve(process.env.MIQRO_DIRNAME, ".sequelizerc");
   const configFolder = path.resolve(process.env.MIQRO_DIRNAME, "config");
   const dbFolder = path.resolve(process.env.MIQRO_DIRNAME, "db");
@@ -22,6 +25,7 @@ export const sequelizeDirs = (): {
   const modelLoaderPath = path.resolve(modelsFolder, "index.js");
   const dbConfigFilePath = path.resolve(configFolder, "db.js");
   if (!fs.existsSync(sequelizercPath)) {
+    // noinspection SpellCheckingInspection
     logger.warn(`missing .sequelizerc file trying to recreate sequelize config.`);
     if (!fs.existsSync(sequelizercPath)) {
       logger.warn(`writing [${sequelizercPath}]`);
@@ -51,6 +55,7 @@ export const sequelizeDirs = (): {
       logger.warn(`creating folder [${seedersFolder}]`);
       fs.mkdirSync(seedersFolder);
     }
+    // noinspection SpellCheckingInspection
     return {
       sequelizercPath,
       dbConfigFilePath,
@@ -60,7 +65,9 @@ export const sequelizeDirs = (): {
     };
   } else {
     logger.info(`loading sequelize config from [${sequelizercPath}]`);
+    // noinspection SpellCheckingInspection
     const sequelizerc = require(sequelizercPath);
+    // noinspection SpellCheckingInspection
     return {
       sequelizercPath,
       dbConfigFilePath: sequelizerc.config,

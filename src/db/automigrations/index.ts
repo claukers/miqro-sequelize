@@ -80,6 +80,7 @@ export const migrateImpl = async () => {
 
 };
 
+// noinspection SpellCheckingInspection
 export const makemigrationsImpl = (): string => {
 
   // Windows support
@@ -92,6 +93,7 @@ export const makemigrationsImpl = (): string => {
     modelsFolder
   } = sequelizeDirs();
 
+  // noinspection SpellCheckingInspection
   const logger = Util.getLogger("makemigrations");
 
   try {

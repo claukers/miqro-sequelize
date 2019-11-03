@@ -86,7 +86,7 @@ describe('lib.db.Database unit tests', function () {
           db.stateChange("bla");
           chai.expect(true).to.be.equals(false);
         } catch (e) {
-          chai.expect(e.message).to.be.equals("Unknow state");
+          chai.expect(e.message).to.be.equals("Unknown state");
         }
       };
       test().then(done).catch(done);
