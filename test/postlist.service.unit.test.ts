@@ -75,12 +75,10 @@ describe("PostListModelService Unit Tests", function() {
       const arg1 = "bla1";
       const retMock = "bla";
       msPostMockImpl = fake(async (input) => {
-        switch (msPostMockImpl.callCount) {
-          case 1:
-            expect(input.body).to.be.equals(arg1);
-            break;
-          default:
-            done(new Error(`unhandled call count`));
+        if (msPostMockImpl.callCount === 1) {
+          expect(input.body).to.be.equals(arg1);
+        } else {
+          done(new Error(`unhandled call count`));
         }
         return retMock;
       });

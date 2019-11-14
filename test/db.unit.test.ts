@@ -1,15 +1,13 @@
-import { describe, it, before, after } from 'mocha';
-import * as chai from 'chai';
-import * as sinon from 'sinon';
-import * as rewiremock from 'rewiremock';
+import * as chai from "chai";
+import {after, before, describe, it} from "mocha";
+import * as rewiremock from "rewiremock";
+import * as sinon from "sinon";
 
-const miqroCorePath = "miqro-core"
+const miqroCorePath = "miqro-core";
 
-describe('lib.db.Database unit tests', function () {
+describe("lib.db.Database unit tests", function() {
   this.timeout(100000);
-  const fakeLogger = {
-
-  };
+  const fakeLogger = {};
   const fakeSetupDBRet = {
     sequelize: {
       authenticate: sinon.fake(async () => {
@@ -24,6 +22,7 @@ describe('lib.db.Database unit tests', function () {
   const fakeSetupDB = sinon.fake(() => {
     return fakeSetupDBRet;
   });
+  // noinspection JSUnusedLocalSymbols
   const fakeUtil = {
     getLogger: sinon.fake((name) => {
       return fakeLogger;
@@ -49,12 +48,12 @@ describe('lib.db.Database unit tests', function () {
     rewiremock.default.disable();
     done();
   });
-  it('new', (done) => {
+  it("new", (done) => {
     const test = async () => {
       const oldCount1 = fakeUtil.getLogger.callCount;
       const oldCount2 = fakeUtil.checkEnvVariables.callCount;
       const oldCount3 = fakeSetupDB.callCount;
-      const { Database } = require("../src/db");
+      const {Database} = require("../src/db");
       const db = new Database();
       // Util getLogger
       chai.expect(fakeUtil.getLogger.callCount).to.be.equals(oldCount1 + 1);
@@ -78,9 +77,9 @@ describe('lib.db.Database unit tests', function () {
     test().then(done).catch(done);
   });
   describe("statechange", () => {
-    it('invalid state', (done) => {
+    it("invalid state", (done) => {
       const test = async () => {
-        const { Database } = require("../src/db");
+        const {Database} = require("../src/db");
         const db = new Database();
         try {
           db.stateChange("bla");
@@ -91,9 +90,9 @@ describe('lib.db.Database unit tests', function () {
       };
       test().then(done).catch(done);
     });
-    it('valid states', (done) => {
+    it("valid states", (done) => {
       const test = async () => {
-        const { Database } = require("../src/db");
+        const {Database} = require("../src/db");
         const db = new Database();
         for (const event of Database.events) {
           const handler = sinon.fake((arg) => {
@@ -107,7 +106,7 @@ describe('lib.db.Database unit tests', function () {
       test().then(done).catch(done);
     });
   });
-  describe('start/stop', () => {
+  describe("start/stop", () => {
     /*it('DB_DROPTABLES', (done) => {
       const test = async () => {
         const { Database } = require("../src/db");
@@ -115,9 +114,9 @@ describe('lib.db.Database unit tests', function () {
       };
       test().then(done).catch(done);
     });*/
-    it('valid state', (done) => {
+    it("valid state", (done) => {
       const test = async () => {
-        const { Database } = require("../src/db");
+        const {Database} = require("../src/db");
         const db = new Database();
         db.stateChange = sinon.fake(db.stateChange);
         const oldCount = fakeSetupDBRet.sequelize.authenticate.callCount;

@@ -12,18 +12,22 @@ describe("DeletedServiceModel Unit Tests", function() {
   let msPostMockImpl = null;
 
   class PostListModelServiceMock {
+    // noinspection JSUnusedGlobalSymbols
     public async get(args) {
       return msGetMockImpl(args);
     }
 
+    // noinspection JSUnusedGlobalSymbols
     public async patch(args) {
       return msPatchMockImpl(args);
     }
 
+    // noinspection JSUnusedGlobalSymbols
     public async delete(args) {
       return msDeleteMockImpl(args);
     }
 
+    // noinspection JSUnusedGlobalSymbols
     public async post(args) {
       return msPostMockImpl(args);
     }
