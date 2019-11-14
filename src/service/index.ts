@@ -1,3 +1,4 @@
 export * from "./common";
 export * from "./model";
-export * from "./fakedelete";
+export * from "./deleted";
+export * from "./postlist";
