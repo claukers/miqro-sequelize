@@ -66,8 +66,8 @@ describe("DeletedServiceModel Unit Tests", function() {
         expect(input.params.deleted).to.be.equals(false);
         return retMock;
       });
-      const {DeletedModelService} = require("../src/service/deleted");
-      const instance = new DeletedModelService();
+      const {FakeDeleteModelService} = require("../src/service/deleted");
+      const instance = new FakeDeleteModelService();
       const ret = await instance.get(args);
       expect(ret).to.be.equals(retMock);
       expect(msGetMockImpl.callCount).to.be.equals(1);
@@ -85,8 +85,8 @@ describe("DeletedServiceModel Unit Tests", function() {
         expect(input.params.deleted).to.be.equals(false);
         return retMock;
       });
-      const {DeletedModelService} = require("../src/service/deleted");
-      const instance = new DeletedModelService();
+      const {FakeDeleteModelService} = require("../src/service/deleted");
+      const instance = new FakeDeleteModelService();
       const ret = await instance.get(args);
       expect(ret).to.be.equals(retMock);
       expect(msGetMockImpl.callCount).to.be.equals(1);
@@ -108,8 +108,8 @@ describe("DeletedServiceModel Unit Tests", function() {
         expect(input.body.deleted).to.be.equals(true);
         return retMock;
       });
-      const {DeletedModelService} = require("../src/service/deleted");
-      const instance = new DeletedModelService();
+      const {FakeDeleteModelService} = require("../src/service/deleted");
+      const instance = new FakeDeleteModelService();
       const ret = await instance.delete(args);
       expect(ret).to.be.equals(retMock);
       expect(msPatchMockImpl.callCount).to.be.equals(1);
@@ -133,8 +133,8 @@ describe("DeletedServiceModel Unit Tests", function() {
         expect(input.body.deleted).to.be.equals(undefined);
         return retMock;
       });
-      const {DeletedModelService} = require("../src/service/deleted");
-      const instance = new DeletedModelService();
+      const {FakeDeleteModelService} = require("../src/service/deleted");
+      const instance = new FakeDeleteModelService();
       const ret = await instance.patch(args);
       expect(ret).to.be.equals(retMock);
       expect(msPatchMockImpl.callCount).to.be.equals(1);

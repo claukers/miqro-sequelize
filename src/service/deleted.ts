@@ -2,20 +2,21 @@ import {
   PostListModelService
 } from "./postlist";
 
-export class DeletedModelService extends PostListModelService {
+export class FakeDeleteModelService extends PostListModelService {
+  protected modelIsDeletedAttribute: string = "deleted";
   public async get(args) {
-    args.params.deleted = false;
+    args.params[this.modelIsDeletedAttribute] = false;
     return super.get(args);
   }
 
   public async delete(args) {
-    args.body.deleted = true;
+    args.body[this.modelIsDeletedAttribute] = true;
     return super.patch(args);
   }
 
   public async patch(args) {
-    if (args.body.deleted) {
-      delete args.body.deleted;
+    if (args.body[this.modelIsDeletedAttribute]) {
+      delete args.body[this.modelIsDeletedAttribute];
     }
     return super.patch(args);
   }
@@ -23,11 +24,11 @@ export class DeletedModelService extends PostListModelService {
   public async post(args) {
     if (args.body instanceof Array) {
       for (const rBody of args.body) {
-        rBody.deleted = false;
+        rBody[this.modelIsDeletedAttribute] = false;
       }
       return super.post(args);
     } else {
-      args.body.deleted = false;
+      args.body[this.modelIsDeletedAttribute] = false;
       return super.post(args);
     }
   }
