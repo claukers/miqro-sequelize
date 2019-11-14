@@ -511,6 +511,7 @@ export const parseDifference = (previousState, currentState, logger) => {
           // noinspection LoopStatementThatDoesntLoopJS
           for (const k in keys) {
             const key = keys[k];
+            // noinspection JSUnusedLocalSymbols
             const index = clone(df.rhs[key]);
             actions.push({
               actionType: "addIndex",
@@ -526,6 +527,7 @@ export const parseDifference = (previousState, currentState, logger) => {
           // noinspection LoopStatementThatDoesntLoopJS
           for (const k in keys) {
             const key = keys[k];
+            // noinspection JSUnusedLocalSymbols
             const index = clone(df.lhs[key]);
             actions.push({
               actionType: "removeIndex",

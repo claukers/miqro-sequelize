@@ -1,6 +1,7 @@
 import { IServiceArgs } from "miqro-core";
 import { ModelService } from "./model";
 
+// noinspection JSUnusedGlobalSymbols
 export class FakeDeleteModelService extends ModelService {
   protected modelIsDeletedAttribute: string = "deleted";
   public async get(args: IServiceArgs) {

@@ -5,6 +5,7 @@ import * as path from "path";
 import { sequelizeDirs } from "../../util/loader";
 import { executeMigration, getMigration, parseDifference, reverseModels, sortActions, writeMigration } from "./migrate";
 
+// noinspection JSUnusedGlobalSymbols
 export const migrateImpl = async () => {
   const logger = Util.getLogger("migrate");
   const options = {

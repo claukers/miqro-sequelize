@@ -1,14 +1,15 @@
-import { IServiceArgs, ParseOptionsError, Util } from "miqro-core";
-import { AbstractModelService, Op, parseIncludeQuery } from "./common";
+import {IServiceArgs, ParseOptionsError, Util} from "miqro-core";
+import {AbstractModelService, Op, parseIncludeQuery} from "./common";
 
 export class ModelService extends AbstractModelService {
   constructor(protected model: any) {
     super();
   }
-  public async get({ body, query, params, session }: IServiceArgs): Promise<any> {
-    const { pagination, include } = Util.parseOptions("query", query, [
-      { name: "include", type: "string", required: false },
-      { name: "pagination", type: "string", required: false }
+
+  public async get({body, query, params, session}: IServiceArgs, transaction?: any, skipLocked?: boolean): Promise<any> {
+    const {pagination, include} = Util.parseOptions("query", query, [
+      {name: "include", type: "string", required: false},
+      {name: "pagination", type: "string", required: false}
     ], "no_extra");
     let includeModels = [];
     if (include) {
@@ -28,14 +29,14 @@ export class ModelService extends AbstractModelService {
         throw new ParseOptionsError(`query.pagination not a valid JSON`);
       }
       Util.parseOptions("query.pagination", paginationJSON, [
-        { name: "limit", type: "number", required: true },
-        { name: "search", type: "object", required: false },
-        { name: "offset", type: "number", required: true }
+        {name: "limit", type: "number", required: true},
+        {name: "search", type: "object", required: false},
+        {name: "offset", type: "number", required: true}
       ], "no_extra");
       if (paginationJSON.search) {
         Util.parseOptions("query.pagination.search", paginationJSON.search, [
-          { name: "columns", type: "array", arrayType: "string", required: true },
-          { name: "query", type: "string", required: true }
+          {name: "columns", type: "array", arrayType: "string", required: true},
+          {name: "query", type: "string", required: true}
         ], "no_extra");
       }
     }
@@ -57,17 +58,39 @@ export class ModelService extends AbstractModelService {
             };
           }
         }
-        ret = await this.model.findAndCountAll({
-          where: params,
-          include: includeModels,
-          limit: paginationJSON.limit,
-          offset: paginationJSON.offset
-        });
+        if (transaction) {
+          ret = await this.model.findAndCountAll({
+            where: params,
+            include: includeModels,
+            limit: paginationJSON.limit,
+            offset: paginationJSON.offset,
+            transaction,
+            lock: true,
+            skipLocked
+          });
+        } else {
+          ret = await this.model.findAndCountAll({
+            where: params,
+            include: includeModels,
+            limit: paginationJSON.limit,
+            offset: paginationJSON.offset
+          });
+        }
       } else {
-        ret = await this.model.findAll({
-          where: params,
-          include: includeModels
-        });
+        if (transaction) {
+          ret = await this.model.findAll({
+            where: params,
+            include: includeModels,
+            transaction,
+            lock: true,
+            skipLocked
+          });
+        } else {
+          ret = await this.model.findAll({
+            where: params,
+            include: includeModels
+          });
+        }
       }
     } else {
       if (pagination) {
@@ -85,35 +108,55 @@ export class ModelService extends AbstractModelService {
             };
           }
         }
-        if (params2) {
-          ret = await this.model.findAndCountAll({
-            where: params,
-            include: includeModels,
-            limit: paginationJSON.limit,
-            offset: paginationJSON.offset
-          });
+        const args: any = params2 ? {
+          where: params,
+          include: includeModels,
+          limit: paginationJSON.limit,
+          offset: paginationJSON.offset
+        } : {
+          include: includeModels,
+          limit: paginationJSON.limit,
+          offset: paginationJSON.offset
+        };
+        if (transaction) {
+          args.transaction = transaction;
+          args.lock = true;
+          args.skipLocked = skipLocked;
+          args.ret = await this.model.findAndCountAll(args);
         } else {
-          ret = await this.model.findAndCountAll({
-            include: includeModels,
-            limit: paginationJSON.limit,
-            offset: paginationJSON.offset
-          });
+          ret = await this.model.findAndCountAll(args);
         }
       } else {
-        ret = await this.model.findAll({
-          include: includeModels
-        });
+        if (transaction) {
+          ret = await this.model.findAll({
+            include: includeModels,
+            transaction,
+            lock: true,
+            skipLocked
+          });
+        } else {
+          ret = await this.model.findAll({
+            include: includeModels
+          });
+        }
       }
     }
     return ret;
   }
-  public async post({ body, query, params, session }: IServiceArgs): Promise<any> {
+
+  public async post({body, query, params, session}: IServiceArgs, transaction?: any): Promise<any> {
     Util.parseOptions("params", params, [], "no_extra");
     Util.parseOptions("query", query, [], "no_extra");
     // noinspection JSDeprecatedSymbols
-    return this.model.create(body);
+    if (transaction) {
+      return this.model.create(body, {transaction});
+    } else {
+      // noinspection JSDeprecatedSymbols
+      return this.model.create(body);
+    }
   }
-  public async patch({ body, query, params, session }: IServiceArgs): Promise<any> {
+
+  public async patch({body, query, params, session}: IServiceArgs, transaction?: any): Promise<any> {
     Util.parseOptions("query", query, [], "no_extra");
     const instances = await this.get({
       session,
@@ -123,12 +166,17 @@ export class ModelService extends AbstractModelService {
       headers: {}
     });
     if (instances.length === 1) {
-      return instances[0].update(body);
+      if (transaction) {
+        return instances[0].update(body, {transaction});
+      } else {
+        return instances[0].update(body);
+      }
     } else {
       return null;
     }
   }
-  public async delete({ body, query, params, session }: IServiceArgs): Promise<any> {
+
+  public async delete({body, query, params, session}: IServiceArgs, transaction?: any): Promise<any> {
     Util.parseOptions("query", query, [], "no_extra");
     Util.parseOptions("body", body, [], "no_extra");
     const instances = await this.get({
@@ -139,7 +187,11 @@ export class ModelService extends AbstractModelService {
       headers: {}
     });
     if (instances.length === 1) {
-      return instances[0].destroy();
+      if (transaction) {
+        return instances[0].destroy({transaction});
+      } else {
+        return instances[0].destroy();
+      }
     } else {
       return null;
     }
