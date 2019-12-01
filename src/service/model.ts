@@ -109,7 +109,7 @@ export class ModelService extends AbstractModelService {
           }
         }
         const args: any = params2 ? {
-          where: params,
+          where: params2,
           include: includeModels,
           limit: paginationJSON.limit,
           offset: paginationJSON.offset
