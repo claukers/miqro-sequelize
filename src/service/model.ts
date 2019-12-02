@@ -7,9 +7,10 @@ export class ModelService extends AbstractModelService {
   }
 
   public async get({body, query, params, session}: IServiceArgs, transaction?: any, skipLocked?: boolean): Promise<any> {
-    const {pagination, include} = Util.parseOptions("query", query, [
+    const {pagination, include, order} = Util.parseOptions("query", query, [
       {name: "include", type: "string", required: false},
-      {name: "pagination", type: "string", required: false}
+      {name: "pagination", type: "string", required: false},
+      {name: "order", type: "string", required: false}
     ], "no_extra");
     let includeModels = [];
     if (include) {
@@ -40,6 +41,14 @@ export class ModelService extends AbstractModelService {
         ], "no_extra");
       }
     }
+    let orderJSON;
+    if (order) {
+      try {
+        orderJSON = JSON.parse(order);
+      } catch (e) {
+        throw new ParseOptionsError(`query.order not a valid JSON`);
+      }
+    }
     Util.parseOptions("body", body, [], "no_extra");
     let ret;
     if (Object.keys(params).length > 0) {
@@ -61,6 +70,7 @@ export class ModelService extends AbstractModelService {
         if (transaction) {
           ret = await this.model.findAndCountAll({
             where: params,
+            order: orderJSON,
             include: includeModels,
             limit: paginationJSON.limit,
             offset: paginationJSON.offset,
@@ -71,6 +81,7 @@ export class ModelService extends AbstractModelService {
         } else {
           ret = await this.model.findAndCountAll({
             where: params,
+            order: orderJSON,
             include: includeModels,
             limit: paginationJSON.limit,
             offset: paginationJSON.offset
@@ -80,6 +91,7 @@ export class ModelService extends AbstractModelService {
         if (transaction) {
           ret = await this.model.findAll({
             where: params,
+            order: orderJSON,
             include: includeModels,
             transaction,
             lock: true,
@@ -88,6 +100,7 @@ export class ModelService extends AbstractModelService {
         } else {
           ret = await this.model.findAll({
             where: params,
+            order: orderJSON,
             include: includeModels
           });
         }
@@ -110,11 +123,13 @@ export class ModelService extends AbstractModelService {
         }
         const args: any = params2 ? {
           where: params2,
+          order: orderJSON,
           include: includeModels,
           limit: paginationJSON.limit,
           offset: paginationJSON.offset
         } : {
           include: includeModels,
+          order: orderJSON,
           limit: paginationJSON.limit,
           offset: paginationJSON.offset
         };
@@ -132,11 +147,13 @@ export class ModelService extends AbstractModelService {
             include: includeModels,
             transaction,
             lock: true,
+            order: orderJSON,
             skipLocked
           });
         } else {
           ret = await this.model.findAll({
-            include: includeModels
+            include: includeModels,
+            order: orderJSON
           });
         }
       }
