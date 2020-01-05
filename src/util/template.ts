@@ -88,10 +88,31 @@ const exampleModel = (modelName: string) => {
 };`;
 };
 
+const exampleModelService = (serviceName: string) => {
+  return `const { Util } = require("miqro-core");
+const { Database, ModelService } = require("miqro-sequelize");
+
+class ${serviceName}Service {
+  static getInstance() {
+    ${serviceName}Service.instance = ${serviceName}Service.instance ? ${serviceName}Service.instance : new ${serviceName}Service();
+    return ${serviceName}Service.instance;
+  }
+  constructor() {
+    super(Database.getInstance().models.${serviceName});
+    this.logger = Util.getLogger("${serviceName}Service");
+  }
+}
+
+module.exports.${serviceName}Service = ${serviceName}Service;
+
+`;
+};
+
 // noinspection SpellCheckingInspection
 export const templates = {
   modelsIndex,
   dbConfig,
   sequelizerc,
-  exampleModel
+  exampleModel,
+  exampleModelService
 };
