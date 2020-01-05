@@ -73,9 +73,25 @@ module.exports = {
 };
 `;
 
+const exampleModel = (modelName: string) => {
+  return `module.exports = (sequelize, DataTypes) => {
+  const ${modelName} = sequelize.define("${modelName}", {
+    name: DataTypes.STRING,
+    surname: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING
+  }, {});
+  ${modelName}.associate = function(models) {
+    // associations can be defined here
+  };
+  return ${modelName};
+};`;
+};
+
 // noinspection SpellCheckingInspection
 export const templates = {
   modelsIndex,
   dbConfig,
-  sequelizerc
+  sequelizerc,
+  exampleModel
 };
