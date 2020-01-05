@@ -1,25 +1,10 @@
-import * as fs from "fs";
 import { Util } from "miqro-core";
-import * as path from "path";
 import {makemigrations, migrate} from "../db";
 
-const modulePath = process.argv[3];
-
-if (process.argv.length !== 4) {
-  throw new Error(`usage: miqro-sequelize automigrate <microservice.js>`);
-}
-if (typeof modulePath !== "string") {
-  throw new Error(`<microservice.js> must be a string!\nusage: miqro-sequelize automigrate <microservice.js>`);
+if (process.argv.length !== 3) {
+  throw new Error(`usage: miqro-sequelize automigrate`);
 }
 
-const service = path.resolve(modulePath);
-
-if (!fs.existsSync(service)) {
-  // noinspection SpellCheckingInspection
-  throw new Error(`microservice [${service}] doesnt exists!`);
-}
-
-Util.setupInstanceEnv("automigrate", service);
 Util.loadConfig();
 makemigrations();
 migrate();

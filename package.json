@@ -26,7 +26,7 @@
     "lodash.assignin": "^4.2.0",
     "lodash.clone": "^4.5.0",
     "lodash.foreach": "^4.5.0",
-    "miqro-core": "^0.1.9",
+    "miqro-core": "git+https://github.com/claukers/miqro-core.git#develop",
     "object-hash": "^1.3.1",
     "sequelize": "^5.21.2"
   },
