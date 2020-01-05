@@ -92,7 +92,7 @@ const exampleModelService = (serviceName: string) => {
   return `const { Util } = require("miqro-core");
 const { Database, ModelService } = require("miqro-sequelize");
 
-class ${serviceName}Service {
+class ${serviceName}Service extends ModelService {
   static getInstance() {
     ${serviceName}Service.instance = ${serviceName}Service.instance ? ${serviceName}Service.instance : new ${serviceName}Service();
     return ${serviceName}Service.instance;
