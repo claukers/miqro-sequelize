@@ -51,111 +51,57 @@ export class ModelService extends AbstractModelService {
     }
     Util.parseOptions("body", body, [], "no_extra");
     let ret;
-    if (Object.keys(params).length > 0) {
-      if (pagination) {
-        if (paginationJSON.search) {
-          if (paginationJSON.search.columns.length > 0) {
-            const searchParams = {};
-            for (const column of paginationJSON.search.columns) {
-              searchParams[column] = {
-                [Op.like]: "%" + paginationJSON.search.query + "%"
-              };
-            }
-            params = {
-              [Op.and]: params,
-              [Op.or]: searchParams
+    if (pagination) {
+      if (paginationJSON.search) {
+        if (paginationJSON.search.columns.length > 0) {
+          const searchParams = {};
+          for (const column of paginationJSON.search.columns) {
+            searchParams[column] = {
+              [Op.like]: "%" + paginationJSON.search.query + "%"
             };
           }
-        }
-        if (transaction) {
-          ret = await this.model.findAndCountAll({
-            where: params,
-            order: orderJSON,
-            include: includeModels,
-            limit: paginationJSON.limit,
-            offset: paginationJSON.offset,
-            transaction,
-            lock: true,
-            skipLocked
-          });
-        } else {
-          ret = await this.model.findAndCountAll({
-            where: params,
-            order: orderJSON,
-            include: includeModels,
-            limit: paginationJSON.limit,
-            offset: paginationJSON.offset
-          });
-        }
-      } else {
-        if (transaction) {
-          ret = await this.model.findAll({
-            where: params,
-            order: orderJSON,
-            include: includeModels,
-            transaction,
-            lock: true,
-            skipLocked
-          });
-        } else {
-          ret = await this.model.findAll({
-            where: params,
-            order: orderJSON,
-            include: includeModels
-          });
+          params = {
+            [Op.and]: params,
+            [Op.or]: searchParams
+          };
         }
       }
-    } else {
-      if (pagination) {
-        let params2 = null;
-        if (paginationJSON.search) {
-          if (paginationJSON.search.columns.length > 0) {
-            const searchParams = {};
-            for (const column of paginationJSON.search.columns) {
-              searchParams[column] = {
-                [Op.like]: "%" + paginationJSON.search.query + "%"
-              };
-            }
-            params2 = {
-              [Op.or]: searchParams
-            };
-          }
-        }
-        const args: any = params2 ? {
-          where: params2,
+      if (transaction) {
+        ret = await this.model.findAndCountAll({
+          where: params,
           order: orderJSON,
           include: includeModels,
           limit: paginationJSON.limit,
-          offset: paginationJSON.offset
-        } : {
-          include: includeModels,
-          order: orderJSON,
-          limit: paginationJSON.limit,
-          offset: paginationJSON.offset
-        };
-        if (transaction) {
-          args.transaction = transaction;
-          args.lock = true;
-          args.skipLocked = skipLocked;
-          args.ret = await this.model.findAndCountAll(args);
-        } else {
-          ret = await this.model.findAndCountAll(args);
-        }
+          offset: paginationJSON.offset,
+          transaction,
+          lock: true,
+          skipLocked
+        });
       } else {
-        if (transaction) {
-          ret = await this.model.findAll({
-            include: includeModels,
-            transaction,
-            lock: true,
-            order: orderJSON,
-            skipLocked
-          });
-        } else {
-          ret = await this.model.findAll({
-            include: includeModels,
-            order: orderJSON
-          });
-        }
+        ret = await this.model.findAndCountAll({
+          where: params,
+          order: orderJSON,
+          include: includeModels,
+          limit: paginationJSON.limit,
+          offset: paginationJSON.offset
+        });
+      }
+    } else {
+      if (transaction) {
+        ret = await this.model.findAll({
+          where: params,
+          order: orderJSON,
+          include: includeModels,
+          transaction,
+          lock: true,
+          skipLocked
+        });
+      } else {
+        ret = await this.model.findAll({
+          where: params,
+          order: orderJSON,
+          include: includeModels
+        });
       }
     }
     return ret;
@@ -181,7 +127,7 @@ export class ModelService extends AbstractModelService {
       query,
       params,
       headers: {}
-    });
+    }, transaction);
     if (instances.length === 1) {
       if (transaction) {
         return instances[0].update(body, {transaction});
@@ -202,7 +148,7 @@ export class ModelService extends AbstractModelService {
       query,
       params,
       headers: {}
-    });
+    }, transaction);
     if (instances.length === 1) {
       if (transaction) {
         return instances[0].destroy({transaction});
