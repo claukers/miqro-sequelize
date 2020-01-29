@@ -4,7 +4,7 @@
 
 ## Index
 
-### External modules
+### Modules
 
 * ["cli/automigrate"](modules/_cli_automigrate_.md)
 * ["cli/cli"](modules/_cli_cli_.md)

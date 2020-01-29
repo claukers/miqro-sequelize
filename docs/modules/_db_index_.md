@@ -1,36 +1,45 @@
 [miqro-sequelize](../README.md) › [Globals](../globals.md) › ["db/index"](_db_index_.md)
 
-# External module: "db/index"
+# Module: "db/index"
 
 ## Index
 
-### References
+### Classes
 
-* [Database](_db_index_.md#database)
-* [makemigrations](_db_index_.md#makemigrations)
-* [migrate](_db_index_.md#migrate)
-* [seed](_db_index_.md#seed)
+* [Database](../classes/_db_index_.database.md)
 
-## References
+### Functions
 
-###  Database
+* [makemigrations](_db_index_.md#const-makemigrations)
+* [migrate](_db_index_.md#const-migrate)
+* [seed](_db_index_.md#const-seed)
 
-• **Database**:
+## Functions
 
-___
+### `Const` makemigrations
 
-###  makemigrations
+▸ **makemigrations**(): *string*
 
-• **makemigrations**:
+*Defined in [src/db/migrations.ts:9](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/migrations.ts#L9)*
 
-___
-
-###  migrate
-
-• **migrate**:
+**Returns:** *string*
 
 ___
 
-###  seed
+### `Const` migrate
 
-• **seed**:
+▸ **migrate**(): *void*
+
+*Defined in [src/db/migrations.ts:17](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/migrations.ts#L17)*
+
+**Returns:** *void*
+
+___
+
+### `Const` seed
+
+▸ **seed**(): *void*
+
+*Defined in [src/db/migrations.ts:36](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/migrations.ts#L36)*
+
+**Returns:** *void*

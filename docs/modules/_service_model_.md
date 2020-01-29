@@ -1,6 +1,6 @@
 [miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/model"](_service_model_.md)
 
-# External module: "service/model"
+# Module: "service/model"
 
 ## Index
 

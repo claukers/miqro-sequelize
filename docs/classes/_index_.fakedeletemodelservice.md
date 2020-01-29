@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/deleted"](../modules/_service_deleted_.md) › [FakeDeleteModelService](_service_deleted_.fakedeletemodelservice.md)
+[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [FakeDeleteModelService](_index_.fakedeletemodelservice.md)
 
 # Class: FakeDeleteModelService
 
@@ -16,26 +16,26 @@
 
 ### Constructors
 
-* [constructor](_service_deleted_.fakedeletemodelservice.md#constructor)
+* [constructor](_index_.fakedeletemodelservice.md#constructor)
 
 ### Properties
 
-* [model](_service_deleted_.fakedeletemodelservice.md#protected-model)
-* [modelIsDeletedAttribute](_service_deleted_.fakedeletemodelservice.md#protected-modelisdeletedattribute)
+* [model](_index_.fakedeletemodelservice.md#protected-model)
+* [modelIsDeletedAttribute](_index_.fakedeletemodelservice.md#protected-modelisdeletedattribute)
 
 ### Methods
 
-* [delete](_service_deleted_.fakedeletemodelservice.md#delete)
-* [get](_service_deleted_.fakedeletemodelservice.md#get)
-* [patch](_service_deleted_.fakedeletemodelservice.md#patch)
-* [post](_service_deleted_.fakedeletemodelservice.md#post)
-* [put](_service_deleted_.fakedeletemodelservice.md#put)
+* [delete](_index_.fakedeletemodelservice.md#delete)
+* [get](_index_.fakedeletemodelservice.md#get)
+* [patch](_index_.fakedeletemodelservice.md#patch)
+* [post](_index_.fakedeletemodelservice.md#post)
+* [put](_index_.fakedeletemodelservice.md#put)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new FakeDeleteModelService**(`model`: any): *[FakeDeleteModelService](_service_deleted_.fakedeletemodelservice.md)*
+\+ **new FakeDeleteModelService**(`model`: any): *[FakeDeleteModelService](_index_.fakedeletemodelservice.md)*
 
 *Inherited from [ModelService](_index_.modelservice.md).[constructor](_index_.modelservice.md#constructor)*
 
@@ -47,7 +47,7 @@ Name | Type |
 ------ | ------ |
 `model` | any |
 
-**Returns:** *[FakeDeleteModelService](_service_deleted_.fakedeletemodelservice.md)*
+**Returns:** *[FakeDeleteModelService](_index_.fakedeletemodelservice.md)*
 
 ## Properties
 

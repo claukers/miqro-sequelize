@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["db/db"](../modules/_db_db_.md) › [Database](_db_db_.database.md)
+[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["db/index"](../modules/_db_index_.md) › [Database](_db_index_.database.md)
 
 # Class: Database
 
@@ -12,51 +12,51 @@
 
 ### Constructors
 
-* [constructor](_db_db_.database.md#constructor)
+* [constructor](_db_index_.database.md#constructor)
 
 ### Properties
 
-* [models](_db_db_.database.md#models)
-* [sequelize](_db_db_.database.md#sequelize)
-* [state](_db_db_.database.md#private-state)
-* [defaultMaxListeners](_db_db_.database.md#static-defaultmaxlisteners)
-* [events](_db_db_.database.md#static-events)
-* [instance](_db_db_.database.md#static-private-instance)
+* [models](_db_index_.database.md#models)
+* [sequelize](_db_index_.database.md#sequelize)
+* [state](_db_index_.database.md#private-state)
+* [defaultMaxListeners](_db_index_.database.md#static-defaultmaxlisteners)
+* [events](_db_index_.database.md#static-events)
+* [instance](_db_index_.database.md#static-private-instance)
 
 ### Methods
 
-* [addListener](_db_db_.database.md#addlistener)
-* [emit](_db_db_.database.md#emit)
-* [eventNames](_db_db_.database.md#eventnames)
-* [getMaxListeners](_db_db_.database.md#getmaxlisteners)
-* [listenerCount](_db_db_.database.md#listenercount)
-* [listeners](_db_db_.database.md#listeners)
-* [off](_db_db_.database.md#off)
-* [on](_db_db_.database.md#on)
-* [once](_db_db_.database.md#once)
-* [prependListener](_db_db_.database.md#prependlistener)
-* [prependOnceListener](_db_db_.database.md#prependoncelistener)
-* [query](_db_db_.database.md#query)
-* [rawListeners](_db_db_.database.md#rawlisteners)
-* [removeAllListeners](_db_db_.database.md#removealllisteners)
-* [removeListener](_db_db_.database.md#removelistener)
-* [setMaxListeners](_db_db_.database.md#setmaxlisteners)
-* [start](_db_db_.database.md#start)
-* [stateChange](_db_db_.database.md#private-statechange)
-* [stop](_db_db_.database.md#stop)
-* [transaction](_db_db_.database.md#transaction)
-* [getInstance](_db_db_.database.md#static-getinstance)
-* [listenerCount](_db_db_.database.md#static-listenercount)
+* [addListener](_db_index_.database.md#addlistener)
+* [emit](_db_index_.database.md#emit)
+* [eventNames](_db_index_.database.md#eventnames)
+* [getMaxListeners](_db_index_.database.md#getmaxlisteners)
+* [listenerCount](_db_index_.database.md#listenercount)
+* [listeners](_db_index_.database.md#listeners)
+* [off](_db_index_.database.md#off)
+* [on](_db_index_.database.md#on)
+* [once](_db_index_.database.md#once)
+* [prependListener](_db_index_.database.md#prependlistener)
+* [prependOnceListener](_db_index_.database.md#prependoncelistener)
+* [query](_db_index_.database.md#query)
+* [rawListeners](_db_index_.database.md#rawlisteners)
+* [removeAllListeners](_db_index_.database.md#removealllisteners)
+* [removeListener](_db_index_.database.md#removelistener)
+* [setMaxListeners](_db_index_.database.md#setmaxlisteners)
+* [start](_db_index_.database.md#start)
+* [stateChange](_db_index_.database.md#private-statechange)
+* [stop](_db_index_.database.md#stop)
+* [transaction](_db_index_.database.md#transaction)
+* [getInstance](_db_index_.database.md#static-getinstance)
+* [listenerCount](_db_index_.database.md#static-listenercount)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new Database**(): *[Database](_db_db_.database.md)*
+\+ **new Database**(): *[Database](_db_index_.database.md)*
 
 *Defined in [src/db/db.ts:26](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/db.ts#L26)*
 
-**Returns:** *[Database](_db_db_.database.md)*
+**Returns:** *[Database](_db_index_.database.md)*
 
 ## Properties
 

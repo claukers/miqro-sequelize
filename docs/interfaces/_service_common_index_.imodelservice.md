@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/common/model"](../modules/_service_common_model_.md) › [IModelService](_service_common_model_.imodelservice.md)
+[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/common/index"](../modules/_service_common_index_.md) › [IModelService](_service_common_index_.imodelservice.md)
 
 # Interface: IModelService
 
@@ -10,11 +10,11 @@
 
 ### Methods
 
-* [delete](_service_common_model_.imodelservice.md#delete)
-* [get](_service_common_model_.imodelservice.md#get)
-* [patch](_service_common_model_.imodelservice.md#patch)
-* [post](_service_common_model_.imodelservice.md#post)
-* [put](_service_common_model_.imodelservice.md#put)
+* [delete](_service_common_index_.imodelservice.md#delete)
+* [get](_service_common_index_.imodelservice.md#get)
+* [patch](_service_common_index_.imodelservice.md#patch)
+* [post](_service_common_index_.imodelservice.md#post)
+* [put](_service_common_index_.imodelservice.md#put)
 
 ## Methods
 

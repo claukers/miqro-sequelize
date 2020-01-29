@@ -1,57 +1,128 @@
 [miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/index"](_service_index_.md)
 
-# External module: "service/index"
+# Module: "service/index"
 
 ## Index
 
-### References
+### Classes
 
-* [AbstractModelService](_service_index_.md#abstractmodelservice)
-* [FakeDeleteModelService](_service_index_.md#fakedeletemodelservice)
-* [IModelService](_service_index_.md#imodelservice)
-* [ModelService](_service_index_.md#modelservice)
-* [Op](_service_index_.md#op)
-* [PostListModelService](_service_index_.md#postlistmodelservice)
-* [parseIncludeQuery](_service_index_.md#parseincludequery)
+* [AbstractModelService](../classes/_service_index_.abstractmodelservice.md)
+* [FakeDeleteModelService](../classes/_service_index_.fakedeletemodelservice.md)
+* [ModelService](../classes/_service_index_.modelservice.md)
+* [PostListModelService](../classes/_service_index_.postlistmodelservice.md)
 
-## References
+### Interfaces
 
-###  AbstractModelService
+* [IModelService](../interfaces/_service_index_.imodelservice.md)
 
-• **AbstractModelService**:
+### Variables
 
-___
+* [Op](_service_index_.md#const-op)
 
-###  FakeDeleteModelService
+### Functions
 
-• **FakeDeleteModelService**:
+* [parseIncludeQuery](_service_index_.md#const-parseincludequery)
 
-___
+## Variables
 
-###  IModelService
+### `Const` Op
 
-• **IModelService**:
+• **Op**: *object*
 
-___
+Defined in node_modules/sequelize/types/lib/operators.d.ts:4
 
-###  ModelService
+object that holds all operator symbols
 
-• **ModelService**:
+#### Type declaration:
 
-___
+* **adjacent**: *keyof symbol*
 
-###  Op
+* **all**: *keyof symbol*
 
-• **Op**:
+* **and**: *keyof symbol*
 
-___
+* **any**: *keyof symbol*
 
-###  PostListModelService
+* **between**: *keyof symbol*
 
-• **PostListModelService**:
+* **col**: *keyof symbol*
 
-___
+* **contained**: *keyof symbol*
 
-###  parseIncludeQuery
+* **contains**: *keyof symbol*
 
-• **parseIncludeQuery**:
+* **endsWith**: *keyof symbol*
+
+* **eq**: *keyof symbol*
+
+* **gt**: *keyof symbol*
+
+* **gte**: *keyof symbol*
+
+* **iLike**: *keyof symbol*
+
+* **iRegexp**: *keyof symbol*
+
+* **in**: *keyof symbol*
+
+* **is**: *keyof symbol*
+
+* **like**: *keyof symbol*
+
+* **lt**: *keyof symbol*
+
+* **lte**: *keyof symbol*
+
+* **ne**: *keyof symbol*
+
+* **noExtendLeft**: *keyof symbol*
+
+* **noExtendRight**: *keyof symbol*
+
+* **not**: *keyof symbol*
+
+* **notBetween**: *keyof symbol*
+
+* **notILike**: *keyof symbol*
+
+* **notIRegexp**: *keyof symbol*
+
+* **notIn**: *keyof symbol*
+
+* **notLike**: *keyof symbol*
+
+* **notRegexp**: *keyof symbol*
+
+* **or**: *keyof symbol*
+
+* **overlap**: *keyof symbol*
+
+* **placeholder**: *keyof symbol*
+
+* **regexp**: *keyof symbol*
+
+* **startsWith**: *keyof symbol*
+
+* **strictLeft**: *keyof symbol*
+
+* **strictRight**: *keyof symbol*
+
+* **substring**: *keyof symbol*
+
+* **values**: *keyof symbol*
+
+## Functions
+
+### `Const` parseIncludeQuery
+
+▸ **parseIncludeQuery**(`includeQuery`: any[]): *any[]*
+
+*Defined in [src/service/common/model.ts:18](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/service/common/model.ts#L18)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`includeQuery` | any[] |
+
+**Returns:** *any[]*

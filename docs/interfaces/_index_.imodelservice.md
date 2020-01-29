@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/common/model"](../modules/_service_common_model_.md) › [IModelService](_service_common_model_.imodelservice.md)
+[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [IModelService](_index_.imodelservice.md)
 
 # Interface: IModelService
 
@@ -6,15 +6,31 @@
 
 * **IModelService**
 
+## Implemented by
+
+* [AbstractModelService](../classes/_index_.abstractmodelservice.md)
+* [AbstractModelService](../classes/_service_common_amodel_.abstractmodelservice.md)
+* [AbstractModelService](../classes/_service_common_index_.abstractmodelservice.md)
+* [AbstractModelService](../classes/_service_index_.abstractmodelservice.md)
+* [FakeDeleteModelService](../classes/_index_.fakedeletemodelservice.md)
+* [FakeDeleteModelService](../classes/_service_deleted_.fakedeletemodelservice.md)
+* [FakeDeleteModelService](../classes/_service_index_.fakedeletemodelservice.md)
+* [ModelService](../classes/_index_.modelservice.md)
+* [ModelService](../classes/_service_index_.modelservice.md)
+* [ModelService](../classes/_service_model_.modelservice.md)
+* [PostListModelService](../classes/_index_.postlistmodelservice.md)
+* [PostListModelService](../classes/_service_index_.postlistmodelservice.md)
+* [PostListModelService](../classes/_service_postlist_.postlistmodelservice.md)
+
 ## Index
 
 ### Methods
 
-* [delete](_service_common_model_.imodelservice.md#delete)
-* [get](_service_common_model_.imodelservice.md#get)
-* [patch](_service_common_model_.imodelservice.md#patch)
-* [post](_service_common_model_.imodelservice.md#post)
-* [put](_service_common_model_.imodelservice.md#put)
+* [delete](_index_.imodelservice.md#delete)
+* [get](_index_.imodelservice.md#get)
+* [patch](_index_.imodelservice.md#patch)
+* [post](_index_.imodelservice.md#post)
+* [put](_index_.imodelservice.md#put)
 
 ## Methods
 

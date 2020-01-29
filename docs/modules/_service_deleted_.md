@@ -1,6 +1,6 @@
 [miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/deleted"](_service_deleted_.md)
 
-# External module: "service/deleted"
+# Module: "service/deleted"
 
 ## Index
 

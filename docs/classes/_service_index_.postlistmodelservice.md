@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/postlist"](../modules/_service_postlist_.md) › [PostListModelService](_service_postlist_.postlistmodelservice.md)
+[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/index"](../modules/_service_index_.md) › [PostListModelService](_service_index_.postlistmodelservice.md)
 
 # Class: PostListModelService
 
@@ -16,25 +16,25 @@
 
 ### Constructors
 
-* [constructor](_service_postlist_.postlistmodelservice.md#constructor)
+* [constructor](_service_index_.postlistmodelservice.md#constructor)
 
 ### Properties
 
-* [model](_service_postlist_.postlistmodelservice.md#protected-model)
+* [model](_service_index_.postlistmodelservice.md#protected-model)
 
 ### Methods
 
-* [delete](_service_postlist_.postlistmodelservice.md#delete)
-* [get](_service_postlist_.postlistmodelservice.md#get)
-* [patch](_service_postlist_.postlistmodelservice.md#patch)
-* [post](_service_postlist_.postlistmodelservice.md#post)
-* [put](_service_postlist_.postlistmodelservice.md#put)
+* [delete](_service_index_.postlistmodelservice.md#delete)
+* [get](_service_index_.postlistmodelservice.md#get)
+* [patch](_service_index_.postlistmodelservice.md#patch)
+* [post](_service_index_.postlistmodelservice.md#post)
+* [put](_service_index_.postlistmodelservice.md#put)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new PostListModelService**(`model`: any): *[PostListModelService](_service_postlist_.postlistmodelservice.md)*
+\+ **new PostListModelService**(`model`: any): *[PostListModelService](_service_index_.postlistmodelservice.md)*
 
 *Inherited from [ModelService](_index_.modelservice.md).[constructor](_index_.modelservice.md#constructor)*
 
@@ -46,7 +46,7 @@ Name | Type |
 ------ | ------ |
 `model` | any |
 
-**Returns:** *[PostListModelService](_service_postlist_.postlistmodelservice.md)*
+**Returns:** *[PostListModelService](_service_index_.postlistmodelservice.md)*
 
 ## Properties
 

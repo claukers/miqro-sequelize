@@ -1,10 +1,16 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/common/amodel"](../modules/_service_common_amodel_.md) › [AbstractModelService](_service_common_amodel_.abstractmodelservice.md)
+[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [AbstractModelService](_index_.abstractmodelservice.md)
 
 # Class: AbstractModelService
 
 ## Hierarchy
 
 * **AbstractModelService**
+
+  ↳ [ModelService](_index_.modelservice.md)
+
+  ↳ [ModelService](_service_index_.modelservice.md)
+
+  ↳ [ModelService](_service_model_.modelservice.md)
 
 ## Implements
 
@@ -14,11 +20,11 @@
 
 ### Methods
 
-* [delete](_service_common_amodel_.abstractmodelservice.md#delete)
-* [get](_service_common_amodel_.abstractmodelservice.md#get)
-* [patch](_service_common_amodel_.abstractmodelservice.md#patch)
-* [post](_service_common_amodel_.abstractmodelservice.md#post)
-* [put](_service_common_amodel_.abstractmodelservice.md#put)
+* [delete](_index_.abstractmodelservice.md#delete)
+* [get](_index_.abstractmodelservice.md#get)
+* [patch](_index_.abstractmodelservice.md#patch)
+* [post](_index_.abstractmodelservice.md#post)
+* [put](_index_.abstractmodelservice.md#put)
 
 ## Methods
 
