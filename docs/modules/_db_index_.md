@@ -20,7 +20,7 @@
 
 ▸ **makemigrations**(): *string*
 
-*Defined in [src/db/migrations.ts:9](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/migrations.ts#L9)*
+*Defined in [src/db/migrations.ts:9](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/migrations.ts#L9)*
 
 **Returns:** *string*
 
@@ -30,7 +30,7 @@ ___
 
 ▸ **migrate**(): *void*
 
-*Defined in [src/db/migrations.ts:17](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/migrations.ts#L17)*
+*Defined in [src/db/migrations.ts:17](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/migrations.ts#L17)*
 
 **Returns:** *void*
 
@@ -40,6 +40,6 @@ ___
 
 ▸ **seed**(): *void*
 
-*Defined in [src/db/migrations.ts:36](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/migrations.ts#L36)*
+*Defined in [src/db/migrations.ts:36](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/migrations.ts#L36)*
 
 **Returns:** *void*

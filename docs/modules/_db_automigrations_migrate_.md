@@ -19,7 +19,7 @@
 
 ▸ **executeMigration**(`queryInterface`: any, `filename`: any, `pos`: any, `cb`: any, `logger`: any): *any*
 
-*Defined in [src/db/automigrations/migrate.ts:832](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/automigrations/migrate.ts#L832)*
+*Defined in [src/db/automigrations/migrate.ts:832](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/automigrations/migrate.ts#L832)*
 
 **Parameters:**
 
@@ -39,7 +39,7 @@ ___
 
 ▸ **getMigration**(`actions`: any): *object*
 
-*Defined in [src/db/automigrations/migrate.ts:630](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/automigrations/migrate.ts#L630)*
+*Defined in [src/db/automigrations/migrate.ts:630](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/automigrations/migrate.ts#L630)*
 
 **Parameters:**
 
@@ -59,7 +59,7 @@ ___
 
 ▸ **parseDifference**(`previousState`: any, `currentState`: any, `logger`: any): *any[]*
 
-*Defined in [src/db/automigrations/migrate.ts:318](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/automigrations/migrate.ts#L318)*
+*Defined in [src/db/automigrations/migrate.ts:318](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/automigrations/migrate.ts#L318)*
 
 **Parameters:**
 
@@ -77,7 +77,7 @@ ___
 
 ▸ **reverseModels**(`sequelize`: any, `models`: any, `logger`: any): *object*
 
-*Defined in [src/db/automigrations/migrate.ts:185](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/automigrations/migrate.ts#L185)*
+*Defined in [src/db/automigrations/migrate.ts:185](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/automigrations/migrate.ts#L185)*
 
 **Parameters:**
 
@@ -95,7 +95,7 @@ ___
 
 ▸ **sortActions**(`actions`: any): *void*
 
-*Defined in [src/db/automigrations/migrate.ts:562](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/automigrations/migrate.ts#L562)*
+*Defined in [src/db/automigrations/migrate.ts:562](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/automigrations/migrate.ts#L562)*
 
 **Parameters:**
 
@@ -111,7 +111,7 @@ ___
 
 ▸ **writeMigration**(`revision`: any, `migration`: any, `migrationsDir`: any, `name`: string, `comment`: string): *object*
 
-*Defined in [src/db/automigrations/migrate.ts:773](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/automigrations/migrate.ts#L773)*
+*Defined in [src/db/automigrations/migrate.ts:773](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/automigrations/migrate.ts#L773)*
 
 **Parameters:**
 

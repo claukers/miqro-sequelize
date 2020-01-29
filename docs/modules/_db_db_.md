@@ -22,4 +22,4 @@
 
 Ƭ **DataBaseState**: *"stopped" | "starting" | "started" | "startstop" | "error"*
 
-*Defined in [src/db/db.ts:7](https://github.com/claukers/miqro-sequelize/blob/a92aa7e/src/db/db.ts#L7)*
+*Defined in [src/db/db.ts:7](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L7)*
