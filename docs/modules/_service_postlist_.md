@@ -1,0 +1,9 @@
+[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/postlist"](_service_postlist_.md)
+
+# External module: "service/postlist"
+
+## Index
+
+### Classes
+
+* [PostListModelService](../classes/_service_postlist_.postlistmodelservice.md)

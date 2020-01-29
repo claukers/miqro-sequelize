@@ -1,3 +1,7 @@
+[miqro-sequelize](README.md) › [Globals](globals.md)
+
+# miqro-sequelize
+
 # miqro-sequelize
 
 **in early development not to use in production**
