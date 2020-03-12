@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/index"](../modules/_service_index_.md) › [FakeDeleteModelService](_service_index_.fakedeletemodelservice.md)
+[@miqro/database](../README.md) › [Globals](../globals.md) › ["service/index"](../modules/_service_index_.md) › [FakeDeleteModelService](_service_index_.fakedeletemodelservice.md)
 
 # Class: FakeDeleteModelService
 
@@ -39,7 +39,7 @@
 
 *Inherited from [ModelService](_index_.modelservice.md).[constructor](_index_.modelservice.md#constructor)*
 
-*Defined in [src/service/model.ts:4](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/model.ts#L4)*
+*Defined in [src/service/model.ts:4](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/model.ts#L4)*
 
 **Parameters:**
 
@@ -57,7 +57,7 @@ Name | Type |
 
 *Inherited from [ModelService](_index_.modelservice.md).[model](_index_.modelservice.md#protected-model)*
 
-*Defined in [src/service/model.ts:5](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/model.ts#L5)*
+*Defined in [src/service/model.ts:5](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/model.ts#L5)*
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 • **modelIsDeletedAttribute**: *string* = "deleted"
 
-*Defined in [src/service/deleted.ts:6](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/deleted.ts#L6)*
+*Defined in [src/service/deleted.ts:6](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/deleted.ts#L6)*
 
 ## Methods
 
@@ -75,7 +75,7 @@ ___
 
 *Overrides [ModelService](_index_.modelservice.md).[delete](_index_.modelservice.md#delete)*
 
-*Defined in [src/service/deleted.ts:12](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/deleted.ts#L12)*
+*Defined in [src/service/deleted.ts:12](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/deleted.ts#L12)*
 
 **Parameters:**
 
@@ -93,7 +93,7 @@ ___
 
 *Overrides [ModelService](_index_.modelservice.md).[get](_index_.modelservice.md#get)*
 
-*Defined in [src/service/deleted.ts:7](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/deleted.ts#L7)*
+*Defined in [src/service/deleted.ts:7](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/deleted.ts#L7)*
 
 **Parameters:**
 
@@ -111,7 +111,7 @@ ___
 
 *Overrides [ModelService](_index_.modelservice.md).[patch](_index_.modelservice.md#patch)*
 
-*Defined in [src/service/deleted.ts:17](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/deleted.ts#L17)*
+*Defined in [src/service/deleted.ts:17](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/deleted.ts#L17)*
 
 **Parameters:**
 
@@ -129,7 +129,7 @@ ___
 
 *Overrides [PostListModelService](_index_.postlistmodelservice.md).[post](_index_.postlistmodelservice.md#post)*
 
-*Defined in [src/service/deleted.ts:24](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/deleted.ts#L24)*
+*Defined in [src/service/deleted.ts:24](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/deleted.ts#L24)*
 
 **Parameters:**
 
@@ -147,7 +147,7 @@ ___
 
 *Inherited from [AbstractModelService](_index_.abstractmodelservice.md).[put](_index_.abstractmodelservice.md#put)*
 
-*Defined in [src/service/common/amodel.ts:16](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/common/amodel.ts#L16)*
+*Defined in [src/service/common/amodel.ts:16](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/common/amodel.ts#L16)*
 
 **Parameters:**
 

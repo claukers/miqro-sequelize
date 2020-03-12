@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/model"](_service_model_.md)
+[@miqro/database](../README.md) › [Globals](../globals.md) › ["service/model"](_service_model_.md)
 
 # Module: "service/model"
 

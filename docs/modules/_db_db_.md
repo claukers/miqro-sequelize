@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["db/db"](_db_db_.md)
+[@miqro/database](../README.md) › [Globals](../globals.md) › ["db/db"](_db_db_.md)
 
 # Module: "db/db"
 
@@ -22,4 +22,4 @@
 
 Ƭ **DataBaseState**: *"stopped" | "starting" | "started" | "startstop" | "error"*
 
-*Defined in [src/db/db.ts:7](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L7)*
+*Defined in [src/db/db.ts:7](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L7)*

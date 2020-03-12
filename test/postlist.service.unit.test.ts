@@ -27,7 +27,7 @@ describe("PostListModelService Unit Tests", function() {
     rewiremock.default("./model").with({
       ModelService: ModelServiceMock
     });
-    rewiremock.default("miqro-core").with({
+    rewiremock.default("@miqro/core").with({
       Util: UtilMock
     });
     rewiremock.default.enable();

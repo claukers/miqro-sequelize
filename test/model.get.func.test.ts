@@ -2,7 +2,7 @@ import {resolve} from "path";
 import {expect} from "chai";
 import {before, describe, it} from "mocha";
 
-import {Util} from "miqro-core";
+import {Util} from "@miqro/core";
 
 process.env.NODE_ENV = "test";
 process.env.MIQRO_DIRNAME = resolve(__dirname, "data");

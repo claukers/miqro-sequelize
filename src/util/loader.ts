@@ -1,6 +1,6 @@
 "use strict";
+import {ConfigPathResolver, Util} from "@miqro/core";
 import * as  fs from "fs";
-import {ConfigPathResolver, Util} from "miqro-core";
 import * as  path from "path";
 import {templates} from "./template";
 

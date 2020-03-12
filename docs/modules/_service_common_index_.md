@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/common/index"](_service_common_index_.md)
+[@miqro/database](../README.md) › [Globals](../globals.md) › ["service/common/index"](_service_common_index_.md)
 
 # Module: "service/common/index"
 
@@ -114,7 +114,7 @@ object that holds all operator symbols
 
 ▸ **parseIncludeQuery**(`includeQuery`: any[]): *any[]*
 
-*Defined in [src/service/common/model.ts:18](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/common/model.ts#L18)*
+*Defined in [src/service/common/model.ts:18](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/common/model.ts#L18)*
 
 **Parameters:**
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {CLIUtil} from "miqro-core";
+import {CLIUtil} from "@miqro/core";
 import {resolve} from "path";
 
 // noinspection SpellCheckingInspection

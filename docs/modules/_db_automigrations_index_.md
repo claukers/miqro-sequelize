@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["db/automigrations/index"](_db_automigrations_index_.md)
+[@miqro/database](../README.md) › [Globals](../globals.md) › ["db/automigrations/index"](_db_automigrations_index_.md)
 
 # Module: "db/automigrations/index"
 
@@ -15,7 +15,7 @@
 
 ▸ **makemigrationsImpl**(): *string*
 
-*Defined in [src/db/automigrations/index.ts:85](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/automigrations/index.ts#L85)*
+*Defined in [src/db/automigrations/index.ts:85](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/automigrations/index.ts#L85)*
 
 **Returns:** *string*
 
@@ -25,6 +25,6 @@ ___
 
 ▸ **migrateImpl**(): *Promise‹void›*
 
-*Defined in [src/db/automigrations/index.ts:9](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/automigrations/index.ts#L9)*
+*Defined in [src/db/automigrations/index.ts:9](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/automigrations/index.ts#L9)*
 
 **Returns:** *Promise‹void›*

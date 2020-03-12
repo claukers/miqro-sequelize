@@ -7,7 +7,7 @@ const logger = console;
 const modelname = process.argv[3];
 
 if (process.argv.length !== 4) {
-  throw new Error(`usage: miqro-core createmodel <modelname>`);
+  throw new Error(`usage: miqro-database createmodel <modelname>`);
 }
 
 if (typeof modelname !== "string") {

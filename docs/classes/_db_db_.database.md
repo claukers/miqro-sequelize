@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["db/db"](../modules/_db_db_.md) › [Database](_db_db_.database.md)
+[@miqro/database](../README.md) › [Globals](../globals.md) › ["db/db"](../modules/_db_db_.md) › [Database](_db_db_.database.md)
 
 # Class: Database
 
@@ -54,7 +54,7 @@
 
 \+ **new Database**(): *[Database](_db_db_.database.md)*
 
-*Defined in [src/db/db.ts:26](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L26)*
+*Defined in [src/db/db.ts:26](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L26)*
 
 **Returns:** *[Database](_db_db_.database.md)*
 
@@ -64,7 +64,7 @@
 
 • **models**: *[IModelMap](../interfaces/_db_db_.imodelmap.md)*
 
-*Defined in [src/db/db.ts:24](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L24)*
+*Defined in [src/db/db.ts:24](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L24)*
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 • **sequelize**: *Sequelize*
 
-*Defined in [src/db/db.ts:25](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L25)*
+*Defined in [src/db/db.ts:25](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L25)*
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 • **state**: *[DataBaseState](../modules/_db_db_.md#databasestate)* = "stopped"
 
-*Defined in [src/db/db.ts:26](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L26)*
+*Defined in [src/db/db.ts:26](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L26)*
 
 ___
 
@@ -98,7 +98,7 @@ ___
 
 ▪ **events**: *[DataBaseState](../modules/_db_db_.md#databasestate)[]* = ["stopped", "starting", "started", "startstop", "error"]
 
-*Defined in [src/db/db.ts:16](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L16)*
+*Defined in [src/db/db.ts:16](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L16)*
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 ▪ **instance**: *[Database](_db_db_.database.md)* = null
 
-*Defined in [src/db/db.ts:23](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L23)*
+*Defined in [src/db/db.ts:23](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L23)*
 
 ## Methods
 
@@ -371,7 +371,7 @@ ___
 
 ▸ **query**(`q`: object, `t?`: any): *Promise‹any›*
 
-*Defined in [src/db/db.ts:51](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L51)*
+*Defined in [src/db/db.ts:51](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L51)*
 
 **Parameters:**
 
@@ -480,7 +480,7 @@ ___
 
 ▸ **start**(): *Promise‹void›*
 
-*Defined in [src/db/db.ts:58](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L58)*
+*Defined in [src/db/db.ts:58](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L58)*
 
 **Returns:** *Promise‹void›*
 
@@ -490,7 +490,7 @@ ___
 
 ▸ **stateChange**(`state`: [DataBaseState](../modules/_db_db_.md#databasestate), `args?`: any): *void*
 
-*Defined in [src/db/db.ts:103](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L103)*
+*Defined in [src/db/db.ts:103](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L103)*
 
 **Parameters:**
 
@@ -507,7 +507,7 @@ ___
 
 ▸ **stop**(): *Promise‹void›*
 
-*Defined in [src/db/db.ts:86](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L86)*
+*Defined in [src/db/db.ts:86](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L86)*
 
 **Returns:** *Promise‹void›*
 
@@ -517,7 +517,7 @@ ___
 
 ▸ **transaction**(`transactionCB`: function): *Promise‹void›*
 
-*Defined in [src/db/db.ts:46](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L46)*
+*Defined in [src/db/db.ts:46](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L46)*
 
 **Parameters:**
 
@@ -539,7 +539,7 @@ ___
 
 ▸ **getInstance**(): *[Database](_db_db_.database.md)*
 
-*Defined in [src/db/db.ts:17](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/db.ts#L17)*
+*Defined in [src/db/db.ts:17](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L17)*
 
 **Returns:** *[Database](_db_db_.database.md)*
 

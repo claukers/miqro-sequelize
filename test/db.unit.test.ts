@@ -3,7 +3,7 @@ import {after, before, describe, it} from "mocha";
 import * as rewiremock from "rewiremock";
 import * as sinon from "sinon";
 
-const miqroCorePath = "miqro-core";
+const miqroCorePath = "@miqro/core";
 
 describe("lib.db.Database unit tests", function() {
   this.timeout(100000);

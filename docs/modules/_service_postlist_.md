@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/postlist"](_service_postlist_.md)
+[@miqro/database](../README.md) › [Globals](../globals.md) › ["service/postlist"](_service_postlist_.md)
 
 # Module: "service/postlist"
 

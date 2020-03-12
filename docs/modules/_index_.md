@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["index"](_index_.md)
+[@miqro/database](../README.md) › [Globals](../globals.md) › ["index"](_index_.md)
 
 # Module: "index"
 
@@ -121,7 +121,7 @@ object that holds all operator symbols
 
 ▸ **makemigrations**(): *string*
 
-*Defined in [src/db/migrations.ts:9](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/migrations.ts#L9)*
+*Defined in [src/db/migrations.ts:9](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/migrations.ts#L9)*
 
 **Returns:** *string*
 
@@ -131,7 +131,7 @@ ___
 
 ▸ **migrate**(): *void*
 
-*Defined in [src/db/migrations.ts:17](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/migrations.ts#L17)*
+*Defined in [src/db/migrations.ts:17](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/migrations.ts#L17)*
 
 **Returns:** *void*
 
@@ -141,7 +141,7 @@ ___
 
 ▸ **parseIncludeQuery**(`includeQuery`: any[]): *any[]*
 
-*Defined in [src/service/common/model.ts:18](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/common/model.ts#L18)*
+*Defined in [src/service/common/model.ts:18](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/common/model.ts#L18)*
 
 **Parameters:**
 
@@ -157,6 +157,6 @@ ___
 
 ▸ **seed**(): *void*
 
-*Defined in [src/db/migrations.ts:36](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/db/migrations.ts#L36)*
+*Defined in [src/db/migrations.ts:36](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/migrations.ts#L36)*
 
 **Returns:** *void*

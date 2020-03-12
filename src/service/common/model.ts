@@ -1,4 +1,4 @@
-import {IServiceArgs, ParseOptionsError, Util} from "miqro-core";
+import {IServiceArgs, ParseOptionsError, Util} from "@miqro/core";
 import {Database} from "../../db";
 
 export {Op} from "sequelize";

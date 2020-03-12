@@ -1,5 +1,5 @@
+import {ConfigPathResolver} from "@miqro/core";
 import {existsSync, mkdirSync, writeFileSync} from "fs";
-import {ConfigPathResolver} from "miqro-core";
 import {resolve} from "path";
 import {templates} from "../util/template";
 

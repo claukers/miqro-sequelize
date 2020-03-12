@@ -1,9 +1,9 @@
-import { Util } from "miqro-core";
+import { Util } from "@miqro/core";
 import {makemigrations} from "../db";
 
 if (process.argv.length !== 3) {
   // noinspection SpellCheckingInspection
-  throw new Error(`usage: miqro-sequelize makemigrations`);
+  throw new Error(`usage: miqro-database makemigrations`);
 }
 
 // noinspection SpellCheckingInspection

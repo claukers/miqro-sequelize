@@ -1,6 +1,6 @@
 import {
   Util
-} from "miqro-core";
+} from "@miqro/core";
 import {
   ModelService
 } from "./model";

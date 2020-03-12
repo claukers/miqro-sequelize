@@ -1,4 +1,4 @@
-import {IServiceArgs, MethodNotImplementedError} from "miqro-core";
+import {IServiceArgs, MethodNotImplementedError} from "@miqro/core";
 import {IModelService} from "./model";
 
 export abstract class AbstractModelService implements IModelService {

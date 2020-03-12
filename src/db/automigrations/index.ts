@@ -1,6 +1,6 @@
+import { Util } from "@miqro/core";
 import * as fs from "fs";
 import * as forEach from "lodash.foreach";
-import { Util } from "miqro-core";
 import * as path from "path";
 import { sequelizeDirs } from "../../util/loader";
 import { executeMigration, getMigration, parseDifference, reverseModels, sortActions, writeMigration } from "./migrate";

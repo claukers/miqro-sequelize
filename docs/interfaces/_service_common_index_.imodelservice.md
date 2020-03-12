@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["service/common/index"](../modules/_service_common_index_.md) › [IModelService](_service_common_index_.imodelservice.md)
+[@miqro/database](../README.md) › [Globals](../globals.md) › ["service/common/index"](../modules/_service_common_index_.md) › [IModelService](_service_common_index_.imodelservice.md)
 
 # Interface: IModelService
 
@@ -22,7 +22,7 @@
 
 ▸ **delete**(`options`: IServiceArgs, `transaction?`: any): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:15](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/common/model.ts#L15)*
+*Defined in [src/service/common/model.ts:15](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/common/model.ts#L15)*
 
 **Parameters:**
 
@@ -39,7 +39,7 @@ ___
 
 ▸ **get**(`options`: IServiceArgs, `transaction?`: any, `skipLocked?`: boolean): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:7](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/common/model.ts#L7)*
+*Defined in [src/service/common/model.ts:7](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/common/model.ts#L7)*
 
 **Parameters:**
 
@@ -57,7 +57,7 @@ ___
 
 ▸ **patch**(`options`: IServiceArgs, `transaction?`: any): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:13](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/common/model.ts#L13)*
+*Defined in [src/service/common/model.ts:13](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/common/model.ts#L13)*
 
 **Parameters:**
 
@@ -74,7 +74,7 @@ ___
 
 ▸ **post**(`options`: IServiceArgs, `transaction?`: any): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:9](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/common/model.ts#L9)*
+*Defined in [src/service/common/model.ts:9](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/common/model.ts#L9)*
 
 **Parameters:**
 
@@ -91,7 +91,7 @@ ___
 
 ▸ **put**(`options`: IServiceArgs, `transaction?`: any): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:11](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/service/common/model.ts#L11)*
+*Defined in [src/service/common/model.ts:11](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/common/model.ts#L11)*
 
 **Parameters:**
 

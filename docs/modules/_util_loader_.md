@@ -1,4 +1,4 @@
-[miqro-sequelize](../README.md) › [Globals](../globals.md) › ["util/loader"](_util_loader_.md)
+[@miqro/database](../README.md) › [Globals](../globals.md) › ["util/loader"](_util_loader_.md)
 
 # Module: "util/loader"
 
@@ -15,7 +15,7 @@
 
 ▸ **sequelizeDirs**(): *object*
 
-*Defined in [src/util/loader.ts:8](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/util/loader.ts#L8)*
+*Defined in [src/util/loader.ts:8](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/util/loader.ts#L8)*
 
 **Returns:** *object*
 
@@ -35,6 +35,6 @@ ___
 
 ▸ **setupDB**(): *any*
 
-*Defined in [src/util/loader.ts:79](https://github.com/claukers/miqro-sequelize/blob/8846d04/src/util/loader.ts#L79)*
+*Defined in [src/util/loader.ts:79](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/util/loader.ts#L79)*
 
 **Returns:** *any*

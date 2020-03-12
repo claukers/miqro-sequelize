@@ -1,6 +1,6 @@
-[miqro-sequelize](README.md) › [Globals](globals.md)
+[@miqro/database](README.md) › [Globals](globals.md)
 
-# miqro-sequelize
+# @miqro/database
 
 ## Index
 

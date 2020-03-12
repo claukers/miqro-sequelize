@@ -1,5 +1,5 @@
+import { ISimpleMap, Util } from "@miqro/core";
 import { EventEmitter } from "events";
-import { ISimpleMap, Util } from "miqro-core";
 import { Sequelize, Transaction } from "sequelize";
 import { setupDB } from "../util/loader";
 
