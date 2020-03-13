@@ -13,17 +13,13 @@ if (process.argv.length !== 4) {
 if (typeof modelname !== "string") {
   throw new Error(`<modelname> must be a string!`);
 }
-const srcFolderPath = ConfigPathResolver.getSrcDirname();
-if (!existsSync(srcFolderPath)) {
-  logger.warn(`src folder [${srcFolderPath}] dont exists!`);
-  logger.warn(`creating [${srcFolderPath}]!`);
-  mkdirSync(srcFolderPath);
-}
 const serviceDirname = ConfigPathResolver.getServiceDirname();
 if (!existsSync(serviceDirname)) {
   logger.warn(`models folder [${serviceDirname}] doesnt exists!`);
   logger.warn(`creating [${serviceDirname}]!`);
-  mkdirSync(serviceDirname);
+  mkdirSync(serviceDirname, {
+    recursive: true
+  });
 }
 const modelPath = resolve(serviceDirname, `${modelname.toLowerCase()}.js`);
 

@@ -18,7 +18,9 @@ const config = sequelizeDirs();
 if (!existsSync(config.modelsFolder)) {
   logger.warn(`models folder [${config.modelsFolder}] doesnt exists!`);
   logger.warn(`creating [${config.modelsFolder}]!`);
-  mkdirSync(config.modelsFolder);
+  mkdirSync(config.modelsFolder, {
+    recursive: true
+  });
 }
 const modelPath = resolve(config.modelsFolder, `${modelname.toLowerCase()}.js`);
 
