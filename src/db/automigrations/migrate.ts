@@ -1,6 +1,6 @@
 import {diff} from "deep-diff";
 import * as  fs from "fs";
-import {js_beautify} from "js-beautify";
+// import {js_beautify} from "js-beautify";
 import * as assignIn from "lodash.assignin";
 import * as clone from "lodash.clone";
 import * as forEach from "lodash.foreach";
@@ -774,7 +774,7 @@ export const writeMigration = (revision, migration, migrationsDir, name = "", co
   let _commands = "var migrationCommands = [ \n" + migration.commandsUp.join(", \n") + " \n];\n";
   const _actions = " * " + migration.consoleOut.join("\n * ");
 
-  _commands = js_beautify(_commands);
+  //_commands = js_beautify(_commands);
   const info = {
     revision,
     name,
