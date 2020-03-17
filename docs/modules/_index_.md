@@ -4,159 +4,82 @@
 
 ## Index
 
-### Classes
+### References
 
-* [AbstractModelService](../classes/_index_.abstractmodelservice.md)
-* [Database](../classes/_index_.database.md)
-* [FakeDeleteModelService](../classes/_index_.fakedeletemodelservice.md)
-* [ModelService](../classes/_index_.modelservice.md)
-* [PostListModelService](../classes/_index_.postlistmodelservice.md)
+* [AbstractModelService](_index_.md#abstractmodelservice)
+* [Database](_index_.md#database)
+* [FakeDeleteModelService](_index_.md#fakedeletemodelservice)
+* [IModelService](_index_.md#imodelservice)
+* [ModelService](_index_.md#modelservice)
+* [Op](_index_.md#op)
+* [PostListModelService](_index_.md#postlistmodelservice)
+* [makemigrations](_index_.md#makemigrations)
+* [migrate](_index_.md#migrate)
+* [parseIncludeQuery](_index_.md#parseincludequery)
+* [seed](_index_.md#seed)
 
-### Interfaces
+## References
 
-* [IModelService](../interfaces/_index_.imodelservice.md)
+###  AbstractModelService
 
-### Variables
-
-* [Op](_index_.md#const-op)
-
-### Functions
-
-* [makemigrations](_index_.md#const-makemigrations)
-* [migrate](_index_.md#const-migrate)
-* [parseIncludeQuery](_index_.md#const-parseincludequery)
-* [seed](_index_.md#const-seed)
-
-## Variables
-
-### `Const` Op
-
-• **Op**: *object*
-
-Defined in node_modules/sequelize/types/lib/operators.d.ts:4
-
-object that holds all operator symbols
-
-#### Type declaration:
-
-* **adjacent**: *keyof symbol*
-
-* **all**: *keyof symbol*
-
-* **and**: *keyof symbol*
-
-* **any**: *keyof symbol*
-
-* **between**: *keyof symbol*
-
-* **col**: *keyof symbol*
-
-* **contained**: *keyof symbol*
-
-* **contains**: *keyof symbol*
-
-* **endsWith**: *keyof symbol*
-
-* **eq**: *keyof symbol*
-
-* **gt**: *keyof symbol*
-
-* **gte**: *keyof symbol*
-
-* **iLike**: *keyof symbol*
-
-* **iRegexp**: *keyof symbol*
-
-* **in**: *keyof symbol*
-
-* **is**: *keyof symbol*
-
-* **like**: *keyof symbol*
-
-* **lt**: *keyof symbol*
-
-* **lte**: *keyof symbol*
-
-* **ne**: *keyof symbol*
-
-* **noExtendLeft**: *keyof symbol*
-
-* **noExtendRight**: *keyof symbol*
-
-* **not**: *keyof symbol*
-
-* **notBetween**: *keyof symbol*
-
-* **notILike**: *keyof symbol*
-
-* **notIRegexp**: *keyof symbol*
-
-* **notIn**: *keyof symbol*
-
-* **notLike**: *keyof symbol*
-
-* **notRegexp**: *keyof symbol*
-
-* **or**: *keyof symbol*
-
-* **overlap**: *keyof symbol*
-
-* **placeholder**: *keyof symbol*
-
-* **regexp**: *keyof symbol*
-
-* **startsWith**: *keyof symbol*
-
-* **strictLeft**: *keyof symbol*
-
-* **strictRight**: *keyof symbol*
-
-* **substring**: *keyof symbol*
-
-* **values**: *keyof symbol*
-
-## Functions
-
-### `Const` makemigrations
-
-▸ **makemigrations**(): *string*
-
-*Defined in [src/db/migrations.ts:9](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/migrations.ts#L9)*
-
-**Returns:** *string*
+• **AbstractModelService**:
 
 ___
 
-### `Const` migrate
+###  Database
 
-▸ **migrate**(): *void*
-
-*Defined in [src/db/migrations.ts:17](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/migrations.ts#L17)*
-
-**Returns:** *void*
+• **Database**:
 
 ___
 
-### `Const` parseIncludeQuery
+###  FakeDeleteModelService
 
-▸ **parseIncludeQuery**(`includeQuery`: any[]): *any[]*
-
-*Defined in [src/service/common/model.ts:18](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/common/model.ts#L18)*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`includeQuery` | any[] |
-
-**Returns:** *any[]*
+• **FakeDeleteModelService**:
 
 ___
 
-### `Const` seed
+###  IModelService
 
-▸ **seed**(): *void*
+• **IModelService**:
 
-*Defined in [src/db/migrations.ts:36](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/migrations.ts#L36)*
+___
 
-**Returns:** *void*
+###  ModelService
+
+• **ModelService**:
+
+___
+
+###  Op
+
+• **Op**:
+
+___
+
+###  PostListModelService
+
+• **PostListModelService**:
+
+___
+
+###  makemigrations
+
+• **makemigrations**:
+
+___
+
+###  migrate
+
+• **migrate**:
+
+___
+
+###  parseIncludeQuery
+
+• **parseIncludeQuery**:
+
+___
+
+###  seed
+
+• **seed**:

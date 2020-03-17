@@ -16,10 +16,22 @@
 
 * [DataBaseState](_db_db_.md#databasestate)
 
+### Variables
+
+* [logger](_db_db_.md#let-logger)
+
 ## Type aliases
 
 ###  DataBaseState
 
 Ƭ **DataBaseState**: *"stopped" | "starting" | "started" | "startstop" | "error"*
 
-*Defined in [src/db/db.ts:7](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/db/db.ts#L7)*
+*Defined in [src/db/db.ts:7](https://github.com/claukers/miqro-sequelize/blob/4b86ec0/src/db/db.ts#L7)*
+
+## Variables
+
+### `Let` logger
+
+• **logger**: *any* = null
+
+*Defined in [src/db/db.ts:12](https://github.com/claukers/miqro-sequelize/blob/4b86ec0/src/db/db.ts#L12)*

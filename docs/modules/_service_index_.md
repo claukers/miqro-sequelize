@@ -4,125 +4,54 @@
 
 ## Index
 
-### Classes
+### References
 
-* [AbstractModelService](../classes/_service_index_.abstractmodelservice.md)
-* [FakeDeleteModelService](../classes/_service_index_.fakedeletemodelservice.md)
-* [ModelService](../classes/_service_index_.modelservice.md)
-* [PostListModelService](../classes/_service_index_.postlistmodelservice.md)
+* [AbstractModelService](_service_index_.md#abstractmodelservice)
+* [FakeDeleteModelService](_service_index_.md#fakedeletemodelservice)
+* [IModelService](_service_index_.md#imodelservice)
+* [ModelService](_service_index_.md#modelservice)
+* [Op](_service_index_.md#op)
+* [PostListModelService](_service_index_.md#postlistmodelservice)
+* [parseIncludeQuery](_service_index_.md#parseincludequery)
 
-### Interfaces
+## References
 
-* [IModelService](../interfaces/_service_index_.imodelservice.md)
+###  AbstractModelService
 
-### Variables
+• **AbstractModelService**:
 
-* [Op](_service_index_.md#const-op)
+___
 
-### Functions
+###  FakeDeleteModelService
 
-* [parseIncludeQuery](_service_index_.md#const-parseincludequery)
+• **FakeDeleteModelService**:
 
-## Variables
+___
 
-### `Const` Op
+###  IModelService
 
-• **Op**: *object*
+• **IModelService**:
 
-Defined in node_modules/sequelize/types/lib/operators.d.ts:4
+___
 
-object that holds all operator symbols
+###  ModelService
 
-#### Type declaration:
+• **ModelService**:
 
-* **adjacent**: *keyof symbol*
+___
 
-* **all**: *keyof symbol*
+###  Op
 
-* **and**: *keyof symbol*
+• **Op**:
 
-* **any**: *keyof symbol*
+___
 
-* **between**: *keyof symbol*
+###  PostListModelService
 
-* **col**: *keyof symbol*
+• **PostListModelService**:
 
-* **contained**: *keyof symbol*
+___
 
-* **contains**: *keyof symbol*
+###  parseIncludeQuery
 
-* **endsWith**: *keyof symbol*
-
-* **eq**: *keyof symbol*
-
-* **gt**: *keyof symbol*
-
-* **gte**: *keyof symbol*
-
-* **iLike**: *keyof symbol*
-
-* **iRegexp**: *keyof symbol*
-
-* **in**: *keyof symbol*
-
-* **is**: *keyof symbol*
-
-* **like**: *keyof symbol*
-
-* **lt**: *keyof symbol*
-
-* **lte**: *keyof symbol*
-
-* **ne**: *keyof symbol*
-
-* **noExtendLeft**: *keyof symbol*
-
-* **noExtendRight**: *keyof symbol*
-
-* **not**: *keyof symbol*
-
-* **notBetween**: *keyof symbol*
-
-* **notILike**: *keyof symbol*
-
-* **notIRegexp**: *keyof symbol*
-
-* **notIn**: *keyof symbol*
-
-* **notLike**: *keyof symbol*
-
-* **notRegexp**: *keyof symbol*
-
-* **or**: *keyof symbol*
-
-* **overlap**: *keyof symbol*
-
-* **placeholder**: *keyof symbol*
-
-* **regexp**: *keyof symbol*
-
-* **startsWith**: *keyof symbol*
-
-* **strictLeft**: *keyof symbol*
-
-* **strictRight**: *keyof symbol*
-
-* **substring**: *keyof symbol*
-
-* **values**: *keyof symbol*
-
-## Functions
-
-### `Const` parseIncludeQuery
-
-▸ **parseIncludeQuery**(`includeQuery`: any[]): *any[]*
-
-*Defined in [src/service/common/model.ts:18](https://github.com/claukers/miqro-sequelize/blob/9318ec9/src/service/common/model.ts#L18)*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`includeQuery` | any[] |
-
-**Returns:** *any[]*
+• **parseIncludeQuery**:
