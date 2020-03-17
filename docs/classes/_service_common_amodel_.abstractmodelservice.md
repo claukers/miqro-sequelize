@@ -28,7 +28,7 @@
 
 ▸ **delete**(`options`: IServiceArgs): *Promise‹any›*
 
-*Defined in [src/service/common/amodel.ts:26](https://github.com/claukers/miqro-sequelize/blob/4b86ec0/src/service/common/amodel.ts#L26)*
+*Defined in [src/service/common/amodel.ts:26](https://github.com/claukers/miqro-sequelize/blob/6cf2691/src/service/common/amodel.ts#L26)*
 
 **Parameters:**
 
@@ -44,7 +44,7 @@ ___
 
 ▸ **get**(`options`: IServiceArgs): *Promise‹any›*
 
-*Defined in [src/service/common/amodel.ts:6](https://github.com/claukers/miqro-sequelize/blob/4b86ec0/src/service/common/amodel.ts#L6)*
+*Defined in [src/service/common/amodel.ts:6](https://github.com/claukers/miqro-sequelize/blob/6cf2691/src/service/common/amodel.ts#L6)*
 
 **Parameters:**
 
@@ -60,7 +60,7 @@ ___
 
 ▸ **patch**(`options`: IServiceArgs): *Promise‹any›*
 
-*Defined in [src/service/common/amodel.ts:21](https://github.com/claukers/miqro-sequelize/blob/4b86ec0/src/service/common/amodel.ts#L21)*
+*Defined in [src/service/common/amodel.ts:21](https://github.com/claukers/miqro-sequelize/blob/6cf2691/src/service/common/amodel.ts#L21)*
 
 **Parameters:**
 
@@ -76,7 +76,7 @@ ___
 
 ▸ **post**(`options`: IServiceArgs): *Promise‹any›*
 
-*Defined in [src/service/common/amodel.ts:11](https://github.com/claukers/miqro-sequelize/blob/4b86ec0/src/service/common/amodel.ts#L11)*
+*Defined in [src/service/common/amodel.ts:11](https://github.com/claukers/miqro-sequelize/blob/6cf2691/src/service/common/amodel.ts#L11)*
 
 **Parameters:**
 
@@ -92,7 +92,7 @@ ___
 
 ▸ **put**(`options`: IServiceArgs): *Promise‹any›*
 
-*Defined in [src/service/common/amodel.ts:16](https://github.com/claukers/miqro-sequelize/blob/4b86ec0/src/service/common/amodel.ts#L16)*
+*Defined in [src/service/common/amodel.ts:16](https://github.com/claukers/miqro-sequelize/blob/6cf2691/src/service/common/amodel.ts#L16)*
 
 **Parameters:**
 

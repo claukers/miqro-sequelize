@@ -29,7 +29,7 @@
 
 ▸ **delete**(`options`: IServiceArgs, `transaction?`: any): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:15](https://github.com/claukers/miqro-sequelize/blob/4b86ec0/src/service/common/model.ts#L15)*
+*Defined in [src/service/common/model.ts:15](https://github.com/claukers/miqro-sequelize/blob/6cf2691/src/service/common/model.ts#L15)*
 
 **Parameters:**
 
@@ -46,7 +46,7 @@ ___
 
 ▸ **get**(`options`: IServiceArgs, `transaction?`: any, `skipLocked?`: boolean): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:7](https://github.com/claukers/miqro-sequelize/blob/4b86ec0/src/service/common/model.ts#L7)*
+*Defined in [src/service/common/model.ts:7](https://github.com/claukers/miqro-sequelize/blob/6cf2691/src/service/common/model.ts#L7)*
 
 **Parameters:**
 
@@ -64,7 +64,7 @@ ___
 
 ▸ **patch**(`options`: IServiceArgs, `transaction?`: any): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:13](https://github.com/claukers/miqro-sequelize/blob/4b86ec0/src/service/common/model.ts#L13)*
+*Defined in [src/service/common/model.ts:13](https://github.com/claukers/miqro-sequelize/blob/6cf2691/src/service/common/model.ts#L13)*
 
 **Parameters:**
 
@@ -81,7 +81,7 @@ ___
 
 ▸ **post**(`options`: IServiceArgs, `transaction?`: any): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:9](https://github.com/claukers/miqro-sequelize/blob/4b86ec0/src/service/common/model.ts#L9)*
+*Defined in [src/service/common/model.ts:9](https://github.com/claukers/miqro-sequelize/blob/6cf2691/src/service/common/model.ts#L9)*
 
 **Parameters:**
 
@@ -98,7 +98,7 @@ ___
 
 ▸ **put**(`options`: IServiceArgs, `transaction?`: any): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:11](https://github.com/claukers/miqro-sequelize/blob/4b86ec0/src/service/common/model.ts#L11)*
+*Defined in [src/service/common/model.ts:11](https://github.com/claukers/miqro-sequelize/blob/6cf2691/src/service/common/model.ts#L11)*
 
 **Parameters:**
 

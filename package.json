@@ -25,7 +25,7 @@
   "author": "claukers",
   "license": "ISC",
   "dependencies": {
-    "@miqro/core": "^0.3.6",
+    "@miqro/core": "^0.3.7",
     "deep-diff": "^1.0.2",
     "lodash.assignin": "^4.2.0",
     "lodash.clone": "^4.5.0",
