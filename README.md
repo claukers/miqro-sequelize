@@ -41,7 +41,7 @@ for making and running the migrations
 
 ### default env vars needed
 
-consider adding into your ```config/<NODE_ENV>.env``` file.
+consider adding into your ```config/<NODE_ENV>/db.env``` file.
 
 ```
 LOG_LEVEL_Sequelize="error"
