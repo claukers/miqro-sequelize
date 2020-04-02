@@ -10,6 +10,7 @@
 * ["cli/cli"](modules/_cli_cli_.md)
 * ["cli/createmodel"](modules/_cli_createmodel_.md)
 * ["cli/createmodelservice"](modules/_cli_createmodelservice_.md)
+* ["cli/init"](modules/_cli_init_.md)
 * ["cli/makemigrations"](modules/_cli_makemigrations_.md)
 * ["cli/migrate"](modules/_cli_migrate_.md)
 * ["cli/seed"](modules/_cli_seed_.md)

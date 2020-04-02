@@ -15,10 +15,11 @@ describe("ModelService Func Tests", function() {
 
   before((done) => {
     (async () => {
-      const {migrate, seed} = require("../src");
+      const {migrate, seed, initDBConfig} = require("../src");
       process.chdir(process.env.MIQRO_DIRNAME);
       if (!dbLoaded) {
         dbLoaded = true;
+        await initDBConfig();
         await migrate();
         await seed();
       }

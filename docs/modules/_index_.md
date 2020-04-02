@@ -13,6 +13,7 @@
 * [ModelService](_index_.md#modelservice)
 * [Op](_index_.md#op)
 * [PostListModelService](_index_.md#postlistmodelservice)
+* [initDBConfig](_index_.md#initdbconfig)
 * [makemigrations](_index_.md#makemigrations)
 * [migrate](_index_.md#migrate)
 * [parseIncludeQuery](_index_.md#parseincludequery)
@@ -59,6 +60,12 @@ ___
 ###  PostListModelService
 
 • **PostListModelService**:
+
+___
+
+###  initDBConfig
+
+• **initDBConfig**:
 
 ___
 

@@ -7,6 +7,7 @@
 ### References
 
 * [Database](_db_index_.md#database)
+* [initDBConfig](_db_index_.md#initdbconfig)
 * [makemigrations](_db_index_.md#makemigrations)
 * [migrate](_db_index_.md#migrate)
 * [seed](_db_index_.md#seed)
@@ -16,6 +17,12 @@
 ###  Database
 
 • **Database**:
+
+___
+
+###  initDBConfig
+
+• **initDBConfig**:
 
 ___
 

@@ -28,7 +28,7 @@
 
 ▸ **parseIncludeQuery**(`includeQuery`: any[]): *any[]*
 
-*Defined in [src/service/common/model.ts:18](https://github.com/claukers/miqro-sequelize/blob/aaa7286/src/service/common/model.ts#L18)*
+*Defined in [src/service/common/model.ts:18](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/service/common/model.ts#L18)*
 
 **Parameters:**
 
