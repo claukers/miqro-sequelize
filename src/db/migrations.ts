@@ -57,7 +57,7 @@ export const initDBConfig = (): boolean => {
 };
 
 // noinspection SpellCheckingInspection
-export const makemigrations = () => {
+export const makemigrations = (): void => {
   try {
     makemigrationsImpl();
   } catch (e) {
