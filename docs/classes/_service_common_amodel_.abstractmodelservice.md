@@ -10,7 +10,7 @@
 
 ## Implements
 
-* [IModelService](../interfaces/_service_common_model_.imodelservice.md)
+* [ModelServiceInterface](../interfaces/_service_common_model_.modelserviceinterface.md)
 
 ## Index
 
@@ -26,15 +26,15 @@
 
 ###  delete
 
-▸ **delete**(`options`: IServiceArgs): *Promise‹any›*
+▸ **delete**(`options`: [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md)): *Promise‹any›*
 
-*Defined in [src/service/common/amodel.ts:26](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/service/common/amodel.ts#L26)*
+*Defined in [src/service/common/amodel.ts:27](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/amodel.ts#L27)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`options` | IServiceArgs |
+`options` | [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md) |
 
 **Returns:** *Promise‹any›*
 
@@ -42,15 +42,15 @@ ___
 
 ###  get
 
-▸ **get**(`options`: IServiceArgs): *Promise‹any›*
+▸ **get**(`options`: [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md)): *Promise‹any›*
 
-*Defined in [src/service/common/amodel.ts:6](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/service/common/amodel.ts#L6)*
+*Defined in [src/service/common/amodel.ts:7](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/amodel.ts#L7)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`options` | IServiceArgs |
+`options` | [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md) |
 
 **Returns:** *Promise‹any›*
 
@@ -58,15 +58,15 @@ ___
 
 ###  patch
 
-▸ **patch**(`options`: IServiceArgs): *Promise‹any›*
+▸ **patch**(`options`: [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md)): *Promise‹any›*
 
-*Defined in [src/service/common/amodel.ts:21](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/service/common/amodel.ts#L21)*
+*Defined in [src/service/common/amodel.ts:22](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/amodel.ts#L22)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`options` | IServiceArgs |
+`options` | [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md) |
 
 **Returns:** *Promise‹any›*
 
@@ -74,15 +74,15 @@ ___
 
 ###  post
 
-▸ **post**(`options`: IServiceArgs): *Promise‹any›*
+▸ **post**(`options`: [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md)): *Promise‹any›*
 
-*Defined in [src/service/common/amodel.ts:11](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/service/common/amodel.ts#L11)*
+*Defined in [src/service/common/amodel.ts:12](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/amodel.ts#L12)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`options` | IServiceArgs |
+`options` | [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md) |
 
 **Returns:** *Promise‹any›*
 
@@ -90,14 +90,14 @@ ___
 
 ###  put
 
-▸ **put**(`options`: IServiceArgs): *Promise‹any›*
+▸ **put**(`options`: [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md)): *Promise‹any›*
 
-*Defined in [src/service/common/amodel.ts:16](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/service/common/amodel.ts#L16)*
+*Defined in [src/service/common/amodel.ts:17](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/amodel.ts#L17)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`options` | IServiceArgs |
+`options` | [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md) |
 
 **Returns:** *Promise‹any›*

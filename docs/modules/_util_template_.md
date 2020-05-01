@@ -50,7 +50,7 @@ module.exports = {
 };
 `
 
-*Defined in [src/util/template.ts:37](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/util/template.ts#L37)*
+*Defined in [src/util/template.ts:37](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/template.ts#L37)*
 
 ___
 
@@ -120,7 +120,7 @@ Object.keys(db).forEach((modelName) => {
 module.exports = db;
 `
 
-*Defined in [src/util/template.ts:2](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/util/template.ts#L2)*
+*Defined in [src/util/template.ts:2](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/template.ts#L2)*
 
 ___
 
@@ -144,7 +144,7 @@ module.exports = {
 };
 `
 
-*Defined in [src/util/template.ts:65](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/util/template.ts#L65)*
+*Defined in [src/util/template.ts:65](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/template.ts#L65)*
 
 ## Functions
 
@@ -152,7 +152,7 @@ module.exports = {
 
 ▸ **exampleModel**(`modelName`: string): *string*
 
-*Defined in [src/util/template.ts:76](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/util/template.ts#L76)*
+*Defined in [src/util/template.ts:76](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/template.ts#L76)*
 
 **Parameters:**
 
@@ -168,7 +168,7 @@ ___
 
 ▸ **exampleModelService**(`serviceName`: string): *string*
 
-*Defined in [src/util/template.ts:91](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/util/template.ts#L91)*
+*Defined in [src/util/template.ts:91](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/template.ts#L91)*
 
 **Parameters:**
 
@@ -184,34 +184,34 @@ Name | Type |
 
 ### ▪ **templates**: *object*
 
-*Defined in [src/util/template.ts:112](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/util/template.ts#L112)*
+*Defined in [src/util/template.ts:112](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/template.ts#L112)*
 
 ###  dbConfig
 
 • **dbConfig**: *string*
 
-*Defined in [src/util/template.ts:114](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/util/template.ts#L114)*
+*Defined in [src/util/template.ts:114](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/template.ts#L114)*
 
 ###  exampleModel
 
 • **exampleModel**: *[exampleModel](_util_template_.md#const-examplemodel)*
 
-*Defined in [src/util/template.ts:116](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/util/template.ts#L116)*
+*Defined in [src/util/template.ts:116](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/template.ts#L116)*
 
 ###  exampleModelService
 
 • **exampleModelService**: *[exampleModelService](_util_template_.md#const-examplemodelservice)*
 
-*Defined in [src/util/template.ts:117](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/util/template.ts#L117)*
+*Defined in [src/util/template.ts:117](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/template.ts#L117)*
 
 ###  modelsIndex
 
 • **modelsIndex**: *string*
 
-*Defined in [src/util/template.ts:113](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/util/template.ts#L113)*
+*Defined in [src/util/template.ts:113](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/template.ts#L113)*
 
 ###  sequelizerc
 
 • **sequelizerc**: *string*
 
-*Defined in [src/util/template.ts:115](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/util/template.ts#L115)*
+*Defined in [src/util/template.ts:115](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/template.ts#L115)*

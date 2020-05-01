@@ -21,7 +21,7 @@
 
 • **logger**: *Console* = console
 
-*Defined in [src/db/migrations.ts:10](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/migrations.ts#L10)*
+*Defined in [src/db/migrations.ts:9](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/migrations.ts#L9)*
 
 ## Functions
 
@@ -29,7 +29,7 @@
 
 ▸ **initDBConfig**(): *boolean*
 
-*Defined in [src/db/migrations.ts:13](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/migrations.ts#L13)*
+*Defined in [src/db/migrations.ts:12](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/migrations.ts#L12)*
 
 **Returns:** *boolean*
 
@@ -37,21 +37,21 @@ ___
 
 ### `Const` makemigrations
 
-▸ **makemigrations**(): *string*
+▸ **makemigrations**(): *void*
 
-*Defined in [src/db/migrations.ts:61](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/migrations.ts#L61)*
+*Defined in [src/db/migrations.ts:60](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/migrations.ts#L60)*
 
-**Returns:** *string*
+**Returns:** *void*
 
 ___
 
 ### `Const` migrate
 
-▸ **migrate**(): *void*
+▸ **migrate**(): *Promise‹void›*
 
-*Defined in [src/db/migrations.ts:70](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/migrations.ts#L70)*
+*Defined in [src/db/migrations.ts:69](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/migrations.ts#L69)*
 
-**Returns:** *void*
+**Returns:** *Promise‹void›*
 
 ___
 
@@ -59,6 +59,6 @@ ___
 
 ▸ **seed**(): *void*
 
-*Defined in [src/db/migrations.ts:90](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/migrations.ts#L90)*
+*Defined in [src/db/migrations.ts:78](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/migrations.ts#L78)*
 
 **Returns:** *void*

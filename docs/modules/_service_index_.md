@@ -8,8 +8,9 @@
 
 * [AbstractModelService](_service_index_.md#abstractmodelservice)
 * [FakeDeleteModelService](_service_index_.md#fakedeletemodelservice)
-* [IModelService](_service_index_.md#imodelservice)
 * [ModelService](_service_index_.md#modelservice)
+* [ModelServiceArgsInterface](_service_index_.md#modelserviceargsinterface)
+* [ModelServiceInterface](_service_index_.md#modelserviceinterface)
 * [Op](_service_index_.md#op)
 * [PostListModelService](_service_index_.md#postlistmodelservice)
 * [parseIncludeQuery](_service_index_.md#parseincludequery)
@@ -28,15 +29,21 @@ ___
 
 ___
 
-###  IModelService
-
-• **IModelService**:
-
-___
-
 ###  ModelService
 
 • **ModelService**:
+
+___
+
+###  ModelServiceArgsInterface
+
+• **ModelServiceArgsInterface**:
+
+___
+
+###  ModelServiceInterface
+
+• **ModelServiceInterface**:
 
 ___
 

@@ -56,7 +56,7 @@
 
 *Overrides void*
 
-*Defined in [src/db/db.ts:26](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/db.ts#L26)*
+*Defined in [src/db/db.ts:27](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L27)*
 
 **Returns:** *[Database](_db_db_.database.md)*
 
@@ -64,9 +64,9 @@
 
 ###  models
 
-• **models**: *[IModelMap](../interfaces/_db_db_.imodelmap.md)*
+• **models**: *[IModelMap](../modules/_db_db_.md#imodelmap)*
 
-*Defined in [src/db/db.ts:24](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/db.ts#L24)*
+*Defined in [src/db/db.ts:25](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L25)*
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 • **sequelize**: *Sequelize*
 
-*Defined in [src/db/db.ts:25](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/db.ts#L25)*
+*Defined in [src/db/db.ts:26](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L26)*
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 • **state**: *[DataBaseState](../modules/_db_db_.md#databasestate)* = "stopped"
 
-*Defined in [src/db/db.ts:26](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/db.ts#L26)*
+*Defined in [src/db/db.ts:27](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L27)*
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 ▪ **events**: *[DataBaseState](../modules/_db_db_.md#databasestate)[]* = ["stopped", "starting", "started", "startstop", "error"]
 
-*Defined in [src/db/db.ts:16](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/db.ts#L16)*
+*Defined in [src/db/db.ts:15](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L15)*
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 ▪ **instance**: *[Database](_db_db_.database.md)* = null
 
-*Defined in [src/db/db.ts:23](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/db.ts#L23)*
+*Defined in [src/db/db.ts:24](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L24)*
 
 ## Methods
 
@@ -118,7 +118,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[addListener](_db_db_.database.md#addlistener)*
 
-Defined in node_modules/@types/node/globals.d.ts:547
+Defined in node_modules/@types/node/globals.d.ts:554
 
 **Parameters:**
 
@@ -144,7 +144,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[emit](_db_db_.database.md#emit)*
 
-Defined in node_modules/@types/node/globals.d.ts:557
+Defined in node_modules/@types/node/globals.d.ts:564
 
 **Parameters:**
 
@@ -163,7 +163,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[eventNames](_db_db_.database.md#eventnames)*
 
-Defined in node_modules/@types/node/globals.d.ts:562
+Defined in node_modules/@types/node/globals.d.ts:569
 
 **Returns:** *Array‹string | symbol›*
 
@@ -175,7 +175,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[getMaxListeners](_db_db_.database.md#getmaxlisteners)*
 
-Defined in node_modules/@types/node/globals.d.ts:554
+Defined in node_modules/@types/node/globals.d.ts:561
 
 **Returns:** *number*
 
@@ -187,7 +187,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[listenerCount](_db_db_.database.md#listenercount)*
 
-Defined in node_modules/@types/node/globals.d.ts:558
+Defined in node_modules/@types/node/globals.d.ts:565
 
 **Parameters:**
 
@@ -205,7 +205,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[listeners](_db_db_.database.md#listeners)*
 
-Defined in node_modules/@types/node/globals.d.ts:555
+Defined in node_modules/@types/node/globals.d.ts:562
 
 **Parameters:**
 
@@ -223,7 +223,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[off](_db_db_.database.md#off)*
 
-Defined in node_modules/@types/node/globals.d.ts:551
+Defined in node_modules/@types/node/globals.d.ts:558
 
 **Parameters:**
 
@@ -249,7 +249,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[on](_db_db_.database.md#on)*
 
-Defined in node_modules/@types/node/globals.d.ts:548
+Defined in node_modules/@types/node/globals.d.ts:555
 
 **Parameters:**
 
@@ -275,7 +275,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[once](_db_db_.database.md#once)*
 
-Defined in node_modules/@types/node/globals.d.ts:549
+Defined in node_modules/@types/node/globals.d.ts:556
 
 **Parameters:**
 
@@ -301,7 +301,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[prependListener](_db_db_.database.md#prependlistener)*
 
-Defined in node_modules/@types/node/globals.d.ts:560
+Defined in node_modules/@types/node/globals.d.ts:567
 
 **Parameters:**
 
@@ -327,7 +327,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[prependOnceListener](_db_db_.database.md#prependoncelistener)*
 
-Defined in node_modules/@types/node/globals.d.ts:561
+Defined in node_modules/@types/node/globals.d.ts:568
 
 **Parameters:**
 
@@ -351,7 +351,7 @@ ___
 
 ▸ **query**(`q`: object, `t?`: any): *Promise‹any›*
 
-*Defined in [src/db/db.ts:51](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/db.ts#L51)*
+*Defined in [src/db/db.ts:55](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L55)*
 
 **Parameters:**
 
@@ -374,7 +374,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[rawListeners](_db_db_.database.md#rawlisteners)*
 
-Defined in node_modules/@types/node/globals.d.ts:556
+Defined in node_modules/@types/node/globals.d.ts:563
 
 **Parameters:**
 
@@ -392,7 +392,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[removeAllListeners](_db_db_.database.md#removealllisteners)*
 
-Defined in node_modules/@types/node/globals.d.ts:552
+Defined in node_modules/@types/node/globals.d.ts:559
 
 **Parameters:**
 
@@ -410,7 +410,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[removeListener](_db_db_.database.md#removelistener)*
 
-Defined in node_modules/@types/node/globals.d.ts:550
+Defined in node_modules/@types/node/globals.d.ts:557
 
 **Parameters:**
 
@@ -436,7 +436,7 @@ ___
 
 *Inherited from [Database](_db_db_.database.md).[setMaxListeners](_db_db_.database.md#setmaxlisteners)*
 
-Defined in node_modules/@types/node/globals.d.ts:553
+Defined in node_modules/@types/node/globals.d.ts:560
 
 **Parameters:**
 
@@ -452,7 +452,7 @@ ___
 
 ▸ **start**(): *Promise‹void›*
 
-*Defined in [src/db/db.ts:58](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/db.ts#L58)*
+*Defined in [src/db/db.ts:63](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L63)*
 
 **Returns:** *Promise‹void›*
 
@@ -462,7 +462,7 @@ ___
 
 ▸ **stateChange**(`state`: [DataBaseState](../modules/_db_db_.md#databasestate), `args?`: any): *void*
 
-*Defined in [src/db/db.ts:103](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/db.ts#L103)*
+*Defined in [src/db/db.ts:108](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L108)*
 
 **Parameters:**
 
@@ -479,7 +479,7 @@ ___
 
 ▸ **stop**(): *Promise‹void›*
 
-*Defined in [src/db/db.ts:86](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/db.ts#L86)*
+*Defined in [src/db/db.ts:91](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L91)*
 
 **Returns:** *Promise‹void›*
 
@@ -487,9 +487,9 @@ ___
 
 ###  transaction
 
-▸ **transaction**(`transactionCB`: function): *Promise‹void›*
+▸ **transaction**(`transactionCB`: function): *Promise‹any›*
 
-*Defined in [src/db/db.ts:46](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/db.ts#L46)*
+*Defined in [src/db/db.ts:49](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L49)*
 
 **Parameters:**
 
@@ -503,7 +503,7 @@ Name | Type |
 ------ | ------ |
 `t` | Transaction |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise‹any›*
 
 ___
 
@@ -511,7 +511,7 @@ ___
 
 ▸ **getInstance**(): *[Database](_db_db_.database.md)*
 
-*Defined in [src/db/db.ts:17](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/db.ts#L17)*
+*Defined in [src/db/db.ts:17](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L17)*
 
 **Returns:** *[Database](_db_db_.database.md)*
 

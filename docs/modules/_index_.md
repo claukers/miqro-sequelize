@@ -9,8 +9,9 @@
 * [AbstractModelService](_index_.md#abstractmodelservice)
 * [Database](_index_.md#database)
 * [FakeDeleteModelService](_index_.md#fakedeletemodelservice)
-* [IModelService](_index_.md#imodelservice)
 * [ModelService](_index_.md#modelservice)
+* [ModelServiceArgsInterface](_index_.md#modelserviceargsinterface)
+* [ModelServiceInterface](_index_.md#modelserviceinterface)
 * [Op](_index_.md#op)
 * [PostListModelService](_index_.md#postlistmodelservice)
 * [initDBConfig](_index_.md#initdbconfig)
@@ -39,15 +40,21 @@ ___
 
 ___
 
-###  IModelService
-
-• **IModelService**:
-
-___
-
 ###  ModelService
 
 • **ModelService**:
+
+___
+
+###  ModelServiceArgsInterface
+
+• **ModelServiceArgsInterface**:
+
+___
+
+###  ModelServiceInterface
+
+• **ModelServiceInterface**:
 
 ___
 

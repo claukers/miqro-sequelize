@@ -22,7 +22,7 @@
 
 ▸ **executeMigration**(`queryInterface`: any, `filename`: any, `pos`: any, `cb`: any, `logger`: any): *any*
 
-*Defined in [src/db/automigrations/migrate.ts:832](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/automigrations/migrate.ts#L832)*
+*Defined in [src/db/automigrations/migrate.ts:829](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/automigrations/migrate.ts#L829)*
 
 **Parameters:**
 
@@ -40,9 +40,9 @@ ___
 
 ### `Const` getMigration
 
-▸ **getMigration**(`actions`: any): *object*
+▸ **getMigration**(`actions`: any): *any*
 
-*Defined in [src/db/automigrations/migrate.ts:630](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/automigrations/migrate.ts#L630)*
+*Defined in [src/db/automigrations/migrate.ts:627](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/automigrations/migrate.ts#L627)*
 
 **Parameters:**
 
@@ -50,19 +50,15 @@ Name | Type |
 ------ | ------ |
 `actions` | any |
 
-**Returns:** *object*
-
-* **commandsUp**: *any[]*
-
-* **consoleOut**: *any[]*
+**Returns:** *any*
 
 ___
 
 ### `Const` parseDifference
 
-▸ **parseDifference**(`previousState`: any, `currentState`: any, `logger`: any): *any[]*
+▸ **parseDifference**(`previousState`: any, `currentState`: any, `logger`: any): *any*
 
-*Defined in [src/db/automigrations/migrate.ts:318](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/automigrations/migrate.ts#L318)*
+*Defined in [src/db/automigrations/migrate.ts:315](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/automigrations/migrate.ts#L315)*
 
 **Parameters:**
 
@@ -72,7 +68,7 @@ Name | Type |
 `currentState` | any |
 `logger` | any |
 
-**Returns:** *any[]*
+**Returns:** *any*
 
 ___
 
@@ -80,7 +76,7 @@ ___
 
 ▸ **parseIndex**(`idx`: any): *any*
 
-*Defined in [src/db/automigrations/migrate.ts:152](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/automigrations/migrate.ts#L152)*
+*Defined in [src/db/automigrations/migrate.ts:149](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/automigrations/migrate.ts#L149)*
 
 **Parameters:**
 
@@ -94,9 +90,9 @@ ___
 
 ### `Const` reverseModels
 
-▸ **reverseModels**(`sequelize`: any, `models`: any, `logger`: any): *object*
+▸ **reverseModels**(`sequelize`: any, `models`: any, `logger`: any): *any*
 
-*Defined in [src/db/automigrations/migrate.ts:185](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/automigrations/migrate.ts#L185)*
+*Defined in [src/db/automigrations/migrate.ts:182](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/automigrations/migrate.ts#L182)*
 
 **Parameters:**
 
@@ -106,7 +102,7 @@ Name | Type |
 `models` | any |
 `logger` | any |
 
-**Returns:** *object*
+**Returns:** *any*
 
 ___
 
@@ -114,7 +110,7 @@ ___
 
 ▸ **reverseSequelizeColType**(`col`: any, `prefix`: string): *string*
 
-*Defined in [src/db/automigrations/migrate.ts:13](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/automigrations/migrate.ts#L13)*
+*Defined in [src/db/automigrations/migrate.ts:13](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/automigrations/migrate.ts#L13)*
 
 **Parameters:**
 
@@ -129,9 +125,9 @@ ___
 
 ### `Const` reverseSequelizeDefValueType
 
-▸ **reverseSequelizeDefValueType**(`defaultValue`: any, `prefix`: string): *object | object | object*
+▸ **reverseSequelizeDefValueType**(`defaultValue`: any, `prefix`: string): *any*
 
-*Defined in [src/db/automigrations/migrate.ts:138](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/automigrations/migrate.ts#L138)*
+*Defined in [src/db/automigrations/migrate.ts:135](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/automigrations/migrate.ts#L135)*
 
 **Parameters:**
 
@@ -140,15 +136,15 @@ Name | Type | Default |
 `defaultValue` | any | - |
 `prefix` | string | "Sequelize." |
 
-**Returns:** *object | object | object*
+**Returns:** *any*
 
 ___
 
 ### `Const` sortActions
 
-▸ **sortActions**(`actions`: any): *void*
+▸ **sortActions**(`actions`: any): *any*
 
-*Defined in [src/db/automigrations/migrate.ts:562](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/automigrations/migrate.ts#L562)*
+*Defined in [src/db/automigrations/migrate.ts:559](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/automigrations/migrate.ts#L559)*
 
 **Parameters:**
 
@@ -156,15 +152,15 @@ Name | Type |
 ------ | ------ |
 `actions` | any |
 
-**Returns:** *void*
+**Returns:** *any*
 
 ___
 
 ### `Const` writeMigration
 
-▸ **writeMigration**(`revision`: any, `migration`: any, `migrationsDir`: any, `name`: string, `comment`: string): *object*
+▸ **writeMigration**(`revision`: any, `migration`: any, `migrationsDir`: any, `name`: string, `comment`: string): *any*
 
-*Defined in [src/db/automigrations/migrate.ts:773](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/db/automigrations/migrate.ts#L773)*
+*Defined in [src/db/automigrations/migrate.ts:770](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/automigrations/migrate.ts#L770)*
 
 **Parameters:**
 
@@ -176,16 +172,4 @@ Name | Type | Default |
 `name` | string | "" |
 `comment` | string | "" |
 
-**Returns:** *object*
-
-* **filename**: *string*
-
-* **info**(): *object*
-
-  * **comment**: *string*
-
-  * **created**: *Date* = new Date()
-
-  * **name**: *string*
-
-  * **revision**: *any*
+**Returns:** *any*

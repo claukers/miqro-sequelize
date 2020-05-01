@@ -10,7 +10,8 @@
 
 ### Interfaces
 
-* [IModelService](../interfaces/_service_common_model_.imodelservice.md)
+* [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md)
+* [ModelServiceInterface](../interfaces/_service_common_model_.modelserviceinterface.md)
 
 ### Functions
 
@@ -28,7 +29,7 @@
 
 ▸ **parseIncludeQuery**(`includeQuery`: any[]): *any[]*
 
-*Defined in [src/service/common/model.ts:18](https://github.com/claukers/miqro-sequelize/blob/fbcb301/src/service/common/model.ts#L18)*
+*Defined in [src/service/common/model.ts:24](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/model.ts#L24)*
 
 **Parameters:**
 

@@ -7,7 +7,8 @@
 ### References
 
 * [AbstractModelService](_service_common_index_.md#abstractmodelservice)
-* [IModelService](_service_common_index_.md#imodelservice)
+* [ModelServiceArgsInterface](_service_common_index_.md#modelserviceargsinterface)
+* [ModelServiceInterface](_service_common_index_.md#modelserviceinterface)
 * [Op](_service_common_index_.md#op)
 * [parseIncludeQuery](_service_common_index_.md#parseincludequery)
 
@@ -19,9 +20,15 @@
 
 ___
 
-###  IModelService
+###  ModelServiceArgsInterface
 
-• **IModelService**:
+• **ModelServiceArgsInterface**:
+
+___
+
+###  ModelServiceInterface
+
+• **ModelServiceInterface**:
 
 ___
 
