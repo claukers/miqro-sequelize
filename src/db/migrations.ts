@@ -1,6 +1,6 @@
-import * as child_process from "child_process";
+import * as childProcess from "child_process";
 import {sequelizeDirs} from "../util/loader";
-import {makemigrationsImpl} from "./automigrations";
+import {makemigrationsImpl, migrateImpl} from "./automigrations";
 import {existsSync, mkdirSync, writeFileSync} from "fs";
 import {dirname, resolve} from "path";
 import {templates} from "../util/template";
@@ -9,9 +9,9 @@ import {ConfigPathResolver} from "@miqro/core";
 const logger = console;
 
 // noinspection SpellCheckingInspection
-export const initDBConfig = () => {
+export const initDBConfig = (): boolean => {
   try {
-    const initDir = (p) => {
+    const initDir = (p): void => {
       if (!existsSync(p)) {
         logger.warn(`creating ${p}`);
         mkdirSync(p);
@@ -20,7 +20,7 @@ export const initDBConfig = () => {
       }
     };
 
-    const initFile = (p, template) => {
+    const initFile = (p, template): void => {
       if (!existsSync(p)) {
         logger.warn(`creating ${p} file`);
         writeFileSync(p, template);
@@ -59,40 +59,29 @@ export const initDBConfig = () => {
 // noinspection SpellCheckingInspection
 export const makemigrations = () => {
   try {
-    return makemigrationsImpl();
+    makemigrationsImpl();
   } catch (e) {
     logger.error(e.message);
     throw e;
   }
 };
 
-export const migrate = () => {
+export const migrate = async (): Promise<void> => {
   try {
-    // noinspection SpellCheckingInspection
-    const {
-      sequelizercPath
-    } = sequelizeDirs();
-    logger.log(child_process.execSync(
-      "npx sequelize-cli db:migrate",
-      {
-        cwd: dirname(sequelizercPath),
-        env: process.env,
-        windowsHide: true
-      }
-    ).toString());
+    await migrateImpl();
   } catch (e) {
     logger.error(e.message);
     throw e;
   }
 };
 
-export const seed = () => {
+export const seed = (): void => {
   try {
     // noinspection SpellCheckingInspection
     const {
       sequelizercPath
     } = sequelizeDirs();
-    logger.log(child_process.execSync(
+    logger.log(childProcess.execSync(
       "npx sequelize-cli db:seed:all",
       {
         cwd: dirname(sequelizercPath),
