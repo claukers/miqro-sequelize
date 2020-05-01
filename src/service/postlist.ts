@@ -6,7 +6,7 @@ import {
 } from "./model";
 
 export class PostListModelService extends ModelService {
-  public async post(args, transaction?) {
+  public async post(args, transaction?): Promise<any> {
     if (args.body instanceof Array) {
       Util.parseOptions("params", args.params, [], "no_extra");
       Util.parseOptions("query", args.query, [], "no_extra");

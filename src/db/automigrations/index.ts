@@ -1,12 +1,12 @@
-import { Util } from "@miqro/core";
+import {Util} from "@miqro/core";
 import * as fs from "fs";
 import * as forEach from "lodash.foreach";
 import * as path from "path";
-import { sequelizeDirs } from "../../util/loader";
-import { executeMigration, getMigration, parseDifference, reverseModels, sortActions, writeMigration } from "./migrate";
+import {sequelizeDirs} from "../../util/loader";
+import {executeMigration, getMigration, parseDifference, reverseModels, sortActions, writeMigration} from "./migrate";
 
 // noinspection JSUnusedGlobalSymbols
-export const migrateImpl = async () => {
+export const migrateImpl = async (): Promise<void> => {
   const logger = Util.getLogger("migrate");
   const options = {
     rev: 0,
@@ -42,8 +42,12 @@ export const migrateImpl = async () => {
     .sort((a, b) => {
       const revA = parseInt(path.basename(a).split("-", 2)[0], 10);
       const revB = parseInt(path.basename(b).split("-", 2)[0], 10);
-      if (revA < revB) { return -1; }
-      if (revA > revB) { return 1; }
+      if (revA < revB) {
+        return -1;
+      }
+      if (revA > revB) {
+        return 1;
+      }
       return 0;
     })
     // remove all migrations before fromRevision
@@ -58,6 +62,7 @@ export const migrateImpl = async () => {
   });
 
   if (options.list) {
+    logger.info("aki");
     process.exit(0);
   }
 
@@ -115,9 +120,9 @@ export const makemigrationsImpl = (): string => {
 
     // load last state
     let previousState: {
-      revision: 0,
-      version: 1,
-      tables: {}
+      revision: 0;
+      version: 1;
+      tables: {};
     } = null;
 
     try {
@@ -149,7 +154,9 @@ export const makemigrationsImpl = (): string => {
     }
 
     // log migration actions
-    forEach(migration.consoleOut, (v) => { logger.info("[Actions] " + v); });
+    forEach(migration.consoleOut, (v) => {
+      logger.info("[Actions] " + v);
+    });
 
     // backup _current file
     if (fs.existsSync(path.join(migrationsFolder, "_current.json"))) {

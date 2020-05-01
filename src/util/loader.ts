@@ -6,7 +6,7 @@ import {resolve} from "path";
 // noinspection SpellCheckingInspection
 export const sequelizeDirs = (): {
   // noinspection SpellCheckingInspection
-  sequelizercPath,
+  sequelizercPath;
   dbConfigFilePath: string;
   migrationsFolder: string;
   seedersFolder: string;
@@ -21,6 +21,7 @@ export const sequelizeDirs = (): {
   } else {
     logger.info(`loading sequelize config from [${sequelizercPath}]`);
     // noinspection SpellCheckingInspection
+    /* eslint-disable  @typescript-eslint/no-var-requires */
     const sequelizerc = require(sequelizercPath);
     // noinspection SpellCheckingInspection
     return {
@@ -33,7 +34,10 @@ export const sequelizeDirs = (): {
   }
 };
 
-export const setupDB = () => {
+export const setupDB = (): {
+  models: any[];
+  sequelize: any;
+} => {
   const {
     modelsFolder
   } = sequelizeDirs();

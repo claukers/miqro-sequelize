@@ -1,12 +1,12 @@
-import {IServiceArgs, ParseOptionsError, Util} from "@miqro/core";
-import {AbstractModelService, Op, parseIncludeQuery} from "./common";
+import {ParseOptionsError, Util} from "@miqro/core";
+import {AbstractModelService, ModelServiceArgsInterface, Op, parseIncludeQuery} from "./common";
 
 export class ModelService extends AbstractModelService {
   constructor(protected model: any) {
     super();
   }
 
-  public async get({body, query, params, session}: IServiceArgs, transaction?: any, skipLocked?: boolean): Promise<any> {
+  public async get({body, query, params}: ModelServiceArgsInterface, transaction?: any, skipLocked?: boolean): Promise<any> {
     const {pagination, include, order} = Util.parseOptions("query", query, [
       {name: "include", type: "string", required: false},
       {name: "pagination", type: "string", required: false},
@@ -107,7 +107,7 @@ export class ModelService extends AbstractModelService {
     return ret;
   }
 
-  public async post({body, query, params, session}: IServiceArgs, transaction?: any): Promise<any> {
+  public async post({body, query, params}: ModelServiceArgsInterface, transaction?: any): Promise<any> {
     Util.parseOptions("params", params, [], "no_extra");
     Util.parseOptions("query", query, [], "no_extra");
     // noinspection JSDeprecatedSymbols
@@ -119,14 +119,12 @@ export class ModelService extends AbstractModelService {
     }
   }
 
-  public async patch({body, query, params, session}: IServiceArgs, transaction?: any): Promise<any> {
+  public async patch({body, query, params}: ModelServiceArgsInterface, transaction?: any): Promise<any> {
     Util.parseOptions("query", query, [], "no_extra");
     const instances = await this.get({
-      session,
       body: {},
       query,
-      params,
-      headers: {}
+      params
     }, transaction);
     if (instances.length === 1) {
       if (transaction) {
@@ -139,15 +137,13 @@ export class ModelService extends AbstractModelService {
     }
   }
 
-  public async delete({body, query, params, session}: IServiceArgs, transaction?: any): Promise<any> {
+  public async delete({body, query, params}: ModelServiceArgsInterface, transaction?: any): Promise<any> {
     Util.parseOptions("query", query, [], "no_extra");
     Util.parseOptions("body", body, [], "no_extra");
     const instances = await this.get({
-      session,
       body: {},
       query,
-      params,
-      headers: {}
+      params
     }, transaction);
     if (instances.length === 1) {
       if (transaction) {

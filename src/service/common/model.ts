@@ -1,18 +1,24 @@
-import {IServiceArgs, ParseOptionsError, Util} from "@miqro/core";
+import {ParseOptionsError, Util, SimpleMapInterface} from "@miqro/core";
 import {Database} from "../../db";
 
 export {Op} from "sequelize";
 
-export interface IModelService {
-  get(options: IServiceArgs, transaction?: any, skipLocked?: boolean): Promise<any>;
+export interface ModelServiceArgsInterface {
+  body: SimpleMapInterface<any>;
+  query: SimpleMapInterface<string>;
+  params: SimpleMapInterface<string>;
+}
 
-  post(options: IServiceArgs, transaction?: any): Promise<any>;
+export interface ModelServiceInterface {
+  get(options: ModelServiceArgsInterface, transaction?: any, skipLocked?: boolean): Promise<any>;
 
-  put(options: IServiceArgs, transaction?: any): Promise<any>;
+  post(options: ModelServiceArgsInterface, transaction?: any): Promise<any>;
 
-  patch(options: IServiceArgs, transaction?: any): Promise<any>;
+  put(options: ModelServiceArgsInterface, transaction?: any): Promise<any>;
 
-  delete(options: IServiceArgs, transaction?: any): Promise<any>;
+  patch(options: ModelServiceArgsInterface, transaction?: any): Promise<any>;
+
+  delete(options: ModelServiceArgsInterface, transaction?: any): Promise<any>;
 }
 
 export const parseIncludeQuery = (includeQuery: any[]): any[] => {

@@ -10,7 +10,7 @@ Util.loadConfig();
 
 let dbLoaded = false;
 
-describe("ModelService Func Tests", function() {
+describe("ModelService Func Tests", function () {
   this.timeout(100000);
 
   before((done) => {

@@ -10,7 +10,7 @@ import * as Sequelize from "sequelize";
 
 /* tslint:disable */
 
-const reverseSequelizeColType = (col, prefix = "Sequelize.") => {
+const reverseSequelizeColType = (col, prefix = "Sequelize."): string => {
   const attrName = col.type.key;
   const attrObj = col.type;
   const options = (col.type.options) ? col.type.options : {};
@@ -88,9 +88,6 @@ const reverseSequelizeColType = (col, prefix = "Sequelize.") => {
       }
       return prefix + "BLOB(" + options.length.toLowerCase() + ")";
 
-    case DataTypes.ENUM.key:
-      return prefix + "ENUM('" + options.values.join("', '") + "')";
-
     case DataTypes.GEOMETRY.key:
       if (options.type) {
         if (options.srid) {
@@ -135,7 +132,7 @@ const reverseSequelizeColType = (col, prefix = "Sequelize.") => {
   }
 };
 
-const reverseSequelizeDefValueType = (defaultValue, prefix = "Sequelize.") => {
+const reverseSequelizeDefValueType = (defaultValue, prefix = "Sequelize."): any => {
   if (typeof defaultValue === "object") {
     if (defaultValue.constructor && defaultValue.constructor.name) {
       return {internal: true, value: prefix + defaultValue.constructor.name};
@@ -149,7 +146,7 @@ const reverseSequelizeDefValueType = (defaultValue, prefix = "Sequelize.") => {
   return {value: defaultValue};
 };
 
-const parseIndex = (idx) => {
+const parseIndex = (idx): any => {
   delete idx.parser;
   if (idx.type == "") {
     delete idx.type;
@@ -182,7 +179,7 @@ const parseIndex = (idx) => {
   return idx;
 };
 
-export const reverseModels = (sequelize, models, logger) => {
+export const reverseModels = (sequelize, models, logger): any => {
   const tables = {};
 
   delete models.default;
@@ -289,19 +286,19 @@ export const reverseModels = (sequelize, models, logger) => {
     };
     // noinspection JSUnfilteredForInLoop
     if (models[model].options.indexes.length > 0) {
-      const idx_out = {};
+      const idxOut = {};
       // noinspection JSUnfilteredForInLoop
       for (const _i in models[model].options.indexes) {
         // noinspection JSUnfilteredForInLoop
         const index = parseIndex(models[model].options.indexes[_i]);
-        idx_out[index.hash + ""] = index;
+        idxOut[index.hash + ""] = index;
         delete index.hash;
 
         // make it immutable
         Object.freeze(index);
       }
       // noinspection JSUnfilteredForInLoop
-      models[model].options.indexes = idx_out;
+      models[model].options.indexes = idxOut;
     }
     // noinspection JSUnfilteredForInLoop
     if (typeof models[model].options.charset !== "undefined") {
@@ -315,7 +312,7 @@ export const reverseModels = (sequelize, models, logger) => {
   return tables;
 };
 
-export const parseDifference = (previousState, currentState, logger) => {
+export const parseDifference = (previousState, currentState, logger): any => {
   //    log(JSON.stringify(currentState, null, 4));
   const actions = [];
   const difference = diff(previousState, currentState);
@@ -512,7 +509,7 @@ export const parseDifference = (previousState, currentState, logger) => {
           for (const k in keys) {
             const key = keys[k];
             // noinspection JSUnusedLocalSymbols
-            const index = clone(df.rhs[key]);
+            clone(df.rhs[key]);
             actions.push({
               actionType: "addIndex",
               tableName,
@@ -528,7 +525,7 @@ export const parseDifference = (previousState, currentState, logger) => {
           for (const k in keys) {
             const key = keys[k];
             // noinspection JSUnusedLocalSymbols
-            const index = clone(df.lhs[key]);
+            clone(df.lhs[key]);
             actions.push({
               actionType: "removeIndex",
               tableName,
@@ -559,7 +556,7 @@ export const parseDifference = (previousState, currentState, logger) => {
   return actions;
 };
 
-export const sortActions = (actions) => {
+export const sortActions = (actions): any => {
   const orderedActionTypes = [
     "removeIndex",
     "removeColumn",
@@ -627,8 +624,8 @@ export const sortActions = (actions) => {
   }
 };
 // noinspection SpellCheckingInspection
-export const getMigration = (actions) => {
-  const propertyToStr = (obj) => {
+export const getMigration = (actions): any => {
+  const propertyToStr = (obj): any => {
     // noinspection SpellCheckingInspection
     const vals = [];
     for (const k in obj) {
@@ -666,7 +663,7 @@ export const getMigration = (actions) => {
     return "{ " + vals.reverse().join(", ") + " }";
   };
 
-  const getAttributes = (attrs) => {
+  const getAttributes = (attrs): any => {
     const ret = [];
     for (const attrName in attrs) {
       // noinspection JSUnfilteredForInLoop
@@ -770,8 +767,8 @@ export const getMigration = (actions) => {
   return {commandsUp, consoleOut};
 };
 
-export const writeMigration = (revision, migration, migrationsDir, name = "", comment = "") => {
-  let _commands = "var migrationCommands = [ \n" + migration.commandsUp.join(", \n") + " \n];\n";
+export const writeMigration = (revision, migration, migrationsDir, name = "", comment = ""): any => {
+  const _commands = "var migrationCommands = [ \n" + migration.commandsUp.join(", \n") + " \n];\n";
   const _actions = " * " + migration.consoleOut.join("\n * ");
 
   //_commands = js_beautify(_commands);
@@ -829,7 +826,8 @@ module.exports = {
   return {filename, info};
 };
 
-export const executeMigration = (queryInterface, filename, pos, cb, logger) => {
+export const executeMigration = (queryInterface, filename, pos, cb, logger): any => {
+  /* eslint-disable  @typescript-eslint/no-var-requires */
   const mig = require(filename);
 
   if (!mig) {

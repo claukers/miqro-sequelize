@@ -1,29 +1,31 @@
-import { ISimpleMap, Util } from "@miqro/core";
-import { EventEmitter } from "events";
-import { Sequelize, Transaction } from "sequelize";
-import { setupDB } from "../util/loader";
+import {SimpleMapInterface, Util} from "@miqro/core";
+import {EventEmitter} from "events";
+import {Sequelize, Transaction} from "sequelize";
+import {setupDB} from "../util/loader";
 
 // noinspection SpellCheckingInspection
 export type DataBaseState = "stopped" | "starting" | "started" | "startstop" | "error";
 
-export interface IModelMap extends ISimpleMap<any> {
-}
+export type IModelMap = SimpleMapInterface<any>
 
 let logger = null;
 
 export class Database extends EventEmitter {
   // noinspection SpellCheckingInspection
   public static events: DataBaseState[] = ["stopped", "starting", "started", "startstop", "error"];
+
   public static getInstance(): Database {
     if (!Database.instance) {
       Database.instance = new Database();
     }
     return Database.instance;
   }
+
   private static instance: Database = null;
   public models: IModelMap = {};
   public sequelize: Sequelize;
   private state: DataBaseState = "stopped";
+
   constructor() {
     super();
     if (logger === null) {
@@ -34,7 +36,7 @@ export class Database extends EventEmitter {
     Util.checkEnvVariables(requiredEnvVariables);
     const models = setupDB();
     this.sequelize = models.sequelize;
-    (this.sequelize as any).log = (text) => {
+    (this.sequelize as any).log = (text): void => {
       logger.debug(text);
     };
     Object.keys(models).forEach((modelName) => {
@@ -43,19 +45,22 @@ export class Database extends EventEmitter {
       }
     });
   }
-  public async transaction(transactionCB: (t: Transaction) => PromiseLike<any>) {
+
+  public async transaction(transactionCB: (t: Transaction) => PromiseLike<any>): Promise<any> {
     await this.sequelize.transaction((t: Transaction) => {
       return transactionCB(t);
     });
   }
-  public async query(q: { query: string, values: any[] }, t?) {
+
+  public async query(q: { query: string; values: any[] }, t?): Promise<any> {
     if (t) {
-      return this.sequelize.query(q, { transaction: t });
+      return this.sequelize.query(q, {transaction: t});
     } else {
       return this.sequelize.query(q);
     }
   }
-  public async start() {
+
+  public async start(): Promise<void> {
     if (this.state !== "stopped") {
       throw new Error("DataBase not stopped!");
     }
@@ -77,13 +82,13 @@ export class Database extends EventEmitter {
           this.stateChange("started");
           resolve();
         }).catch((e) => {
-          this.stateChange("error", e);
-          reject();
-        });
+        this.stateChange("error", e);
+        reject();
+      });
     });
   }
 
-  public async stop() {
+  public async stop(): Promise<void> {
     if (this.state !== "started") {
       const err = new Error("DataBase not started!");
       this.emit("error", err);
@@ -100,7 +105,7 @@ export class Database extends EventEmitter {
     }
   }
 
-  private stateChange(state: DataBaseState, args?: any) {
+  private stateChange(state: DataBaseState, args?: any): void {
     if (Database.events.indexOf(state) !== -1) {
       this.state = state;
       this.emit(this.state, args);

@@ -3,25 +3,25 @@ import {
 } from "./postlist";
 
 export class FakeDeleteModelService extends PostListModelService {
-  protected modelIsDeletedAttribute: string = "deleted";
-  public async get(args) {
+  protected modelIsDeletedAttribute = "deleted";
+  public async get(args): Promise<any> {
     args.params[this.modelIsDeletedAttribute] = false;
     return super.get(args);
   }
 
-  public async delete(args) {
+  public async delete(args): Promise<any> {
     args.body[this.modelIsDeletedAttribute] = true;
     return super.patch(args);
   }
 
-  public async patch(args) {
+  public async patch(args): Promise<any> {
     if (args.body[this.modelIsDeletedAttribute]) {
       delete args.body[this.modelIsDeletedAttribute];
     }
     return super.patch(args);
   }
 
-  public async post(args) {
+  public async post(args): Promise<any> {
     if (args.body instanceof Array) {
       for (const rBody of args.body) {
         rBody[this.modelIsDeletedAttribute] = false;

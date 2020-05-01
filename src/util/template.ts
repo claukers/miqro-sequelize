@@ -73,7 +73,7 @@ module.exports = {
 };
 `;
 
-const exampleModel = (modelName: string) => {
+const exampleModel = (modelName: string): string => {
   return `module.exports = (sequelize, DataTypes) => {
   const ${modelName} = sequelize.define("${modelName}", {
     name: DataTypes.STRING,
@@ -88,7 +88,7 @@ const exampleModel = (modelName: string) => {
 };`;
 };
 
-const exampleModelService = (serviceName: string) => {
+const exampleModelService = (serviceName: string): string => {
   return `const { Util } = require("@miqro/core");
 const { Database, ModelService } = require("@miqro/database");
 
