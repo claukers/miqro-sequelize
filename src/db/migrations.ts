@@ -68,7 +68,18 @@ export const makemigrations = (): void => {
 
 export const migrate = async (): Promise<void> => {
   try {
-    await migrateImpl();
+    // noinspection SpellCheckingInspection
+    const {
+      sequelizercPath
+    } = sequelizeDirs();
+    logger.log(childProcess.execSync(
+      "npx sequelize-cli db:migrate",
+      {
+        cwd: dirname(sequelizercPath),
+        env: process.env,
+        windowsHide: true
+      }
+    ).toString());
   } catch (e) {
     logger.error(e.message);
     throw e;

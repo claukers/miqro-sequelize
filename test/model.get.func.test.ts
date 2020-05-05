@@ -21,6 +21,7 @@ describe("ModelService Func Tests", function () {
         dbLoaded = true;
         await initDBConfig();
         await migrate();
+        await migrate();
         await seed();
       }
     })().then(done).catch(done);
