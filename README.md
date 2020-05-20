@@ -52,12 +52,9 @@ const {ModelService, Database} = require("@miqro/database");
 
 const service = new ModelService(Database.getInstance().models.Post);
 
-app.post(req, res) => {
-    switch(req.method) {
-        case "GET":
-            res.json(service.post(req));
-            break;
-        ........
+app.use(req, res) => {
+    res.json(service.post(req));
+    ........
 ```
 
 ## configuration
