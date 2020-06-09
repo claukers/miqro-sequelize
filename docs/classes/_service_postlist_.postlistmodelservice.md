@@ -40,7 +40,7 @@
 
 *Inherited from [ModelService](_service_model_.modelservice.md).[constructor](_service_model_.modelservice.md#constructor)*
 
-*Defined in [src/service/model.ts:4](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/model.ts#L4)*
+*Defined in [src/service/model.ts:4](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/model.ts#L4)*
 
 **Parameters:**
 
@@ -58,7 +58,7 @@ Name | Type |
 
 *Inherited from [ModelService](_service_model_.modelservice.md).[model](_service_model_.modelservice.md#protected-model)*
 
-*Defined in [src/service/model.ts:5](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/model.ts#L5)*
+*Defined in [src/service/model.ts:6](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/model.ts#L6)*
 
 ## Methods
 
@@ -70,7 +70,7 @@ Name | Type |
 
 *Overrides [AbstractModelService](_service_common_amodel_.abstractmodelservice.md).[delete](_service_common_amodel_.abstractmodelservice.md#delete)*
 
-*Defined in [src/service/model.ts:140](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/model.ts#L140)*
+*Defined in [src/service/model.ts:143](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/model.ts#L143)*
 
 **Parameters:**
 
@@ -96,7 +96,7 @@ ___
 
 *Overrides [AbstractModelService](_service_common_amodel_.abstractmodelservice.md).[get](_service_common_amodel_.abstractmodelservice.md#get)*
 
-*Defined in [src/service/model.ts:9](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/model.ts#L9)*
+*Defined in [src/service/model.ts:11](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/model.ts#L11)*
 
 **Parameters:**
 
@@ -124,7 +124,7 @@ ___
 
 *Overrides [AbstractModelService](_service_common_amodel_.abstractmodelservice.md).[patch](_service_common_amodel_.abstractmodelservice.md#patch)*
 
-*Defined in [src/service/model.ts:122](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/model.ts#L122)*
+*Defined in [src/service/model.ts:125](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/model.ts#L125)*
 
 **Parameters:**
 
@@ -144,17 +144,19 @@ ___
 
 ###  post
 
-▸ **post**(`args`: any, `transaction?`: any): *Promise‹any›*
+▸ **post**(`args`: [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md), `transaction?`: any): *Promise‹any›*
+
+*Implementation of [ModelServiceInterface](../interfaces/_service_common_model_.modelserviceinterface.md)*
 
 *Overrides [ModelService](_service_model_.modelservice.md).[post](_service_model_.modelservice.md#post)*
 
-*Defined in [src/service/postlist.ts:9](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/postlist.ts#L9)*
+*Defined in [src/service/postlist.ts:8](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/postlist.ts#L8)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`args` | any |
+`args` | [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md) |
 `transaction?` | any |
 
 **Returns:** *Promise‹any›*
@@ -167,7 +169,7 @@ ___
 
 *Inherited from [AbstractModelService](_service_common_amodel_.abstractmodelservice.md).[put](_service_common_amodel_.abstractmodelservice.md#put)*
 
-*Defined in [src/service/common/amodel.ts:17](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/amodel.ts#L17)*
+*Defined in [src/service/common/amodel.ts:17](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/common/amodel.ts#L17)*
 
 **Parameters:**
 

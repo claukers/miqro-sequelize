@@ -23,7 +23,7 @@
 
 Ƭ **DataBaseState**: *"stopped" | "starting" | "started" | "startstop" | "error"*
 
-*Defined in [src/db/db.ts:7](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L7)*
+*Defined in [src/db/db.ts:7](https://github.com/claukers/miqro-sequelize/blob/624a208/src/db/db.ts#L7)*
 
 ___
 
@@ -31,7 +31,7 @@ ___
 
 Ƭ **IModelMap**: *SimpleMapInterface‹any›*
 
-*Defined in [src/db/db.ts:9](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L9)*
+*Defined in [src/db/db.ts:9](https://github.com/claukers/miqro-sequelize/blob/624a208/src/db/db.ts#L9)*
 
 ## Variables
 
@@ -39,4 +39,4 @@ ___
 
 • **logger**: *any* = null
 
-*Defined in [src/db/db.ts:11](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/db.ts#L11)*
+*Defined in [src/db/db.ts:11](https://github.com/claukers/miqro-sequelize/blob/624a208/src/db/db.ts#L11)*

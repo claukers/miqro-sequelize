@@ -17,7 +17,7 @@
 
 • **logger**: *Console* = console
 
-*Defined in [src/cli/createmodelservice.ts:6](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/cli/createmodelservice.ts#L6)*
+*Defined in [src/cli/createmodelservice.ts:6](https://github.com/claukers/miqro-sequelize/blob/624a208/src/cli/createmodelservice.ts#L6)*
 
 ___
 
@@ -25,7 +25,7 @@ ___
 
 • **modelPath**: *string* = resolve(serviceDirname, `${modelname.toLowerCase()}.js`)
 
-*Defined in [src/cli/createmodelservice.ts:24](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/cli/createmodelservice.ts#L24)*
+*Defined in [src/cli/createmodelservice.ts:24](https://github.com/claukers/miqro-sequelize/blob/624a208/src/cli/createmodelservice.ts#L24)*
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 • **modelname**: *string* = process.argv[3]
 
-*Defined in [src/cli/createmodelservice.ts:7](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/cli/createmodelservice.ts#L7)*
+*Defined in [src/cli/createmodelservice.ts:7](https://github.com/claukers/miqro-sequelize/blob/624a208/src/cli/createmodelservice.ts#L7)*
 
 ___
 
@@ -41,4 +41,4 @@ ___
 
 • **serviceDirname**: *string* = ConfigPathResolver.getServiceDirname()
 
-*Defined in [src/cli/createmodelservice.ts:16](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/cli/createmodelservice.ts#L16)*
+*Defined in [src/cli/createmodelservice.ts:16](https://github.com/claukers/miqro-sequelize/blob/624a208/src/cli/createmodelservice.ts#L16)*

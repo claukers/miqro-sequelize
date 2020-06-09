@@ -15,7 +15,7 @@
 
 ▸ **makemigrationsImpl**(): *string*
 
-*Defined in [src/db/automigrations/index.ts:90](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/automigrations/index.ts#L90)*
+*Defined in [src/db/automigrations/index.ts:91](https://github.com/claukers/miqro-sequelize/blob/624a208/src/db/automigrations/index.ts#L91)*
 
 **Returns:** *string*
 
@@ -25,6 +25,6 @@ ___
 
 ▸ **migrateImpl**(): *Promise‹void›*
 
-*Defined in [src/db/automigrations/index.ts:9](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/db/automigrations/index.ts#L9)*
+*Defined in [src/db/automigrations/index.ts:9](https://github.com/claukers/miqro-sequelize/blob/624a208/src/db/automigrations/index.ts#L9)*
 
 **Returns:** *Promise‹void›*

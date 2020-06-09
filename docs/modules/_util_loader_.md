@@ -15,7 +15,7 @@
 
 ▸ **sequelizeDirs**(): *object*
 
-*Defined in [src/util/loader.ts:7](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/loader.ts#L7)*
+*Defined in [src/util/loader.ts:7](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/loader.ts#L7)*
 
 **Returns:** *object*
 
@@ -35,7 +35,7 @@ ___
 
 ▸ **setupDB**(): *object*
 
-*Defined in [src/util/loader.ts:37](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/util/loader.ts#L37)*
+*Defined in [src/util/loader.ts:37](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/loader.ts#L37)*
 
 **Returns:** *object*
 

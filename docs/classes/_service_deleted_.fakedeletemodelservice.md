@@ -39,7 +39,7 @@
 
 *Inherited from [ModelService](_service_model_.modelservice.md).[constructor](_service_model_.modelservice.md#constructor)*
 
-*Defined in [src/service/model.ts:4](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/model.ts#L4)*
+*Defined in [src/service/model.ts:4](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/model.ts#L4)*
 
 **Parameters:**
 
@@ -57,7 +57,7 @@ Name | Type |
 
 *Inherited from [ModelService](_service_model_.modelservice.md).[model](_service_model_.modelservice.md#protected-model)*
 
-*Defined in [src/service/model.ts:5](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/model.ts#L5)*
+*Defined in [src/service/model.ts:6](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/model.ts#L6)*
 
 ___
 
@@ -65,23 +65,23 @@ ___
 
 • **modelIsDeletedAttribute**: *string* = "deleted"
 
-*Defined in [src/service/deleted.ts:6](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/deleted.ts#L6)*
+*Defined in [src/service/deleted.ts:5](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/deleted.ts#L5)*
 
 ## Methods
 
 ###  delete
 
-▸ **delete**(`args`: any): *Promise‹any›*
+▸ **delete**(`args`: [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md)): *Promise‹any›*
 
 *Overrides [ModelService](_service_model_.modelservice.md).[delete](_service_model_.modelservice.md#delete)*
 
-*Defined in [src/service/deleted.ts:12](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/deleted.ts#L12)*
+*Defined in [src/service/deleted.ts:12](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/deleted.ts#L12)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`args` | any |
+`args` | [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md) |
 
 **Returns:** *Promise‹any›*
 
@@ -89,17 +89,17 @@ ___
 
 ###  get
 
-▸ **get**(`args`: any): *Promise‹any›*
+▸ **get**(`args`: [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md)): *Promise‹any›*
 
 *Overrides [ModelService](_service_model_.modelservice.md).[get](_service_model_.modelservice.md#get)*
 
-*Defined in [src/service/deleted.ts:7](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/deleted.ts#L7)*
+*Defined in [src/service/deleted.ts:7](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/deleted.ts#L7)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`args` | any |
+`args` | [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md) |
 
 **Returns:** *Promise‹any›*
 
@@ -107,17 +107,17 @@ ___
 
 ###  patch
 
-▸ **patch**(`args`: any): *Promise‹any›*
+▸ **patch**(`args`: [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md)): *Promise‹any›*
 
 *Overrides [ModelService](_service_model_.modelservice.md).[patch](_service_model_.modelservice.md#patch)*
 
-*Defined in [src/service/deleted.ts:17](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/deleted.ts#L17)*
+*Defined in [src/service/deleted.ts:17](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/deleted.ts#L17)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`args` | any |
+`args` | [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md) |
 
 **Returns:** *Promise‹any›*
 
@@ -125,17 +125,17 @@ ___
 
 ###  post
 
-▸ **post**(`args`: any): *Promise‹any›*
+▸ **post**(`args`: [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md)): *Promise‹any›*
 
 *Overrides [PostListModelService](_service_postlist_.postlistmodelservice.md).[post](_service_postlist_.postlistmodelservice.md#post)*
 
-*Defined in [src/service/deleted.ts:24](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/deleted.ts#L24)*
+*Defined in [src/service/deleted.ts:24](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/deleted.ts#L24)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`args` | any |
+`args` | [ModelServiceArgsInterface](../interfaces/_service_common_model_.modelserviceargsinterface.md) |
 
 **Returns:** *Promise‹any›*
 
@@ -147,7 +147,7 @@ ___
 
 *Inherited from [AbstractModelService](_service_common_amodel_.abstractmodelservice.md).[put](_service_common_amodel_.abstractmodelservice.md#put)*
 
-*Defined in [src/service/common/amodel.ts:17](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/amodel.ts#L17)*
+*Defined in [src/service/common/amodel.ts:17](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/common/amodel.ts#L17)*
 
 **Parameters:**
 

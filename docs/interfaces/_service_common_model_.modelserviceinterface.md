@@ -29,7 +29,7 @@
 
 ▸ **delete**(`options`: [ModelServiceArgsInterface](_service_common_model_.modelserviceargsinterface.md), `transaction?`: any): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:21](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/model.ts#L21)*
+*Defined in [src/service/common/model.ts:21](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/common/model.ts#L21)*
 
 **Parameters:**
 
@@ -46,7 +46,7 @@ ___
 
 ▸ **get**(`options`: [ModelServiceArgsInterface](_service_common_model_.modelserviceargsinterface.md), `transaction?`: any, `skipLocked?`: boolean): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:13](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/model.ts#L13)*
+*Defined in [src/service/common/model.ts:13](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/common/model.ts#L13)*
 
 **Parameters:**
 
@@ -64,7 +64,7 @@ ___
 
 ▸ **patch**(`options`: [ModelServiceArgsInterface](_service_common_model_.modelserviceargsinterface.md), `transaction?`: any): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:19](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/model.ts#L19)*
+*Defined in [src/service/common/model.ts:19](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/common/model.ts#L19)*
 
 **Parameters:**
 
@@ -81,7 +81,7 @@ ___
 
 ▸ **post**(`options`: [ModelServiceArgsInterface](_service_common_model_.modelserviceargsinterface.md), `transaction?`: any): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:15](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/model.ts#L15)*
+*Defined in [src/service/common/model.ts:15](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/common/model.ts#L15)*
 
 **Parameters:**
 
@@ -98,7 +98,7 @@ ___
 
 ▸ **put**(`options`: [ModelServiceArgsInterface](_service_common_model_.modelserviceargsinterface.md), `transaction?`: any): *Promise‹any›*
 
-*Defined in [src/service/common/model.ts:17](https://github.com/claukers/miqro-sequelize/blob/af574dd/src/service/common/model.ts#L17)*
+*Defined in [src/service/common/model.ts:17](https://github.com/claukers/miqro-sequelize/blob/624a208/src/service/common/model.ts#L17)*
 
 **Parameters:**
 
