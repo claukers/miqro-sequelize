@@ -2,10 +2,12 @@ import {ParseOptionsError, Util} from "@miqro/core";
 import {AbstractModelService, ModelServiceArgsInterface, Op, parseIncludeQuery} from "./common";
 
 export class ModelService extends AbstractModelService {
+  /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
   constructor(protected model: any) {
     super();
   }
 
+  /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
   public async get({body, query, params}: ModelServiceArgsInterface, transaction?: any, skipLocked?: boolean): Promise<any> {
     const {pagination, include, order} = Util.parseOptions("query", query, [
       {name: "include", type: "string", required: false},
@@ -119,6 +121,7 @@ export class ModelService extends AbstractModelService {
     }
   }
 
+  /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
   public async patch({body, query, params}: ModelServiceArgsInterface, transaction?: any): Promise<any> {
     Util.parseOptions("query", query, [], "no_extra");
     const instances = await this.get({

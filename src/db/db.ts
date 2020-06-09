@@ -51,8 +51,8 @@ export class Database extends EventEmitter {
       return transactionCB(t);
     });
   }
-
-  public async query(q: { query: string; values: any[] }, t?): Promise<any> {
+  /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
+  public async query(q: { query: string; values: any[] }, t?: any): Promise<any> {
     if (t) {
       return this.sequelize.query(q, {transaction: t});
     } else {

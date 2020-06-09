@@ -1,4 +1,4 @@
-import { Util } from "@miqro/core";
+import {Util} from "@miqro/core";
 import {migrate} from "../db";
 
 if (process.argv.length !== 3) {
@@ -6,4 +6,6 @@ if (process.argv.length !== 3) {
 }
 
 Util.loadConfig();
-migrate();
+migrate().catch((e) => {
+  console.error(e);
+});

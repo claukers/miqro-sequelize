@@ -1,12 +1,11 @@
-import {
-  Util
-} from "@miqro/core";
-import {
-  ModelService
-} from "./model";
+import {Util} from "@miqro/core";
+import {ModelService} from "./model";
+import {ModelServiceArgsInterface} from "./common";
 
 export class PostListModelService extends ModelService {
-  public async post(args, transaction?): Promise<any> {
+  
+  /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
+  public async post(args: ModelServiceArgsInterface, transaction?: any): Promise<any> {
     if (args.body instanceof Array) {
       Util.parseOptions("params", args.params, [], "no_extra");
       Util.parseOptions("query", args.query, [], "no_extra");

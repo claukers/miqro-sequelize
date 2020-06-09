@@ -12,14 +12,14 @@ export const sequelizeDirs = (): {
   seedersFolder: string;
   modelsFolder: string;
 } => {
-  const logger = Util.getLogger("loader");
+  const logger = Util.getLogger("Database");
   // noinspection SpellCheckingInspection
   const sequelizercPath = resolve(ConfigPathResolver.getBaseDirname(), ".sequelizerc");
   if (!existsSync(sequelizercPath)) {
     // noinspection SpellCheckingInspection
     throw new ConfigFileNotFoundError(`missing .sequelizerc file. maybe you didnt run miqro-database init.`);
   } else {
-    logger.info(`loading sequelize config from [${sequelizercPath}]`);
+    logger.debug(`loading sequelize config from [${sequelizercPath}]`);
     // noinspection SpellCheckingInspection
     /* eslint-disable  @typescript-eslint/no-var-requires */
     const sequelizerc = require(sequelizercPath);

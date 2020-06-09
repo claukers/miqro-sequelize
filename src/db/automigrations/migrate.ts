@@ -179,7 +179,8 @@ const parseIndex = (idx): any => {
   return idx;
 };
 
-export const reverseModels = (sequelize, models, logger): any => {
+/* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
+export const reverseModels = (sequelize: any, models: any, logger: any): any => {
   const tables = {};
 
   delete models.default;

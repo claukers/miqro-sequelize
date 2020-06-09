@@ -1,6 +1,6 @@
 import * as childProcess from "child_process";
 import {sequelizeDirs} from "../util/loader";
-import {makemigrationsImpl, migrateImpl} from "./automigrations";
+import {makemigrationsImpl} from "./automigrations";
 import {existsSync, mkdirSync, writeFileSync} from "fs";
 import {dirname, resolve} from "path";
 import {templates} from "../util/template";

@@ -25,6 +25,7 @@ export const migrateImpl = async (): Promise<void> => {
     modelsFolder
   } = sequelizeDirs();
 
+  /* eslint-disable  @typescript-eslint/no-var-requires */
   const sequelize = require(modelsFolder).sequelize;
   const queryInterface = sequelize.getQueryInterface();
 
@@ -122,8 +123,8 @@ export const makemigrationsImpl = (): string => {
     let previousState: {
       revision: 0;
       version: 1;
-      tables: {};
-    } = null;
+      tables: any;
+    };
 
     try {
       previousState = JSON.parse(fs.readFileSync(path.join(migrationsFolder, "_current.json")).toString());
