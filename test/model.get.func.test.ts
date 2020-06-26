@@ -2,7 +2,7 @@ import {resolve} from "path";
 import {expect} from "chai";
 import {before, describe, it} from "mocha";
 
-import {Database, Util} from "@miqro/core";
+import {Database, ModelService, Util} from "@miqro/core";
 
 process.env.NODE_ENV = "test";
 process.env.MIQRO_DIRNAME = resolve(__dirname, "data");
@@ -29,7 +29,6 @@ describe("ModelService Func Tests", function () {
 
   it("case 1 get with pagination and order  but no params 1", (done) => {
     (async () => {
-      const {ModelService} = require("../src");
       const db = Database.getInstance();
       const service = new ModelService(db.models.post);
       const result = await service.get({
@@ -52,7 +51,6 @@ describe("ModelService Func Tests", function () {
 
   it("case 2 get with pagination and order and params 1", (done) => {
     (async () => {
-      const {ModelService} = require("../src");
       const db = Database.getInstance();
       const service = new ModelService(db.models.post);
       const result = await service.get({
@@ -77,7 +75,6 @@ describe("ModelService Func Tests", function () {
 
   it("case 2 get with pagination and order and params 2", (done) => {
     (async () => {
-      const {ModelService} = require("../src");
       const db = Database.getInstance();
       const service = new ModelService(db.models.post);
       const result = await service.get({

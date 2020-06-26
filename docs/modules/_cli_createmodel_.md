@@ -17,7 +17,7 @@
 
 • **config**: *object* = loadSequelizeRC()
 
-*Defined in [src/cli/createmodel.ts:17](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/cli/createmodel.ts#L17)*
+*Defined in [src/cli/createmodel.ts:17](https://github.com/claukers/miqro-sequelize/blob/846f667/src/cli/createmodel.ts#L17)*
 
 #### Type declaration:
 
@@ -37,7 +37,7 @@ ___
 
 • **logger**: *Console* = console
 
-*Defined in [src/cli/createmodel.ts:6](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/cli/createmodel.ts#L6)*
+*Defined in [src/cli/createmodel.ts:6](https://github.com/claukers/miqro-sequelize/blob/846f667/src/cli/createmodel.ts#L6)*
 
 ___
 
@@ -45,7 +45,7 @@ ___
 
 • **modelPath**: *string* = resolve(config.modelsFolder, `${modelname.toLowerCase()}.js`)
 
-*Defined in [src/cli/createmodel.ts:25](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/cli/createmodel.ts#L25)*
+*Defined in [src/cli/createmodel.ts:25](https://github.com/claukers/miqro-sequelize/blob/846f667/src/cli/createmodel.ts#L25)*
 
 ___
 
@@ -53,4 +53,4 @@ ___
 
 • **modelname**: *string* = process.argv[3]
 
-*Defined in [src/cli/createmodel.ts:7](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/cli/createmodel.ts#L7)*
+*Defined in [src/cli/createmodel.ts:7](https://github.com/claukers/miqro-sequelize/blob/846f667/src/cli/createmodel.ts#L7)*
