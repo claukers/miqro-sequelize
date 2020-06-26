@@ -1,7 +1,7 @@
 import {existsSync, mkdirSync, writeFileSync} from "fs";
 import {resolve} from "path";
-import {sequelizeDirs} from "../util/loader";
 import {templates} from "../util/template";
+import {loadSequelizeRC} from "@miqro/core";
 
 const logger = console;
 const modelname = process.argv[3];
@@ -14,7 +14,7 @@ if (typeof modelname !== "string") {
   throw new Error(`<modelname> must be a string!`);
 }
 
-const config = sequelizeDirs();
+const config = loadSequelizeRC();
 if (!existsSync(config.modelsFolder)) {
   logger.warn(`models folder [${config.modelsFolder}] doesnt exists!`);
   logger.warn(`creating [${config.modelsFolder}]!`);

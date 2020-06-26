@@ -1,2 +1,2 @@
-export { Database } from "./db";
+export {Database} from "@miqro/core";
 export * from "./migrations";

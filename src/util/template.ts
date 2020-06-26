@@ -95,8 +95,8 @@ const exampleModel = (modelName: string): string => {
 };
 
 const exampleModelService = (serviceName: string): string => {
-  return `const { Util } = require("@miqro/core");
-const { Database, ModelService } = require("@miqro/database");
+  return `const { Database, Util } = require("@miqro/core");
+const { ModelService } = require("@miqro/database");
 
 class ${serviceName}Service extends ModelService {
   static getInstance() {

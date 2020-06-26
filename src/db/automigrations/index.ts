@@ -1,8 +1,7 @@
-import {Util} from "@miqro/core";
+import {loadSequelizeRC, Util} from "@miqro/core";
 import * as fs from "fs";
 import * as forEach from "lodash.foreach";
 import * as path from "path";
-import {sequelizeDirs} from "../../util/loader";
 import {executeMigration, getMigration, parseDifference, reverseModels, sortActions, writeMigration} from "./migrate";
 
 // noinspection JSUnusedGlobalSymbols
@@ -23,7 +22,7 @@ export const migrateImpl = async (): Promise<void> => {
   const {
     migrationsFolder,
     modelsFolder
-  } = sequelizeDirs();
+  } = loadSequelizeRC();
 
   /* eslint-disable  @typescript-eslint/no-var-requires */
   const sequelize = require(modelsFolder).sequelize;
@@ -98,7 +97,7 @@ export const makemigrationsImpl = (): string => {
   const {
     migrationsFolder,
     modelsFolder
-  } = sequelizeDirs();
+  } = loadSequelizeRC();
 
   // noinspection SpellCheckingInspection
   const logger = Util.getLogger("makemigrations");

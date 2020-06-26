@@ -1,5 +1,4 @@
 import * as childProcess from "child_process";
-import {sequelizeDirs} from "../util/loader";
 import {makemigrationsImpl} from "./automigrations";
 import {existsSync, mkdirSync, writeFileSync} from "fs";
 import {dirname, resolve} from "path";
@@ -69,13 +68,10 @@ export const makemigrations = (): void => {
 export const migrate = async (): Promise<void> => {
   try {
     // noinspection SpellCheckingInspection
-    const {
-      sequelizercPath
-    } = sequelizeDirs();
     logger.log(childProcess.execSync(
       "npx sequelize-cli db:migrate",
       {
-        cwd: dirname(sequelizercPath),
+        cwd: dirname(ConfigPathResolver.getSequelizeRCFilePath()),
         env: process.env,
         windowsHide: true
       }
@@ -89,13 +85,10 @@ export const migrate = async (): Promise<void> => {
 export const seed = (): void => {
   try {
     // noinspection SpellCheckingInspection
-    const {
-      sequelizercPath
-    } = sequelizeDirs();
     logger.log(childProcess.execSync(
       "npx sequelize-cli db:seed:all",
       {
-        cwd: dirname(sequelizercPath),
+        cwd: dirname(ConfigPathResolver.getSequelizeRCFilePath()),
         env: process.env,
         windowsHide: true
       }

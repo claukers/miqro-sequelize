@@ -1,5 +1,4 @@
-import {ParseOptionsError, Util, SimpleMapInterface} from "@miqro/core";
-import {Database} from "../../db";
+import {Database, ParseOptionsError, SimpleMapInterface, Util} from "@miqro/core";
 
 export {Op} from "sequelize";
 
