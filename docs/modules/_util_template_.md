@@ -50,7 +50,7 @@ module.exports = {
 };
 `
 
-*Defined in [src/util/template.ts:37](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/template.ts#L37)*
+*Defined in [src/util/template.ts:43](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/util/template.ts#L43)*
 
 ___
 
@@ -58,69 +58,83 @@ ___
 
 • **modelsIndex**: *"'use strict';
 
-const fs = require("fs");
-const path = require("path");
-const Sequelize = require("sequelize");
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+const basename = path.basename(__filename);
 const sequelizerc = require(path.resolve(__dirname, '..', '..', '.sequelizerc'));
 const config = require(sequelizerc.config);
+const db = {};
 
-const modelsPath = __dirname;
-
-const db = {
-  sequelize: new Sequelize(config.database, config.username, config.password, config),
-  Sequelize
-};
+let sequelize;
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
 fs
-  .readdirSync(modelsPath)
-  .filter((file) => {
-    return (file !== "index.js") && (file.indexOf(".") !== 0) && (file.slice(-3) === ".js");
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
-  .forEach((file) => {
-    const model = db.sequelize.import(path.join(modelsPath, file));
+  .forEach(file => {
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
-Object.keys(db).forEach((modelName) => {
+Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
 });
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
 module.exports = db;
+
 "* = `'use strict';
 
-const fs = require("fs");
-const path = require("path");
-const Sequelize = require("sequelize");
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+const basename = path.basename(__filename);
 const sequelizerc = require(path.resolve(__dirname, '..', '..', '.sequelizerc'));
 const config = require(sequelizerc.config);
+const db = {};
 
-const modelsPath = __dirname;
-
-const db = {
-  sequelize: new Sequelize(config.database, config.username, config.password, config),
-  Sequelize
-};
+let sequelize;
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
 fs
-  .readdirSync(modelsPath)
-  .filter((file) => {
-    return (file !== "index.js") && (file.indexOf(".") !== 0) && (file.slice(-3) === ".js");
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
-  .forEach((file) => {
-    const model = db.sequelize.import(path.join(modelsPath, file));
+  .forEach(file => {
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
-Object.keys(db).forEach((modelName) => {
+Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
 });
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
 module.exports = db;
+
 `
 
-*Defined in [src/util/template.ts:2](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/template.ts#L2)*
+*Defined in [src/util/template.ts:2](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/util/template.ts#L2)*
 
 ___
 
@@ -144,7 +158,7 @@ module.exports = {
 };
 `
 
-*Defined in [src/util/template.ts:65](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/template.ts#L65)*
+*Defined in [src/util/template.ts:71](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/util/template.ts#L71)*
 
 ## Functions
 
@@ -152,7 +166,7 @@ module.exports = {
 
 ▸ **exampleModel**(`modelName`: string): *string*
 
-*Defined in [src/util/template.ts:76](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/template.ts#L76)*
+*Defined in [src/util/template.ts:82](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/util/template.ts#L82)*
 
 **Parameters:**
 
@@ -168,7 +182,7 @@ ___
 
 ▸ **exampleModelService**(`serviceName`: string): *string*
 
-*Defined in [src/util/template.ts:91](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/template.ts#L91)*
+*Defined in [src/util/template.ts:97](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/util/template.ts#L97)*
 
 **Parameters:**
 
@@ -184,34 +198,34 @@ Name | Type |
 
 ### ▪ **templates**: *object*
 
-*Defined in [src/util/template.ts:112](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/template.ts#L112)*
+*Defined in [src/util/template.ts:118](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/util/template.ts#L118)*
 
 ###  dbConfig
 
 • **dbConfig**: *string*
 
-*Defined in [src/util/template.ts:114](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/template.ts#L114)*
+*Defined in [src/util/template.ts:120](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/util/template.ts#L120)*
 
 ###  exampleModel
 
 • **exampleModel**: *[exampleModel](_util_template_.md#const-examplemodel)*
 
-*Defined in [src/util/template.ts:116](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/template.ts#L116)*
+*Defined in [src/util/template.ts:122](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/util/template.ts#L122)*
 
 ###  exampleModelService
 
 • **exampleModelService**: *[exampleModelService](_util_template_.md#const-examplemodelservice)*
 
-*Defined in [src/util/template.ts:117](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/template.ts#L117)*
+*Defined in [src/util/template.ts:123](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/util/template.ts#L123)*
 
 ###  modelsIndex
 
 • **modelsIndex**: *string*
 
-*Defined in [src/util/template.ts:113](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/template.ts#L113)*
+*Defined in [src/util/template.ts:119](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/util/template.ts#L119)*
 
 ###  sequelizerc
 
 • **sequelizerc**: *string*
 
-*Defined in [src/util/template.ts:115](https://github.com/claukers/miqro-sequelize/blob/624a208/src/util/template.ts#L115)*
+*Defined in [src/util/template.ts:121](https://github.com/claukers/miqro-sequelize/blob/3348ef6/src/util/template.ts#L121)*

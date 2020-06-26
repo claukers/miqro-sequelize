@@ -16,7 +16,6 @@
 * ["cli/seed"](modules/_cli_seed_.md)
 * ["db/automigrations/index"](modules/_db_automigrations_index_.md)
 * ["db/automigrations/migrate"](modules/_db_automigrations_migrate_.md)
-* ["db/db"](modules/_db_db_.md)
 * ["db/index"](modules/_db_index_.md)
 * ["db/migrations"](modules/_db_migrations_.md)
 * ["index"](modules/_index_.md)
