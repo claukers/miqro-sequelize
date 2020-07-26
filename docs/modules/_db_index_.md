@@ -4,40 +4,61 @@
 
 ## Index
 
-### References
+### Variables
 
-* [Database](_db_index_.md#database)
-* [initDBConfig](_db_index_.md#initdbconfig)
-* [makemigrations](_db_index_.md#makemigrations)
-* [migrate](_db_index_.md#migrate)
-* [seed](_db_index_.md#seed)
+* [logger](_db_index_.md#const-logger)
 
-## References
+### Functions
 
-###  Database
+* [initDBConfig](_db_index_.md#const-initdbconfig)
+* [makemigrations](_db_index_.md#const-makemigrations)
+* [migrate](_db_index_.md#const-migrate)
+* [seed](_db_index_.md#const-seed)
 
-• **Database**:
+## Variables
 
-___
+### `Const` logger
 
-###  initDBConfig
+• **logger**: *Console* = console
 
-• **initDBConfig**:
+*Defined in [src/db/index.ts:8](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/db/index.ts#L8)*
 
-___
+## Functions
 
-###  makemigrations
+### `Const` initDBConfig
 
-• **makemigrations**:
+▸ **initDBConfig**(): *boolean*
 
-___
+*Defined in [src/db/index.ts:11](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/db/index.ts#L11)*
 
-###  migrate
-
-• **migrate**:
+**Returns:** *boolean*
 
 ___
 
-###  seed
+### `Const` makemigrations
 
-• **seed**:
+▸ **makemigrations**(): *void*
+
+*Defined in [src/db/index.ts:59](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/db/index.ts#L59)*
+
+**Returns:** *void*
+
+___
+
+### `Const` migrate
+
+▸ **migrate**(): *Promise‹void›*
+
+*Defined in [src/db/index.ts:68](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/db/index.ts#L68)*
+
+**Returns:** *Promise‹void›*
+
+___
+
+### `Const` seed
+
+▸ **seed**(): *void*
+
+*Defined in [src/db/index.ts:85](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/db/index.ts#L85)*
+
+**Returns:** *void*

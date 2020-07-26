@@ -14,7 +14,7 @@
 
 ▸ **setupDB**(): *object*
 
-*Defined in [src/util/loader.ts:5](https://github.com/claukers/miqro-sequelize/blob/846f667/src/util/loader.ts#L5)*
+*Defined in [src/util/loader.ts:5](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/util/loader.ts#L5)*
 
 **Returns:** *object*
 
