@@ -58,7 +58,7 @@
 
 *Overrides void*
 
-*Defined in [src/service/db.ts:25](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L25)*
+*Defined in [src/service/db.ts:25](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L25)*
 
 **Returns:** *[Database](_service_db_.database.md)*
 
@@ -68,7 +68,7 @@
 
 • **Op**: *any*
 
-*Defined in [src/service/db.ts:24](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L24)*
+*Defined in [src/service/db.ts:24](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L24)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • **models**: *SimpleMap‹any›*
 
-*Defined in [src/service/db.ts:22](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L22)*
+*Defined in [src/service/db.ts:22](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L22)*
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 • **sequelize**: *any*
 
-*Defined in [src/service/db.ts:23](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L23)*
+*Defined in [src/service/db.ts:23](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L23)*
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 • **state**: *[DataBaseState](../modules/_service_db_.md#databasestate)* = "stopped"
 
-*Defined in [src/service/db.ts:25](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L25)*
+*Defined in [src/service/db.ts:25](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L25)*
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 ▪ **events**: *[DataBaseState](../modules/_service_db_.md#databasestate)[]* = ["stopped", "starting", "started", "startstop", "error"]
 
-*Defined in [src/service/db.ts:12](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L12)*
+*Defined in [src/service/db.ts:12](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L12)*
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 ▪ **instance**: *[Database](_service_db_.database.md)* = null
 
-*Defined in [src/service/db.ts:21](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L21)*
+*Defined in [src/service/db.ts:21](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L21)*
 
 ## Methods
 
@@ -379,7 +379,7 @@ ___
 
 ▸ **query**(`q`: object, `t?`: any): *Promise‹any›*
 
-*Defined in [src/service/db.ts:60](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L60)*
+*Defined in [src/service/db.ts:60](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L60)*
 
 **Parameters:**
 
@@ -480,7 +480,7 @@ ___
 
 ▸ **start**(): *Promise‹void›*
 
-*Defined in [src/service/db.ts:68](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L68)*
+*Defined in [src/service/db.ts:68](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L68)*
 
 **Returns:** *Promise‹void›*
 
@@ -490,7 +490,7 @@ ___
 
 ▸ **stateChange**(`state`: [DataBaseState](../modules/_service_db_.md#databasestate), `args?`: any): *void*
 
-*Defined in [src/service/db.ts:113](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L113)*
+*Defined in [src/service/db.ts:113](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L113)*
 
 **Parameters:**
 
@@ -507,7 +507,7 @@ ___
 
 ▸ **stop**(): *Promise‹void›*
 
-*Defined in [src/service/db.ts:96](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L96)*
+*Defined in [src/service/db.ts:96](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L96)*
 
 **Returns:** *Promise‹void›*
 
@@ -517,7 +517,7 @@ ___
 
 ▸ **transaction**(`transactionCB`: function): *Promise‹any›*
 
-*Defined in [src/service/db.ts:53](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L53)*
+*Defined in [src/service/db.ts:53](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L53)*
 
 **Parameters:**
 
@@ -539,7 +539,7 @@ ___
 
 ▸ **getInstance**(): *[Database](_service_db_.database.md)*
 
-*Defined in [src/service/db.ts:14](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L14)*
+*Defined in [src/service/db.ts:14](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L14)*
 
 **Returns:** *[Database](_service_db_.database.md)*
 

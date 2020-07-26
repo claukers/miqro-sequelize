@@ -20,7 +20,7 @@
 
 • **body**: *SimpleMap‹any›*
 
-*Defined in [src/service/model.ts:5](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/model.ts#L5)*
+*Defined in [src/service/model.ts:5](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/model.ts#L5)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **params**: *SimpleMap‹string›*
 
-*Defined in [src/service/model.ts:7](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/model.ts#L7)*
+*Defined in [src/service/model.ts:7](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/model.ts#L7)*
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 • **query**: *SimpleMap‹string›*
 
-*Defined in [src/service/model.ts:6](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/model.ts#L6)*
+*Defined in [src/service/model.ts:6](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/model.ts#L6)*

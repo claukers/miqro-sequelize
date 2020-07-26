@@ -22,7 +22,7 @@
 
 Ƭ **DataBaseState**: *"stopped" | "starting" | "started" | "startstop" | "error"*
 
-*Defined in [src/service/db.ts:6](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L6)*
+*Defined in [src/service/db.ts:6](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L6)*
 
 ## Variables
 
@@ -30,4 +30,4 @@
 
 • **logger**: *any* = null
 
-*Defined in [src/service/db.ts:8](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/service/db.ts#L8)*
+*Defined in [src/service/db.ts:8](https://github.com/claukers/miqro-sequelize/blob/8158581/src/service/db.ts#L8)*

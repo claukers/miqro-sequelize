@@ -16,9 +16,15 @@ to apply migrations
 
 ```miqro-database migrate```
 
-for making and running the migrations
+or
+
+```sequelize-cli db:migrate``` 
+
+to to both in an single step.
 
 ```miqro-database automigrate```
+
+this is the same as running ```miqro-database makemigrations && miqro-database migrate```
 
 ## [OPTIONAL] using it as an alternative to sequelize-cli to init configuration
 
@@ -91,6 +97,6 @@ DB_DROPTABLES=false
 
 consider setting the env var ```LOG_LEVEL_Database="debug"```. This will **log every query** to the if using the ```Database``` class from this **module**. 
 
-### API Documentation
+### documentation
 
 [globals](docs/globals.md)

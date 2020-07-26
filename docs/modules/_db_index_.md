@@ -21,7 +21,7 @@
 
 • **logger**: *Console* = console
 
-*Defined in [src/db/index.ts:8](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/db/index.ts#L8)*
+*Defined in [src/db/index.ts:8](https://github.com/claukers/miqro-sequelize/blob/8158581/src/db/index.ts#L8)*
 
 ## Functions
 
@@ -29,7 +29,7 @@
 
 ▸ **initDBConfig**(): *boolean*
 
-*Defined in [src/db/index.ts:11](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/db/index.ts#L11)*
+*Defined in [src/db/index.ts:11](https://github.com/claukers/miqro-sequelize/blob/8158581/src/db/index.ts#L11)*
 
 **Returns:** *boolean*
 
@@ -39,7 +39,7 @@ ___
 
 ▸ **makemigrations**(): *void*
 
-*Defined in [src/db/index.ts:59](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/db/index.ts#L59)*
+*Defined in [src/db/index.ts:59](https://github.com/claukers/miqro-sequelize/blob/8158581/src/db/index.ts#L59)*
 
 **Returns:** *void*
 
@@ -49,7 +49,7 @@ ___
 
 ▸ **migrate**(): *Promise‹void›*
 
-*Defined in [src/db/index.ts:68](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/db/index.ts#L68)*
+*Defined in [src/db/index.ts:68](https://github.com/claukers/miqro-sequelize/blob/8158581/src/db/index.ts#L68)*
 
 **Returns:** *Promise‹void›*
 
@@ -59,6 +59,6 @@ ___
 
 ▸ **seed**(): *void*
 
-*Defined in [src/db/index.ts:85](https://github.com/claukers/miqro-sequelize/blob/373bc8c/src/db/index.ts#L85)*
+*Defined in [src/db/index.ts:85](https://github.com/claukers/miqro-sequelize/blob/8158581/src/db/index.ts#L85)*
 
 **Returns:** *void*
