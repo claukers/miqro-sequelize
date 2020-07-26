@@ -1,9 +1,9 @@
 import {resolve} from "path";
 import {expect} from "chai";
-import {ModelService} from "@miqro/core";
+import {Database, ModelService} from "../src";
 import {before, describe, it} from "mocha";
 
-import {Database, Util} from "@miqro/core";
+import {Util} from "@miqro/core";
 
 process.env.NODE_ENV = "test";
 process.env.MIQRO_DIRNAME = resolve(__dirname, "data");
