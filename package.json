@@ -3,6 +3,7 @@
   "version": "0.6.0",
   "description": "",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/claukers/miqro-sequelize.git"
