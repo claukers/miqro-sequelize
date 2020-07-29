@@ -12,9 +12,6 @@
     "miqro-database": "dist/cli/cli.js"
   },
   "scripts": {
-    "sequelize-cli": "sequelize-cli",
-    "predoc": "rm -Rf docs;",
-    "doc": "typedoc --mode library --plugin typedoc-plugin-markdown --out docs src",
     "prepare": "npm run build",
     "prebuild": "rm -Rf dist;",
     "build": "tsc",
@@ -45,8 +42,6 @@
     "nyc": "^15.1.0",
     "sqlite3": "^5.0.0",
     "ts-node": "^8.10.2",
-    "typedoc": "0.17.0",
-    "typedoc-plugin-markdown": "^2.2.17",
     "typescript": "^3.9.7"
   },
   "engines": {

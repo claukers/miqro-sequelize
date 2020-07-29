@@ -1,6 +1,6 @@
 # @miqro/database
 
-this module provides **auto migrations** for **sequelize**.
+this module provides an **auto migrations** cli for **sequelize**.
 
 ## migrations
 
@@ -92,7 +92,3 @@ DB_DROPTABLES=false
 #### debugging
 
 consider setting the env var ```LOG_LEVEL_Database="debug"```. This will **log every query** to the if using the ```Database``` class from this **module**. 
-
-### documentation
-
-[globals](docs/globals.md)
