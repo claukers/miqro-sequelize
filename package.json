@@ -36,7 +36,6 @@
     "@types/object-hash": "^1.3.3",
     "@typescript-eslint/eslint-plugin": "^3.6.1",
     "@typescript-eslint/parser": "^3.6.1",
-    "chai": "^4.2.0",
     "eslint": "^7.5.0",
     "mocha": "^8.0.1",
     "nyc": "^15.1.0",

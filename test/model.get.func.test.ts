@@ -1,9 +1,9 @@
 import {resolve} from "path";
-import {expect} from "chai";
 import {Database, ModelService} from "../src";
 import {before, describe, it} from "mocha";
 
 import {Util} from "@miqro/core";
+import {strictEqual} from "assert";
 
 process.env.NODE_ENV = "test";
 process.env.MIQRO_DIRNAME = resolve(__dirname, "data");
@@ -46,10 +46,10 @@ describe("ModelService Func Tests", function () {
         body: {}
       });
       if (!(result instanceof Array)) {
-        expect(result.count).to.be.equals(4);
-        expect(result.rows.length).to.be.equals(2);
+        strictEqual(result.count, 4);
+        strictEqual(result.rows.length, 2);
       } else {
-        expect(true).to.be.equals(false);
+        strictEqual(true, false);
       }
 
     })().then(done).catch(done);
@@ -75,10 +75,10 @@ describe("ModelService Func Tests", function () {
         body: {}
       });
       if (!(result instanceof Array)) {
-        expect(result.count).to.be.equals(2);
-        expect(result.rows.length).to.be.equals(2);
+        strictEqual(result.count, 2);
+        strictEqual(result.rows.length, 2);
       } else {
-        expect(true).to.be.equals(false);
+        strictEqual(true, false);
       }
     })().then(done).catch(done);
   });
@@ -103,10 +103,10 @@ describe("ModelService Func Tests", function () {
         body: {}
       });
       if (!(result instanceof Array)) {
-        expect(result.count).to.be.equals(2);
-        expect(result.rows.length).to.be.equals(2);
+        strictEqual(result.count, 2);
+        strictEqual(result.rows.length, 2);
       } else {
-        expect(true).to.be.equals(false);
+        strictEqual(true, false);
       }
     })().then(done).catch(done);
   });
