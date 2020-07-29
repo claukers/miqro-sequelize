@@ -5,7 +5,7 @@ export class FakeDeleteModelService extends PostListModelService {
   protected modelIsDeletedAttribute = "deleted";
 
   public async get(args: ModelServiceArgs): Promise<any> {
-    args.params[this.modelIsDeletedAttribute] = false as any;
+    args.params[this.modelIsDeletedAttribute] = false;
     return super.get(args);
   }
 

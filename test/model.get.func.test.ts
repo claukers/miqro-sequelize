@@ -45,8 +45,13 @@ describe("ModelService Func Tests", function () {
         },
         body: {}
       });
-      expect(result.count).to.be.equals(4);
-      expect(result.rows.length).to.be.equals(2);
+      if (!(result instanceof Array)) {
+        expect(result.count).to.be.equals(4);
+        expect(result.rows.length).to.be.equals(2);
+      } else {
+        expect(true).to.be.equals(false);
+      }
+
     })().then(done).catch(done);
   });
 
@@ -69,8 +74,12 @@ describe("ModelService Func Tests", function () {
         },
         body: {}
       });
-      expect(result.count).to.be.equals(2);
-      expect(result.rows.length).to.be.equals(2);
+      if (!(result instanceof Array)) {
+        expect(result.count).to.be.equals(2);
+        expect(result.rows.length).to.be.equals(2);
+      } else {
+        expect(true).to.be.equals(false);
+      }
     })().then(done).catch(done);
   });
 
@@ -93,8 +102,12 @@ describe("ModelService Func Tests", function () {
         },
         body: {}
       });
-      expect(result.count).to.be.equals(2);
-      expect(result.rows.length).to.be.equals(2);
+      if (!(result instanceof Array)) {
+        expect(result.count).to.be.equals(2);
+        expect(result.rows.length).to.be.equals(2);
+      } else {
+        expect(true).to.be.equals(false);
+      }
     })().then(done).catch(done);
   });
 });

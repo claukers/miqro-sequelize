@@ -2,15 +2,17 @@ import {AbstractModelService} from "./amodel";
 import {ParseOptionsError, Util} from "@miqro/core";
 import {Database} from "./db";
 import {ModelServiceArgs, parseIncludeQuery} from "./model";
+import {Model, ModelCtor, Transaction, WhereOptions} from "sequelize";
 
-export class ModelService extends AbstractModelService {
+export type ModelGet<T, T2> = Model<T, T2>[] | { rows: Model<T, T2>[]; count: number; };
+
+export class ModelService<T = any, T2 = any> extends AbstractModelService {
   /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
-  constructor(protected model: any) {
+  constructor(protected model: ModelCtor<Model<T, T2>>) {
     super();
   }
 
-  /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
-  public async get({body, query, params}: ModelServiceArgs, transaction?: any, skipLocked?: boolean): Promise<any> {
+  public async get({body, query, params}: ModelServiceArgs, transaction?: Transaction, skipLocked?: boolean): Promise<ModelGet<T, T2>> {
     const {pagination, include, order} = Util.parseOptions("query", query, [
       {name: "include", type: "string", required: false},
       {name: "pagination", type: "string", required: false},
@@ -20,7 +22,7 @@ export class ModelService extends AbstractModelService {
     if (include) {
       let includeList = [];
       try {
-        includeList = JSON.parse(include);
+        includeList = JSON.parse(include as string);
       } catch (e) {
         throw new ParseOptionsError(`query.include not a valid JSON`);
       }
@@ -29,7 +31,7 @@ export class ModelService extends AbstractModelService {
     let paginationJSON;
     if (pagination) {
       try {
-        paginationJSON = JSON.parse(pagination);
+        paginationJSON = JSON.parse(pagination as string);
       } catch (e) {
         throw new ParseOptionsError(`query.pagination not a valid JSON`);
       }
@@ -48,7 +50,7 @@ export class ModelService extends AbstractModelService {
     let orderJSON;
     if (order) {
       try {
-        orderJSON = JSON.parse(order);
+        orderJSON = JSON.parse(order as string);
       } catch (e) {
         throw new ParseOptionsError(`query.order not a valid JSON`);
       }
@@ -59,7 +61,7 @@ export class ModelService extends AbstractModelService {
       const Op = Database.getInstance().Op;
       if (paginationJSON.search) {
         if (paginationJSON.search.columns.length > 0) {
-          const searchParams = {};
+          const searchParams: any = {};
           for (const column of paginationJSON.search.columns) {
             searchParams[column] = {
               [Op.like]: "%" + paginationJSON.search.query + "%"
@@ -73,7 +75,7 @@ export class ModelService extends AbstractModelService {
       }
       if (transaction) {
         ret = await this.model.findAndCountAll({
-          where: params,
+          where: params as WhereOptions,
           order: orderJSON,
           include: includeModels,
           limit: paginationJSON.limit,
@@ -84,7 +86,7 @@ export class ModelService extends AbstractModelService {
         });
       } else {
         ret = await this.model.findAndCountAll({
-          where: params,
+          where: params as WhereOptions,
           order: orderJSON,
           include: includeModels,
           limit: paginationJSON.limit,
@@ -94,7 +96,7 @@ export class ModelService extends AbstractModelService {
     } else {
       if (transaction) {
         ret = await this.model.findAll({
-          where: params,
+          where: params as WhereOptions,
           order: orderJSON,
           include: includeModels,
           transaction,
@@ -103,7 +105,7 @@ export class ModelService extends AbstractModelService {
         });
       } else {
         ret = await this.model.findAll({
-          where: params,
+          where: params as WhereOptions,
           order: orderJSON,
           include: includeModels
         });
@@ -112,26 +114,27 @@ export class ModelService extends AbstractModelService {
     return ret;
   }
 
-  public async post({body, query, params}: ModelServiceArgs, transaction?: any): Promise<any> {
+  public async post({body, query, params}: ModelServiceArgs, transaction?: Transaction): Promise<any> {
     Util.parseOptions("params", params, [], "no_extra");
     Util.parseOptions("query", query, [], "no_extra");
     // noinspection JSDeprecatedSymbols
     if (transaction) {
-      return this.model.create(body, {transaction});
+      return this.model.create(body as any, {transaction});
     } else {
       // noinspection JSDeprecatedSymbols
-      return this.model.create(body);
+      return this.model.create(body as any);
     }
   }
 
   /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
-  public async patch({body, query, params}: ModelServiceArgs, transaction?: any): Promise<any> {
+  public async patch({body, query, params}: ModelServiceArgs, transaction?: Transaction): Promise<any> {
     Util.parseOptions("query", query, [], "no_extra");
-    const instances = await this.get({
+    const result = await this.get({
       body: {},
       query,
       params
     }, transaction);
+    const instances = result instanceof Array ? result : result.rows;
     if (instances.length === 1) {
       if (transaction) {
         return instances[0].update(body, {transaction});
@@ -143,14 +146,15 @@ export class ModelService extends AbstractModelService {
     }
   }
 
-  public async delete({body, query, params}: ModelServiceArgs, transaction?: any): Promise<any> {
+  public async delete({body, query, params}: ModelServiceArgs, transaction?: Transaction): Promise<any> {
     Util.parseOptions("query", query, [], "no_extra");
     Util.parseOptions("body", body, [], "no_extra");
-    const instances = await this.get({
+    const result = await this.get({
       body: {},
       query,
       params
     }, transaction);
+    const instances = result instanceof Array ? result : result.rows;
     if (instances.length === 1) {
       if (transaction) {
         return instances[0].destroy({transaction});

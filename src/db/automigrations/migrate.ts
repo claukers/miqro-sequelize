@@ -1,16 +1,12 @@
 import {diff} from "deep-diff";
-import * as  fs from "fs";
-// import {js_beautify} from "js-beautify";
-import * as assignIn from "lodash.assignin";
-import * as clone from "lodash.clone";
-import * as forEach from "lodash.foreach";
-import * as hash from "object-hash";
-import * as  path from "path";
-import * as Sequelize from "sequelize";
+import fs from "fs";
+import hash from "object-hash";
+import path from "path";
+import Sequelize from "sequelize";
 
 /* tslint:disable */
 
-const reverseSequelizeColType = (col, prefix = "Sequelize."): string => {
+const reverseSequelizeColType = (col: any, prefix = "Sequelize."): string => {
   const attrName = col.type.key;
   const attrObj = col.type;
   const options = (col.type.options) ? col.type.options : {};
@@ -132,7 +128,7 @@ const reverseSequelizeColType = (col, prefix = "Sequelize."): string => {
   }
 };
 
-const reverseSequelizeDefValueType = (defaultValue, prefix = "Sequelize."): any => {
+const reverseSequelizeDefValueType = (defaultValue: any, prefix = "Sequelize."): any => {
   if (typeof defaultValue === "object") {
     if (defaultValue.constructor && defaultValue.constructor.name) {
       return {internal: true, value: prefix + defaultValue.constructor.name};
@@ -146,7 +142,7 @@ const reverseSequelizeDefValueType = (defaultValue, prefix = "Sequelize."): any 
   return {value: defaultValue};
 };
 
-const parseIndex = (idx): any => {
+const parseIndex = (idx: any): any => {
   delete idx.parser;
   if (idx.type == "") {
     delete idx.type;
@@ -280,7 +276,7 @@ export const reverseModels = (sequelize: any, models: any, logger: any): any => 
       delete attributes[column].values; // ENUM
     }
     // noinspection JSUnfilteredForInLoop
-    tables[models[model].tableName] = {
+    (tables as any)[models[model].tableName] = {
       // noinspection JSUnfilteredForInLoop
       tableName: models[model].tableName,
       schema: attributes
@@ -292,7 +288,7 @@ export const reverseModels = (sequelize: any, models: any, logger: any): any => 
       for (const _i in models[model].options.indexes) {
         // noinspection JSUnfilteredForInLoop
         const index = parseIndex(models[model].options.indexes[_i]);
-        idxOut[index.hash + ""] = index;
+        (idxOut as any)[index.hash + ""] = index;
         delete index.hash;
 
         // make it immutable
@@ -304,88 +300,160 @@ export const reverseModels = (sequelize: any, models: any, logger: any): any => 
     // noinspection JSUnfilteredForInLoop
     if (typeof models[model].options.charset !== "undefined") {
       // noinspection JSUnfilteredForInLoop
-      tables[models[model].tableName].charset = models[model].options.charset;
+      (tables as any)[models[model].tableName].charset = models[model].options.charset;
     }
     // noinspection JSUnfilteredForInLoop
-    tables[models[model].tableName].indexes = models[model].options.indexes;
+    (tables as any)[models[model].tableName].indexes = models[model].options.indexes;
   }
 
   return tables;
 };
 
-export const parseDifference = (previousState, currentState, logger): any => {
+export interface DiffAction {
+  actionType: string;
+  columnName?: string;
+  attributeName?: any;
+  fields?: string[];
+  tableName?: any;
+  attributes?: any;
+  options?: any;
+  depends?: any;
+}
+
+export const parseDifference = (previousState: any, currentState: any, logger: any): DiffAction[] => {
   //    log(JSON.stringify(currentState, null, 4));
-  const actions = [];
+  const actions: DiffAction[] = [];
   const difference = diff(previousState, currentState);
+  if (difference) {
+    for (const df of difference) {
+      //    log (JSON.stringify(df, null, 4));
+      switch (df.kind) {
+        // add new
+        case "N": {
+          // new table created
+          if (df.path && df.path.length === 1) {
+            const depends: any[] = [];
+            const tableName = df.rhs.tableName;
+            df.rhs.schema.forEach((v: any) => {
+              if (v.references) {
+                depends.push(v.references.model);
+              }
+            });
 
-  for (const _d in difference) {
-    // noinspection JSUnfilteredForInLoop
-    const df = difference[_d];
-    //    log (JSON.stringify(df, null, 4));
-    switch (df.kind) {
-      // add new
-      case "N": {
-        // new table created
-        if (df.path.length === 1) {
-          const depends = [];
-          const tableName = df.rhs.tableName;
-          forEach(df.rhs.schema, (v) => {
-            if (v.references) {
-              depends.push(v.references.model);
-            }
-          });
-
-          const options: any = {};
-          if (typeof df.rhs.charset !== "undefined") {
-            options.charset = df.rhs.charset;
-          }
-
-          actions.push({
-            actionType: "createTable",
-            tableName,
-            attributes: df.rhs.schema,
-            options,
-            depends
-          });
-
-          // create indexes
-          if (df.rhs.indexes) {
-            for (const _i in df.rhs.indexes) {
-              // noinspection JSUnfilteredForInLoop
-              actions.push(assignIn({
-                actionType: "addIndex",
-                tableName,
-                depends: [tableName]
-              }, clone(df.rhs.indexes[_i])));
-            }
-          }
-          break;
-        }
-
-        const tableName = df.path[0];
-        const depends = [tableName];
-
-        if (df.path[1] === "schema") {
-          // if (df.path.length === 3) - new field
-          if (df.path.length === 3) {
-            // new field
-            if (df.rhs && df.rhs.references) {
-              depends.push(df.rhs.references.model);
+            const options: any = {};
+            if (typeof df.rhs.charset !== "undefined") {
+              options.charset = df.rhs.charset;
             }
 
             actions.push({
-              actionType: "addColumn",
+              actionType: "createTable",
               tableName,
-              attributeName: df.path[2],
-              options: df.rhs,
+              attributes: df.rhs.schema,
+              options,
               depends
+            });
+
+            // create indexes
+            if (df.rhs.indexes) {
+              for (const _i in df.rhs.indexes) {
+                // noinspection JSUnfilteredForInLoop
+                actions.push({
+                  ...{
+                    actionType: "addIndex",
+                    tableName,
+                    depends: [tableName]
+                  }, ...{...df.rhs.indexes[_i]}
+                });
+              }
+            }
+            break;
+          }
+
+          const tableName = df.path && df.path[0];
+          const depends = [tableName];
+
+          if (df.path && df.path[1] === "schema") {
+            // if (df.path.length === 3) - new field
+            if (df.path.length === 3) {
+              // new field
+              if (df.rhs && df.rhs.references) {
+                depends.push(df.rhs.references.model);
+              }
+
+              actions.push({
+                actionType: "addColumn",
+                tableName,
+                attributeName: df.path[2],
+                options: df.rhs,
+                depends
+              });
+              break;
+            }
+
+            // if (df.path.length > 3) - add new attribute to column (change col)
+            if (df.path && df.path.length > 3) {
+              if (df.path[1] === "schema") {
+                // new field attributes
+                const options = currentState[tableName].schema[df.path[2]];
+                if (options.references) {
+                  depends.push(options.references.nodel);
+                }
+
+                actions.push({
+                  actionType: "changeColumn",
+                  tableName,
+                  attributeName: df.path[2],
+                  options,
+                  depends
+                });
+                break;
+              }
+            }
+          }
+
+          // new index
+          if (df.path && df.path[1] === "indexes") {
+            const tableName = df.path[0];
+            const index = {...df.rhs};
+            index.actionType = "addIndex";
+            index.tableName = tableName;
+            index.depends = [tableName];
+            actions.push(index);
+            break;
+          }
+          break;
+        }
+        // drop
+        case "D": {
+          const tableName = df.path && df.path[0];
+          const depends = [tableName];
+
+          if (df.path && df.path.length === 1) {
+            // drop table
+            actions.push({
+              actionType: "dropTable",
+              tableName,
+              depends: []
             });
             break;
           }
 
-          // if (df.path.length > 3) - add new attribute to column (change col)
-          if (df.path.length > 3) {
-            if (df.path[1] === "schema") {
+          if (df.path && df.path[1] === "schema") {
+            // if (df.path.length === 3) - drop field
+            if (df.path.length === 3) {
+              // drop column
+              actions.push({
+                actionType: "removeColumn",
+                tableName,
+                columnName: df.path[2],
+                depends: [tableName],
+                options: df.lhs
+              });
+              break;
+            }
+
+            // if (df.path.length > 3) - drop attribute from column (change col)
+            if (df.path.length > 3) {
               // new field attributes
               const options = currentState[tableName].schema[df.path[2]];
               if (options.references) {
@@ -402,52 +470,26 @@ export const parseDifference = (previousState, currentState, logger): any => {
               break;
             }
           }
-        }
 
-        // new index
-        if (df.path[1] === "indexes") {
-          const tableName = df.path[0];
-          const index = clone(df.rhs);
-          index.actionType = "addIndex";
-          index.tableName = tableName;
-          index.depends = [tableName];
-          actions.push(index);
-          break;
-        }
-      }
-        break;
-
-      // drop
-      case "D": {
-        const tableName = df.path[0];
-        const depends = [tableName];
-
-        if (df.path.length === 1) {
-          // drop table
-          actions.push({
-            actionType: "dropTable",
-            tableName,
-            depends: []
-          });
-          break;
-        }
-
-        if (df.path[1] === "schema") {
-          // if (df.path.length === 3) - drop field
-          if (df.path.length === 3) {
-            // drop column
+          if (df.path && df.path[1] === "indexes") {
+            //                    log(df)
             actions.push({
-              actionType: "removeColumn",
+              actionType: "removeIndex",
               tableName,
-              columnName: df.path[2],
-              depends: [tableName],
-              options: df.lhs
+              fields: df.lhs.fields,
+              options: df.lhs.options,
+              depends: [tableName]
             });
             break;
           }
+          break;
+        }
+        // edit
+        case "E": {
+          const tableName = df.path && df.path[0];
+          const depends = [tableName];
 
-          // if (df.path.length > 3) - drop attribute from column (change col)
-          if (df.path.length > 3) {
+          if (df.path && df.path[1] === "schema") {
             // new field attributes
             const options = currentState[tableName].schema[df.path[2]];
             if (options.references) {
@@ -461,103 +503,62 @@ export const parseDifference = (previousState, currentState, logger): any => {
               options,
               depends
             });
-            break;
           }
-        }
 
-        if (df.path[1] === "indexes") {
-          //                    log(df)
-          actions.push({
-            actionType: "removeIndex",
-            tableName,
-            fields: df.lhs.fields,
-            options: df.lhs.options,
-            depends: [tableName]
-          });
+          // updated index
+          // only support updating and dropping indexes
+          if (df.path && df.path[1] === "indexes") {
+            const tableName = df.path && df.path[0];
+            let keys = Object.keys(df.rhs);
+
+            // noinspection LoopStatementThatDoesntLoopJS
+            for (const k in keys) {
+              const key = keys[k];
+              // noinspection JSUnusedLocalSymbols
+              actions.push({
+                actionType: "addIndex",
+                tableName,
+                fields: df.rhs[key].fields,
+                options: df.rhs[key].options,
+                depends: [tableName]
+              });
+              break;
+            }
+
+            keys = Object.keys(df.lhs);
+            // noinspection LoopStatementThatDoesntLoopJS
+            for (const k in keys) {
+              const key = keys[k];
+              // noinspection JSUnusedLocalSymbols
+              actions.push({
+                actionType: "removeIndex",
+                tableName,
+                fields: df.lhs[key].fields,
+                options: df.lhs[key].options,
+                depends: [tableName]
+              });
+              break;
+            }
+          }
           break;
         }
-      }
-        break;
-
-      // edit
-      case "E": {
-        const tableName = df.path[0];
-        const depends = [tableName];
-
-        if (df.path[1] === "schema") {
-          // new field attributes
-          const options = currentState[tableName].schema[df.path[2]];
-          if (options.references) {
-            depends.push(options.references.nodel);
-          }
-
-          actions.push({
-            actionType: "changeColumn",
-            tableName,
-            attributeName: df.path[2],
-            options,
-            depends
-          });
+        // array change indexes
+        case "A": {
+          logger.info("[Not supported] Array model changes! Problems are possible. Please, check result more carefully!");
+          logger.info("[Not supported] Difference: ");
+          logger.info(JSON.stringify(df, null, 4));
+          break;
         }
-
-        // updated index
-        // only support updating and dropping indexes
-        if (df.path[1] === "indexes") {
-          const tableName = df.path[0];
-          let keys = Object.keys(df.rhs);
-
-          // noinspection LoopStatementThatDoesntLoopJS
-          for (const k in keys) {
-            const key = keys[k];
-            // noinspection JSUnusedLocalSymbols
-            clone(df.rhs[key]);
-            actions.push({
-              actionType: "addIndex",
-              tableName,
-              fields: df.rhs[key].fields,
-              options: df.rhs[key].options,
-              depends: [tableName]
-            });
-            break;
-          }
-
-          keys = Object.keys(df.lhs);
-          // noinspection LoopStatementThatDoesntLoopJS
-          for (const k in keys) {
-            const key = keys[k];
-            // noinspection JSUnusedLocalSymbols
-            clone(df.lhs[key]);
-            actions.push({
-              actionType: "removeIndex",
-              tableName,
-              fields: df.lhs[key].fields,
-              options: df.lhs[key].options,
-              depends: [tableName]
-            });
-            break;
-          }
-        }
-
+        default:
+          // code
+          break;
       }
-        break;
-
-      // array change indexes
-      case "A": {
-        logger.info("[Not supported] Array model changes! Problems are possible. Please, check result more carefully!");
-        logger.info("[Not supported] Difference: ");
-        logger.info(JSON.stringify(df, null, 4));
-      }
-        break;
-
-      default:
-        // code
-        break;
     }
   }
   return actions;
 };
 
-export const sortActions = (actions): any => {
+export const sortActions = (actions: any[]): any => {
   const orderedActionTypes = [
     "removeIndex",
     "removeColumn",
@@ -625,8 +626,8 @@ export const sortActions = (actions): any => {
   }
 };
 // noinspection SpellCheckingInspection
-export const getMigration = (actions): any => {
-  const propertyToStr = (obj): any => {
+export const getMigration = (actions: any): any => {
+  const propertyToStr = (obj: any): any => {
     // noinspection SpellCheckingInspection
     const vals = [];
     for (const k in obj) {
@@ -650,21 +651,21 @@ export const getMigration = (actions): any => {
 
         const x = {};
         // noinspection JSUnfilteredForInLoop
-        x[k] = obj[k].value;
+        (x as any)[k] = obj[k].value;
         vals.push(JSON.stringify(x).slice(1, -1));
         continue;
       }
 
       const x = {};
       // noinspection JSUnfilteredForInLoop
-      x[k] = obj[k];
+      (x as any)[k] = obj[k];
       vals.push(JSON.stringify(x).slice(1, -1));
     }
 
     return "{ " + vals.reverse().join(", ") + " }";
   };
 
-  const getAttributes = (attrs): any => {
+  const getAttributes = (attrs: any[]): any => {
     const ret = [];
     for (const attrName in attrs) {
       // noinspection JSUnfilteredForInLoop
@@ -768,7 +769,7 @@ export const getMigration = (actions): any => {
   return {commandsUp, consoleOut};
 };
 
-export const writeMigration = (revision, migration, migrationsDir, name = "", comment = ""): any => {
+export const writeMigration = (revision: any, migration: any, migrationsDir: any, name = "", comment = ""): any => {
   const _commands = "var migrationCommands = [ \n" + migration.commandsUp.join(", \n") + " \n];\n";
   const _actions = " * " + migration.consoleOut.join("\n * ");
 
@@ -827,7 +828,7 @@ module.exports = {
   return {filename, info};
 };
 
-export const executeMigration = (queryInterface, filename, pos, cb, logger): any => {
+export const executeMigration = (queryInterface: any, filename: any, pos: any, cb: any, logger: any): any => {
   /* eslint-disable  @typescript-eslint/no-var-requires */
   const mig = require(filename);
 
@@ -844,7 +845,7 @@ export const executeMigration = (queryInterface, filename, pos, cb, logger): any
     () => {
       cb();
     },
-    (err) => {
+    (err: any) => {
       cb(err);
     }
   );

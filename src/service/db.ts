@@ -1,15 +1,14 @@
 import {EventEmitter} from "events";
-import {Op} from "sequelize";
-import {loadSequelizeRC, SimpleMap, Util} from "@miqro/core";
+import {Model, ModelCtor, Op} from "sequelize";
+import {loadSequelizeRC, Logger, SimpleMap, Util} from "@miqro/core";
 
 // noinspection SpellCheckingInspection
 export type DataBaseState = "stopped" | "starting" | "started" | "startstop" | "error";
 
-let logger = null;
-
 export class Database extends EventEmitter {
   // noinspection SpellCheckingInspection
   public static events: DataBaseState[] = ["stopped", "starting", "started", "startstop", "error"];
+  private logger: Logger;
 
   public static getInstance(): Database {
     if (!Database.instance) {
@@ -18,17 +17,15 @@ export class Database extends EventEmitter {
     return Database.instance;
   }
 
-  private static instance: Database = null;
-  public readonly models: SimpleMap<any> = {};
+  private static instance: Database;
+  public readonly models: SimpleMap<ModelCtor<Model<any, any>>> = {};
   public readonly sequelize: any;
   public readonly Op: any;
   private state: DataBaseState = "stopped";
 
   constructor() {
     super();
-    if (logger === null) {
-      logger = Util.getLogger("Database");
-    }
+    this.logger = Util.getLogger("Database");
     // noinspection SpellCheckingInspection
     const requiredEnvVariables = ["DB_DROPTABLES"];
     Util.checkEnvVariables(requiredEnvVariables);
@@ -40,8 +37,8 @@ export class Database extends EventEmitter {
     /* eslint-disable  @typescript-eslint/no-var-requires */
 
     this.Op = Op;
-    (this.sequelize as any).log = (text): void => {
-      logger.debug(text);
+    (this.sequelize as any).log = (text: string): void => {
+      this.logger.debug(text);
     };
     Object.keys(models).forEach((modelName) => {
       if (modelName !== "sequelize" && modelName !== "Sequelize") {
@@ -86,7 +83,7 @@ export class Database extends EventEmitter {
           }
           this.stateChange("started");
           resolve();
-        }).catch((e) => {
+        }).catch((e: Error) => {
         this.stateChange("error", e);
         reject();
       });

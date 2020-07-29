@@ -1,7 +1,6 @@
 import {loadSequelizeRC, Util} from "@miqro/core";
-import * as fs from "fs";
-import * as forEach from "lodash.foreach";
-import * as path from "path";
+import fs from "fs";
+import path from "path";
 import {executeMigration, getMigration, parseDifference, reverseModels, sortActions, writeMigration} from "./migrate";
 
 // noinspection JSUnusedGlobalSymbols
@@ -69,7 +68,7 @@ export const migrateImpl = async (): Promise<void> => {
   for (const file of migrationFiles) {
     await new Promise((resolve, reject) => {
       logger.info("Execute migration from file: " + file);
-      executeMigration(queryInterface, path.join(migrationsFolder, file), fromPos, (err) => {
+      executeMigration(queryInterface, path.join(migrationsFolder, file), fromPos, (err?: Error) => {
         if (err) {
           reject(err);
         } else {
@@ -87,7 +86,7 @@ export const migrateImpl = async (): Promise<void> => {
 };
 
 // noinspection SpellCheckingInspection
-export const makemigrationsImpl = (): string => {
+export const makemigrationsImpl = (): string | undefined | null => {
 
   // Windows support
   if (!process.env.PWD) {
@@ -154,7 +153,7 @@ export const makemigrationsImpl = (): string => {
     }
 
     // log migration actions
-    forEach(migration.consoleOut, (v) => {
+    migration.consoleOut.forEach((v: string) => {
       logger.info("[Actions] " + v);
     });
 

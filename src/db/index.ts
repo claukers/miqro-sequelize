@@ -10,7 +10,7 @@ const logger = console;
 // noinspection SpellCheckingInspection
 export const initDBConfig = (): boolean => {
   try {
-    const initDir = (p): void => {
+    const initDir = (p: string): void => {
       if (!existsSync(p)) {
         logger.warn(`creating ${p}`);
         mkdirSync(p);
@@ -19,7 +19,7 @@ export const initDBConfig = (): boolean => {
       }
     };
 
-    const initFile = (p, template): void => {
+    const initFile = (p: string, template: string): void => {
       if (!existsSync(p)) {
         logger.warn(`creating ${p} file`);
         writeFileSync(p, template);

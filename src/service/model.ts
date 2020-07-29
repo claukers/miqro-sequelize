@@ -1,10 +1,10 @@
-import {ParseOptionsError, SimpleMap, Util} from "@miqro/core";
+import {ParseOptionsError, SimpleMap, SimpleTypes, Util} from "@miqro/core";
 import {Database} from "./db";
 
 export interface ModelServiceArgs {
-  body: SimpleMap<any>;
-  query: SimpleMap<string>;
-  params: SimpleMap<string>;
+  body: SimpleMap<SimpleTypes>;
+  query: SimpleMap<SimpleTypes>;
+  params: SimpleMap<SimpleTypes>;
 }
 
 export interface ModelServiceInterface {
@@ -36,14 +36,14 @@ export const parseIncludeQuery = (includeQuery: any[]): any[] => {
         {name: "where", type: "object", required: true},
         {name: "include", type: "array", arrayType: "any", required: false}
       ], "no_extra");
-      const model = Database.getInstance().models[includeO.model];
+      const model = Database.getInstance().models[includeO.model as string];
       if (model) {
         if (includeO.include) {
           ret.push({
             model,
             required: includeO.required,
             where: includeO.where,
-            include: parseIncludeQuery(includeO.include)
+            include: parseIncludeQuery(includeO.include as any[])
           });
         } else {
           ret.push({
