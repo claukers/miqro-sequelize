@@ -334,11 +334,13 @@ export const parseDifference = (previousState: any, currentState: any, logger: a
           if (df.path && df.path.length === 1) {
             const depends: any[] = [];
             const tableName = df.rhs.tableName;
-            df.rhs.schema.forEach((v: any) => {
-              if (v.references) {
-                depends.push(v.references.model);
-              }
-            });
+            if(df.rhs.schema) {
+              Object.keys(df.rhs.schema).forEach((v: any) => {
+                if (v.references) {
+                  depends.push(v.references.model);
+                }
+              });
+            }
 
             const options: any = {};
             if (typeof df.rhs.charset !== "undefined") {
