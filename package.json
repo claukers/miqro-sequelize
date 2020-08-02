@@ -24,7 +24,7 @@
   "author": "claukers",
   "license": "ISC",
   "dependencies": {
-    "@miqro/core": "https://github.com/claukers/miqro-core.git#develop",
+    "@miqro/core": "^0.7.11",
     "deep-diff": "^1.0.2",
     "object-hash": "^2.0.3",
     "sequelize": "^6.3.3",
