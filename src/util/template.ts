@@ -82,30 +82,31 @@ module.exports = {
 const exampleModel = (modelName: string): string => {
   return `module.exports = (sequelize, DataTypes) => {
   const ${modelName} = sequelize.define("${modelName}", {
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull false,
+      defaultValue: ""
+    },
     surname: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING
   }, {});
   ${modelName}.associate = function(models) {
     // associations can be defined here
+    // ${modelName}.belongsTo(models.....)
   };
   return ${modelName};
 };`;
 };
 
 const exampleModelService = (serviceName: string): string => {
-  return `const { Database, Util } = require("@miqro/core");
-const { ModelService } = require("@miqro/database");
+  return `const { Util } = require("@miqro/core");
+const { ModelService, Database } = require("@miqro/database");
 
 class ${serviceName}Service extends ModelService {
-  static getInstance() {
-    ${serviceName}Service.instance = ${serviceName}Service.instance ? ${serviceName}Service.instance : new ${serviceName}Service();
-    return ${serviceName}Service.instance;
-  }
-  constructor() {
-    super(Database.getInstance().models.${serviceName});
-    this.logger = Util.getLogger("${serviceName}Service");
+  constructor(db = new Database(), logger = Util.getLogger("${serviceName}Service")) {
+    super(db.models.${serviceName});
+    this.logger = logger;
   }
 }
 

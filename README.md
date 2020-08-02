@@ -67,7 +67,7 @@ consider adding your configurations in ```config/<NODE_ENV>/db.env``` for easy l
 
 ```
 # setting this to "debug" will log every query 
-LOG_LEVEL_Database="info"
+LOG_LEVEL_Database=info
 # never set here for production environments
 DB_NAME=
 # never set here for production environments
@@ -85,10 +85,8 @@ DB_POOL_MIN=
 DB_POOL_ACQUIRE=
 DB_POOL_IDDLE=
 DB_STORAGE=
-# this will force sync the models when Database.start is called
-DB_DROPTABLES=false
 ```
 
 #### debugging
 
-consider setting the env var ```LOG_LEVEL_Database="debug"```. This will **log every query** to the if using the ```Database``` class from this **module**. 
+consider setting the env var ```LOG_LEVEL_Database=debug```. This will **log every query** to the if using the ```Database``` class from this **module**. 

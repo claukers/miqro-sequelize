@@ -1,6 +1,7 @@
 import {EventEmitter} from "events";
-import {Model, ModelCtor, Op} from "sequelize";
-import {loadSequelizeRC, Logger, SimpleMap, Util} from "@miqro/core";
+import {Model, ModelCtor} from "sequelize";
+import {ConfigPathResolver, SimpleMap, Util} from "@miqro/core";
+import {loadSequelizeRC} from "../util/loader";
 
 // noinspection SpellCheckingInspection
 export type DataBaseState = "stopped" | "starting" | "started" | "startstop" | "error";
@@ -8,35 +9,18 @@ export type DataBaseState = "stopped" | "starting" | "started" | "startstop" | "
 export class Database extends EventEmitter {
   // noinspection SpellCheckingInspection
   public static events: DataBaseState[] = ["stopped", "starting", "started", "startstop", "error"];
-  private logger: Logger;
-
-  public static getInstance(): Database {
-    if (!Database.instance) {
-      Database.instance = new Database();
-    }
-    return Database.instance;
-  }
-
-  private static instance: Database;
   public readonly models: SimpleMap<ModelCtor<Model<any, any>>> = {};
   public readonly sequelize: any;
-  public readonly Op: any;
   private state: DataBaseState = "stopped";
 
-  constructor() {
+  constructor(sequelizercPath = ConfigPathResolver.getSequelizeRCFilePath(), private logger = Util.getLogger("Database")) {
     super();
-    this.logger = Util.getLogger("Database");
-    // noinspection SpellCheckingInspection
-    const requiredEnvVariables = ["DB_DROPTABLES"];
-    Util.checkEnvVariables(requiredEnvVariables);
-    const paths = loadSequelizeRC();
+    const paths = loadSequelizeRC(sequelizercPath);
     Util.checkModules([paths.modelsFolder]);
     /* eslint-disable  @typescript-eslint/no-var-requires */
     const models = require(paths.modelsFolder);
     this.sequelize = models.sequelize;
     /* eslint-disable  @typescript-eslint/no-var-requires */
-
-    this.Op = Op;
     (this.sequelize as any).log = (text: string): void => {
       this.logger.debug(text);
     };
@@ -71,16 +55,6 @@ export class Database extends EventEmitter {
       this.sequelize
         .authenticate()
         .then(async () => {
-          if (process.env.DB_DROPTABLES === "true") {
-            const tR = [];
-            for (const name of Object.keys(this.models)) {
-              const model = this.models[name];
-              tR.push(model.sync({
-                force: true
-              }));
-            }
-            await Promise.all(tR);
-          }
           this.stateChange("started");
           resolve();
         }).catch((e: Error) => {

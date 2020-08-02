@@ -19,11 +19,11 @@ export interface ModelServiceInterface {
   delete(options: ModelServiceArgs, transaction?: any): Promise<any>;
 }
 
-export const parseIncludeQuery = (includeQuery: any[]): any[] => {
+export const parseIncludeQuery = (includeQuery: any[], db = new Database()): any[] => {
   const ret = [];
   for (const includeModel of includeQuery) {
     if (typeof includeModel === "string") {
-      const model = Database.getInstance().models[includeModel];
+      const model = db.models[includeModel];
       if (model) {
         ret.push(model);
       } else {
@@ -36,7 +36,7 @@ export const parseIncludeQuery = (includeQuery: any[]): any[] => {
         {name: "where", type: "object", required: true},
         {name: "include", type: "array", arrayType: "any", required: false}
       ], "no_extra");
-      const model = Database.getInstance().models[includeO.model as string];
+      const model = db.models[includeO.model as string];
       if (model) {
         if (includeO.include) {
           ret.push({

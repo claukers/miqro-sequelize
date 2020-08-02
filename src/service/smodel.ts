@@ -1,14 +1,14 @@
 import {AbstractModelService} from "./amodel";
 import {ParseOptionsError, Util} from "@miqro/core";
-import {Database} from "./db";
 import {ModelServiceArgs, parseIncludeQuery} from "./model";
-import {Model, ModelCtor, Transaction, WhereOptions} from "sequelize";
+import {Model, ModelCtor, Op, Transaction, WhereOptions} from "sequelize";
+import {Database} from "./db";
 
 export type ModelGet<T, T2> = Model<T, T2>[] | { rows: Model<T, T2>[]; count: number; };
 
 export class ModelService<T = any, T2 = any> extends AbstractModelService {
   /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
-  constructor(protected model: ModelCtor<Model<T, T2>>) {
+  constructor(protected model: ModelCtor<Model<T, T2>>, protected db: Database = new Database()) {
     super();
   }
 
@@ -26,7 +26,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
       } catch (e) {
         throw new ParseOptionsError(`query.include not a valid JSON`);
       }
-      includeModels = parseIncludeQuery(includeList);
+      includeModels = parseIncludeQuery(includeList, this.db);
     }
     let paginationJSON;
     if (pagination) {
@@ -58,7 +58,6 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
     Util.parseOptions("body", body, [], "no_extra");
     let ret;
     if (pagination) {
-      const Op = Database.getInstance().Op;
       if (paginationJSON.search) {
         if (paginationJSON.search.columns.length > 0) {
           const searchParams: any = {};

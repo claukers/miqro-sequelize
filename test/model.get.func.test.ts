@@ -1,5 +1,5 @@
 import {resolve} from "path";
-import {Database, ModelService} from "../src";
+import {getDB, Database, ModelService} from "../src";
 import {before, describe, it} from "mocha";
 
 import {Util} from "@miqro/core";
@@ -28,9 +28,36 @@ describe("ModelService Func Tests", function () {
     })().then(done).catch(done);
   });
 
+  it("case 1 get with pagination and order  but no params 1 with getDB", (done) => {
+    (async () => {
+      const db = getDB();
+      const service = new ModelService(db.models.post);
+      const result = await service.get({
+        params: {},
+        query: {
+          pagination: JSON.stringify({
+            limit: 2,
+            offset: 1
+          }),
+          order: JSON.stringify([
+            ["createdAt", "DESC"]
+          ])
+        },
+        body: {}
+      });
+      if (!(result instanceof Array)) {
+        strictEqual(result.count, 4);
+        strictEqual(result.rows.length, 2);
+      } else {
+        strictEqual(true, false);
+      }
+
+    })().then(done).catch(done);
+  });
+
   it("case 1 get with pagination and order  but no params 1", (done) => {
     (async () => {
-      const db = Database.getInstance();
+      const db = new Database();
       const service = new ModelService(db.models.post);
       const result = await service.get({
         params: {},
@@ -57,7 +84,7 @@ describe("ModelService Func Tests", function () {
 
   it("case 2 get with pagination and order and params 1", (done) => {
     (async () => {
-      const db = Database.getInstance();
+      const db = new Database();
       const service = new ModelService(db.models.post);
       const result = await service.get({
         params: {
@@ -85,7 +112,7 @@ describe("ModelService Func Tests", function () {
 
   it("case 2 get with pagination and order and params 2", (done) => {
     (async () => {
-      const db = Database.getInstance();
+      const db = new Database();
       const service = new ModelService(db.models.post);
       const result = await service.get({
         params: {
