@@ -84,7 +84,7 @@ const exampleModel = (modelName: string): string => {
   const ${modelName} = sequelize.define("${modelName}", {
     name: {
       type: DataTypes.STRING,
-      allowNull false,
+      allowNull: false,
       defaultValue: ""
     },
     surname: DataTypes.STRING,
