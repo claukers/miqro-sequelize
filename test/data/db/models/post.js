@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     text: DataTypes.STRING,
-    bla7: {
+    bla28: {
       type: DataTypes.STRING,
       allowNull: true
     },
