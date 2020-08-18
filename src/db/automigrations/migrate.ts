@@ -334,7 +334,7 @@ export const parseDifference = (previousState: any, currentState: any, logger: a
           if (df.path && df.path.length === 1) {
             const depends: any[] = [];
             const tableName = df.rhs.tableName;
-            if(df.rhs.schema) {
+            if (df.rhs.schema) {
               Object.keys(df.rhs.schema).forEach((v: any) => {
                 if (v.references) {
                   depends.push(v.references.model);
@@ -823,7 +823,9 @@ module.exports = {
 `;
 
   name = name.replace(" ", "_");
-  const filename = path.join(migrationsDir, revision + ((name != "") ? `-${name}` : "") + ".js");
+  const now = new Date();
+  const timestamp = `${now.getFullYear()}${now.getMonth() + 1 < 10 ? "0" : ""}${now.getMonth() + 1}${now.getDate() < 10 ? "0" : ""}${now.getDate()}${now.getHours() < 10 ? "0" : ""}${now.getHours()}${now.getMinutes() < 10 ? "0" : ""}${now.getMinutes()}${now.getSeconds() < 10 ? "0" : ""}${now.getSeconds()}-${revision}`;
+  const filename = path.join(migrationsDir, timestamp + ((name != "") ? `-${name}` : "") + ".js");
 
   fs.writeFileSync(filename, template);
 
