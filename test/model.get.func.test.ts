@@ -1,5 +1,5 @@
 import {resolve} from "path";
-import {getDB, Database, ModelService} from "../src";
+import {Database, getDB, ModelService} from "../src";
 import {before, describe, it} from "mocha";
 
 import {Util} from "@miqro/core";
@@ -16,7 +16,7 @@ describe("ModelService Func Tests", function () {
 
   before((done) => {
     (async () => {
-      const {migrate, seed, initDBConfig, makemigrations} = require("../src");
+      const {migrate, seed, initDBConfig} = require("../src");
       process.chdir(process.env.MIQRO_DIRNAME as string);
       if (!dbLoaded) {
         dbLoaded = true;
