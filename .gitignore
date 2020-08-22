@@ -9,5 +9,4 @@ test/data/*.log
 test/data/.sequelizerc
 test/data/test.sqlite3
 test/data/db/connection.js
-test/data/db/migrations/
 test/data/db/models/index.js
