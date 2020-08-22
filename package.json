@@ -15,7 +15,7 @@
     "prepare": "npm run build",
     "prebuild": "rm -Rf dist;",
     "build": "tsc",
-    "pretest": "rm test/data/test.sqlite3; echo testdbremoved",
+    "pretest": "rm test/data/test.sqlite3; echo testdbremoved;",
     "test": "NODE_ENV=test nyc mocha test/*.test.ts",
     "testfile": "NODE_ENV=test nyc mocha",
     "lint": "eslint ./src --ext ts",
@@ -42,7 +42,7 @@
     "mocha": "^8.1.1",
     "nyc": "^15.1.0",
     "sqlite3": "^5.0.0",
-    "ts-node": "^8.10.2",
+    "ts-node": "^9.0.0",
     "typescript": "^3.9.7"
   },
   "engines": {

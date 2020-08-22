@@ -72,43 +72,35 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
           } as any;
         }
       }
-      if (transaction) {
-        ret = await this.model.findAndCountAll({
-          where: params as WhereOptions,
-          order: orderJSON,
-          include: includeModels,
-          limit: paginationJSON.limit,
-          offset: paginationJSON.offset,
-          transaction,
-          lock: true,
-          skipLocked
-        });
-      } else {
-        ret = await this.model.findAndCountAll({
-          where: params as WhereOptions,
-          order: orderJSON,
-          include: includeModels,
-          limit: paginationJSON.limit,
-          offset: paginationJSON.offset
-        });
-      }
+      ret = transaction ? await this.model.findAndCountAll({
+        where: params as WhereOptions,
+        order: orderJSON,
+        include: includeModels,
+        limit: paginationJSON.limit,
+        offset: paginationJSON.offset,
+        transaction,
+        lock: true,
+        skipLocked
+      }) : await this.model.findAndCountAll({
+        where: params as WhereOptions,
+        order: orderJSON,
+        include: includeModels,
+        limit: paginationJSON.limit,
+        offset: paginationJSON.offset
+      });
     } else {
-      if (transaction) {
-        ret = await this.model.findAll({
-          where: params as WhereOptions,
-          order: orderJSON,
-          include: includeModels,
-          transaction,
-          lock: true,
-          skipLocked
-        });
-      } else {
-        ret = await this.model.findAll({
-          where: params as WhereOptions,
-          order: orderJSON,
-          include: includeModels
-        });
-      }
+      ret = transaction ? ret = await this.model.findAll({
+        where: params as WhereOptions,
+        order: orderJSON,
+        include: includeModels,
+        transaction,
+        lock: true,
+        skipLocked
+      }) : await this.model.findAll({
+        where: params as WhereOptions,
+        order: orderJSON,
+        include: includeModels
+      });
     }
     return ret;
   }
