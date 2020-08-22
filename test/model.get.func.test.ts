@@ -16,7 +16,7 @@ describe("ModelService Func Tests", function () {
 
   before((done) => {
     (async () => {
-      const {migrate, seed, initDBConfig} = require("../src");
+      const {migrate, seed, initDBConfig} = require("../src/db");
       process.chdir(process.env.MIQRO_DIRNAME as string);
       if (!dbLoaded) {
         dbLoaded = true;
