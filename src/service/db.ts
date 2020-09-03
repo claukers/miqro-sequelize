@@ -7,6 +7,14 @@ import {loadSequelizeRC} from "../util/loader";
 export type DataBaseState = "stopped" | "starting" | "started" | "startstop" | "error";
 
 export class Database extends EventEmitter {
+
+  private static instance: Database;
+
+  public static getInstance(): Database {
+    if (!Database.instance) Database.instance = new Database();
+    return Database.instance;
+  }
+
   // noinspection SpellCheckingInspection
   public static events: DataBaseState[] = ["stopped", "starting", "started", "startstop", "error"];
   public readonly models: SimpleMap<ModelCtor<Model<any, any>>> = {};
