@@ -99,27 +99,10 @@ const exampleModel = (modelName: string): string => {
 };`;
 };
 
-const exampleModelService = (serviceName: string): string => {
-  return `const { Util } = require("@miqro/core");
-const { ModelService, Database } = require("@miqro/database");
-
-class ${serviceName}Service extends ModelService {
-  constructor(db = new Database(), logger = Util.getLogger("${serviceName}Service")) {
-    super(db.models.${serviceName});
-    this.logger = logger;
-  }
-}
-
-module.exports.${serviceName}Service = ${serviceName}Service;
-
-`;
-};
-
 // noinspection SpellCheckingInspection
 export const templates = {
   modelsIndex,
   dbConfig,
   sequelizerc,
-  exampleModel,
-  exampleModelService
+  exampleModel
 };
