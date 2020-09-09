@@ -65,11 +65,45 @@ export const makemigrations = (): void => {
   }
 };
 
-export const migrate = async (): Promise<void> => {
+export const migrate = (): void => {
   try {
     // noinspection SpellCheckingInspection
     logger.log(childProcess.execSync(
       "npx sequelize-cli db:migrate",
+      {
+        cwd: dirname(ConfigPathResolver.getSequelizeRCFilePath()),
+        env: process.env,
+        windowsHide: true
+      }
+    ).toString());
+  } catch (e) {
+    logger.error(e.message);
+    throw e;
+  }
+};
+
+export const undoMigrate = (): void => {
+  try {
+    // noinspection SpellCheckingInspection
+    logger.log(childProcess.execSync(
+      "npx sequelize-cli db:migrate:undo:all",
+      {
+        cwd: dirname(ConfigPathResolver.getSequelizeRCFilePath()),
+        env: process.env,
+        windowsHide: true
+      }
+    ).toString());
+  } catch (e) {
+    logger.error(e.message);
+    throw e;
+  }
+};
+
+export const migrateStatus = (): void => {
+  try {
+    // noinspection SpellCheckingInspection
+    logger.log(childProcess.execSync(
+      "npx sequelize-cli db:migrate:status",
       {
         cwd: dirname(ConfigPathResolver.getSequelizeRCFilePath()),
         env: process.env,
@@ -87,6 +121,23 @@ export const seed = (): void => {
     // noinspection SpellCheckingInspection
     logger.log(childProcess.execSync(
       "npx sequelize-cli db:seed:all",
+      {
+        cwd: dirname(ConfigPathResolver.getSequelizeRCFilePath()),
+        env: process.env,
+        windowsHide: true
+      }
+    ).toString());
+  } catch (e) {
+    logger.error(e.message);
+    throw e;
+  }
+};
+
+export const undoSeed = (): void => {
+  try {
+    // noinspection SpellCheckingInspection
+    logger.log(childProcess.execSync(
+      "npx sequelize-cli db:seed:undo:all",
       {
         cwd: dirname(ConfigPathResolver.getSequelizeRCFilePath()),
         env: process.env,

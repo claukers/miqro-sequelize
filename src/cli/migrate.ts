@@ -6,6 +6,4 @@ if (process.argv.length !== 3) {
 }
 
 Util.loadConfig();
-migrate().catch((e) => {
-  console.error(e);
-});
+migrate();
