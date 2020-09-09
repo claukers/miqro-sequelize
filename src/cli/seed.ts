@@ -1,9 +1,11 @@
 import {Util} from "@miqro/core";
 import {seed} from "../db";
 
-if (process.argv.length !== 3) {
-  throw new Error(`usage: miqro-database seed`);
-}
+export const main = () => {
+  if (process.argv.length !== 3) {
+    throw new Error(`usage: miqro-database seed`);
+  }
 
-Util.loadConfig();
-seed();
+  Util.loadConfig();
+  seed();
+}
