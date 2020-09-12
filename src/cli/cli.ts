@@ -9,6 +9,7 @@ import {main as migrate} from "./migrate";
 import {main as migrationStatus} from "./migration-status";
 import {main as seed} from "./seed";
 import {main as undoSeed} from "./undo-seed";
+import {main as consoleCMD} from "./console";
 
 // noinspection SpellCheckingInspection
 CLIUtil.cliFlow({
@@ -17,6 +18,7 @@ CLIUtil.cliFlow({
     cb: makeMigrations,
     description: "seeks changes in your models and creates migrations"
   },
+  console: {cb: consoleCMD, description: "runs a readline interface that send the input as a query"},
   migrate: {cb: migrate, description: "runs the migrations"},
   automigrate: {cb: autoMigrate, description: "runs makemigrations and migrate together"},
   seed: {cb: seed, description: "seeds your db"},

@@ -1,0 +1,36 @@
+import {Util} from "@miqro/core";
+import {createInterface} from "readline";
+import {getDB} from "../service";
+
+export const main = (): void => {
+  if (process.argv.length !== 3) {
+    throw new Error(`usage: miqro-database seed`);
+  }
+  Util.loadConfig();
+  const logger = Util.getLogger("db:console");
+  const rl = createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  const db = getDB();
+  db.on("error", (e) => {
+    logger.error(e);
+  });
+  const questionLoop = () => {
+    rl.question('>', async (query) => {
+      try {
+
+        const [result] = await db.query({
+          query,
+          values: []
+        });
+        logger.info(`\n${query}\n${JSON.stringify(result, undefined, 4)}`);
+        questionLoop();
+      } catch (e) {
+        logger.error(e);
+        questionLoop();
+      }
+    });
+  }
+  questionLoop();
+}
