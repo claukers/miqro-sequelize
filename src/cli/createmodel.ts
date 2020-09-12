@@ -3,7 +3,7 @@ import {resolve} from "path";
 import {templates} from "../util/template";
 import {loadSequelizeRC} from "../util/loader";
 
-export const main = () => {
+export const main = (): void => {
   const logger = console;
   const modelname = process.argv[3];
 
