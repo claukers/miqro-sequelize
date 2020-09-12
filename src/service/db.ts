@@ -24,9 +24,14 @@ export class Database extends EventEmitter {
   constructor(sequelizercPath = ConfigPathResolver.getSequelizeRCFilePath(), private logger = Util.getLogger("Database")) {
     super();
     const paths = loadSequelizeRC(sequelizercPath);
-    Util.checkModules([paths.modelsFolder]);
-    /* eslint-disable  @typescript-eslint/no-var-requires */
-    const models = require(paths.modelsFolder);
+    let models: any;
+    try {
+      /* eslint-disable  @typescript-eslint/no-var-requires */
+      models = require(paths.modelsFolder);
+    } catch (e) {
+      this.emit("error", e);
+      throw e;
+    }
     this.sequelize = models.sequelize;
     /* eslint-disable  @typescript-eslint/no-var-requires */
     (this.sequelize as any).log = (text: string): void => {

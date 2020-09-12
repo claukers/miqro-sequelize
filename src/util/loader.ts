@@ -35,14 +35,3 @@ export const loadSequelizeRC = (sequelizercPath: string = ConfigPathResolver.get
     };
   }
 };
-
-export const setupDB = (): {
-  models: any[];
-  sequelize: any;
-} => {
-  const {
-    modelsFolder
-  } = loadSequelizeRC();
-  Util.checkModules([modelsFolder]);
-  return require(modelsFolder);
-};
