@@ -19,12 +19,12 @@ export const main = (): void => {
   const questionLoop = () => {
     rl.question('>', async (query) => {
       try {
-
+        logger.info(`${query}`);
         const [result] = await db.query({
           query,
           values: []
         });
-        logger.info(`\n${query}\n${JSON.stringify(result, undefined, 4)}`);
+        logger.info(`${JSON.stringify(result, undefined, 4)}`);
         questionLoop();
       } catch (e) {
         logger.error(e);
