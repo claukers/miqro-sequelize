@@ -1,10 +1,11 @@
-import {ParseOptionsError, SimpleMap, SimpleTypes, Util} from "@miqro/core";
+import {ParseOptionsError, Session, SimpleMap, SimpleTypes, Util} from "@miqro/core";
 import {Database} from "./db";
 
 export interface ModelServiceArgs {
   body: SimpleMap<SimpleTypes>;
   query: SimpleMap<SimpleTypes>;
   params: SimpleMap<SimpleTypes>;
+  session?: Session;
 }
 
 export interface ModelServiceInterface {

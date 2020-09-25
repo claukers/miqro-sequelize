@@ -118,11 +118,12 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
   }
 
   /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
-  public async patch({body, query, params}: ModelServiceArgs, transaction?: Transaction): Promise<any> {
+  public async patch({body, query, params, session}: ModelServiceArgs, transaction?: Transaction): Promise<any> {
     Util.parseOptions("query", query, [], "no_extra");
     const result = await this.get({
       body: {},
       query,
+      session,
       params
     }, transaction);
     const instances = result instanceof Array ? result : result.rows;
@@ -137,12 +138,13 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
     }
   }
 
-  public async delete({body, query, params}: ModelServiceArgs, transaction?: Transaction): Promise<any> {
+  public async delete({body, query, params, session}: ModelServiceArgs, transaction?: Transaction): Promise<any> {
     Util.parseOptions("query", query, [], "no_extra");
     Util.parseOptions("body", body, [], "no_extra");
     const result = await this.get({
       body: {},
       query,
+      session,
       params
     }, transaction);
     const instances = result instanceof Array ? result : result.rows;
