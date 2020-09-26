@@ -1,5 +1,5 @@
 import {EventEmitter} from "events";
-import {Model, ModelCtor} from "sequelize";
+import {Model, ModelCtor, Transaction} from "sequelize";
 import {ConfigPathResolver, SimpleMap, Util} from "@miqro/core";
 import {loadSequelizeRC} from "../util/loader";
 
@@ -44,10 +44,8 @@ export class Database extends EventEmitter {
     });
   }
 
-  public async transaction(transactionCB: (t: any) => PromiseLike<any>): Promise<any> {
-    await this.sequelize.transaction((t: any) => {
-      return transactionCB(t);
-    });
+  public async transaction(transactionCB: (t: Transaction) => PromiseLike<any>): Promise<any> {
+    await this.sequelize.transaction((t: Transaction) => transactionCB(t));
   }
 
   /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
