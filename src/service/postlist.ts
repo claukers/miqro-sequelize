@@ -11,11 +11,7 @@ export class PostListModelService extends ModelService {
       Util.parseOptions("params", args.params, [], "no_extra");
       Util.parseOptions("query", args.query, [], "no_extra");
       // noinspection JSDeprecatedSymbols
-      if (transaction) {
-        return this.model.bulkCreate(args.body, {transaction});
-      } else {
-        return this.model.bulkCreate(args.body);
-      }
+      return this.model.bulkCreate(args.body, transaction ? {transaction} : undefined);
     } else {
       return super.post(args, transaction);
     }

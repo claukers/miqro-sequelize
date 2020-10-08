@@ -56,7 +56,6 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
       }
     }
     Util.parseOptions("body", body, [], "no_extra");
-    let ret;
     if (pagination) {
       if (paginationJSON.search) {
         if (paginationJSON.search.columns.length > 0) {
@@ -72,7 +71,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
           } as any;
         }
       }
-      ret = transaction ? await this.model.findAndCountAll({
+      return transaction ? this.model.findAndCountAll({
         where: params as WhereOptions,
         order: orderJSON,
         include: includeModels,
@@ -81,7 +80,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
         transaction,
         lock: true,
         skipLocked
-      }) : await this.model.findAndCountAll({
+      }) : this.model.findAndCountAll({
         where: params as WhereOptions,
         order: orderJSON,
         include: includeModels,
@@ -89,32 +88,26 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
         offset: paginationJSON.offset
       });
     } else {
-      ret = transaction ? ret = await this.model.findAll({
+      return transaction ? this.model.findAll({
         where: params as WhereOptions,
         order: orderJSON,
         include: includeModels,
         transaction,
         lock: true,
         skipLocked
-      }) : await this.model.findAll({
+      }) : this.model.findAll({
         where: params as WhereOptions,
         order: orderJSON,
         include: includeModels
       });
     }
-    return ret;
   }
 
   public async post({body, query, params}: ModelServiceArgs, transaction?: Transaction): Promise<any> {
     Util.parseOptions("params", params, [], "no_extra");
     Util.parseOptions("query", query, [], "no_extra");
     // noinspection JSDeprecatedSymbols
-    if (transaction) {
-      return this.model.create(body as any, {transaction});
-    } else {
-      // noinspection JSDeprecatedSymbols
-      return this.model.create(body as any);
-    }
+    return this.model.create(body as any, transaction ? {transaction} : undefined);
   }
 
   /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
@@ -128,11 +121,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
     }, transaction);
     const instances = result instanceof Array ? result : result.rows;
     if (instances.length === 1) {
-      if (transaction) {
-        return instances[0].update(body, {transaction});
-      } else {
-        return instances[0].update(body);
-      }
+      return instances[0].update(body, transaction ? {transaction} : undefined);
     } else {
       return null;
     }
@@ -149,11 +138,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
     }, transaction);
     const instances = result instanceof Array ? result : result.rows;
     if (instances.length === 1) {
-      if (transaction) {
-        return instances[0].destroy({transaction});
-      } else {
-        return instances[0].destroy();
-      }
+      return instances[0].destroy(transaction ? {transaction} : undefined);
     } else {
       return null;
     }
