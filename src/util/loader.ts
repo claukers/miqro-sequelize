@@ -16,7 +16,7 @@ export const loadSequelizeRC = (sequelizercPath: string = ConfigPathResolver.get
   // noinspection SpellCheckingInspection
   if (!existsSync(sequelizercPath)) {
     // noinspection SpellCheckingInspection
-    throw new ConfigFileNotFoundError(`missing .sequelizerc file. maybe you didnt run miqro-database init.`);
+    throw new ConfigFileNotFoundError(`missing .sequelizerc file. maybe you didnt init your db config.`);
   } else {
     logger.debug(`loading sequelize config from [${sequelizercPath}]`);
     // noinspection SpellCheckingInspection
@@ -24,7 +24,7 @@ export const loadSequelizeRC = (sequelizercPath: string = ConfigPathResolver.get
     const sequelizerc = require(sequelizercPath);
     const modelsFolder = sequelizerc["models-path"];
     if (!existsSync(modelsFolder)) {
-      throw new ConfigFileNotFoundError(`missing .sequelizerc["models-path"]=[${modelsFolder}] file. maybe you didnt run miqro-database init.`);
+      throw new ConfigFileNotFoundError(`missing .sequelizerc["models-path"]=[${modelsFolder}] file. maybe you didnt init your db config.`);
     }
     return {
       sequelizercPath,

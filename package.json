@@ -9,6 +9,7 @@
     "url": "https://github.com/claukers/miqro-sequelize.git"
   },
   "bin": {
+    "@miqro/database": "dist/cli/cli.js",
     "miqro-database": "dist/cli/cli.js"
   },
   "scripts": {
