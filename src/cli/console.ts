@@ -4,7 +4,7 @@ import {getDB} from "../service";
 
 export const main = (): void => {
   if (process.argv.length !== 3) {
-    throw new Error(`usage: miqro seed`);
+    throw new Error(`usage: npx miqro db:console`);
   }
   Util.loadConfig();
   const logger = Util.getLogger("db:console");

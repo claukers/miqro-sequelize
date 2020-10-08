@@ -25,4 +25,4 @@ CLIUtil.cliFlow({
   ["undo-seed"]: {cb: undoSeed, description: "undo all seeds from your db"},
   ["migration-status"]: {cb: migrationStatus, description: "..."},
   createmodel: {cb: createModel, description: "creates an example model"}
-}, "miqro-database", console);
+}, "npx miqro db:<command> [args]", console);

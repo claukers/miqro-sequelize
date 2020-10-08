@@ -8,7 +8,7 @@ export const main = (): void => {
   const modelname = process.argv[3];
 
   if (process.argv.length !== 4) {
-    throw new Error(`usage: miqro createmodel <modelname>`);
+    throw new Error(`usage: npx miqro createmodel <modelname>`);
   }
 
   if (typeof modelname !== "string") {
