@@ -22,9 +22,9 @@
                     "field": "text",
                     "seqType": "Sequelize.STRING"
                 },
-                "bla27": {
+                "bla28": {
                     "allowNull": true,
-                    "field": "bla27",
+                    "field": "bla28",
                     "seqType": "Sequelize.STRING"
                 },
                 "blo": {
@@ -91,5 +91,5 @@
             "indexes": []
         }
     },
-    "revision": 3
+    "revision": 4
 }

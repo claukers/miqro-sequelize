@@ -1,5 +1,5 @@
 import {resolve} from "path";
-import {Database, getDB, ModelService} from "../src";
+import {Database, FakeDeleteModelService, getDB, ModelService} from "../src";
 import {before, describe, it} from "mocha";
 
 import {Util} from "@miqro/core";
@@ -47,6 +47,33 @@ describe("ModelService Func Tests", function () {
       if (!(result instanceof Array)) {
         strictEqual(result.count, 4);
         strictEqual(result.rows.length, 2);
+      } else {
+        strictEqual(true, false);
+      }
+
+    })().then(done).catch(done);
+  });
+
+  it("deleted happy path", (done) => {
+    (async () => {
+      const db = getDB();
+      const service = new FakeDeleteModelService(db.models.post2);
+      const result = await service.get({
+        params: {},
+        query: {
+          pagination: JSON.stringify({
+            limit: 2,
+            offset: 0
+          }),
+          order: JSON.stringify([
+            ["createdAt", "DESC"]
+          ])
+        },
+        body: {}
+      });
+      if (!(result instanceof Array)) {
+        strictEqual(result.count, 1);
+        strictEqual(result.rows.length, 1);
       } else {
         strictEqual(true, false);
       }
