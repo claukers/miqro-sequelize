@@ -45,19 +45,6 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
           {name: "columns", type: "array", arrayType: "string", required: true},
           {name: "query", type: "string", required: true}
         ], "no_extra");
-      }
-    }
-    let orderJSON;
-    if (order) {
-      try {
-        orderJSON = JSON.parse(order as string);
-      } catch (e) {
-        throw new ParseOptionsError(`query.order not a valid JSON`);
-      }
-    }
-    Util.parseOptions("body", body, [], "no_extra");
-    if (pagination) {
-      if (paginationJSON.search) {
         if (paginationJSON.search.columns.length > 0) {
           const searchParams: any = {};
           for (const column of paginationJSON.search.columns) {
@@ -71,36 +58,43 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
           } as any;
         }
       }
-      return transaction ? this.model.findAndCountAll({
-        where: params as WhereOptions,
-        order: orderJSON,
-        include: includeModels,
-        limit: paginationJSON.limit,
-        offset: paginationJSON.offset,
-        transaction,
-        lock: true,
-        skipLocked
-      }) : this.model.findAndCountAll({
-        where: params as WhereOptions,
-        order: orderJSON,
-        include: includeModels,
-        limit: paginationJSON.limit,
-        offset: paginationJSON.offset
-      });
-    } else {
-      return transaction ? this.model.findAll({
-        where: params as WhereOptions,
-        order: orderJSON,
-        include: includeModels,
-        transaction,
-        lock: true,
-        skipLocked
-      }) : this.model.findAll({
-        where: params as WhereOptions,
-        order: orderJSON,
-        include: includeModels
-      });
     }
+    let orderJSON;
+    if (order) {
+      try {
+        orderJSON = JSON.parse(order as string);
+      } catch (e) {
+        throw new ParseOptionsError(`query.order not a valid JSON`);
+      }
+    }
+    Util.parseOptions("body", body, [], "no_extra");
+    return pagination ? (transaction ? this.model.findAndCountAll({
+      where: params as WhereOptions,
+      order: orderJSON,
+      include: includeModels,
+      limit: paginationJSON.limit,
+      offset: paginationJSON.offset,
+      transaction,
+      lock: true,
+      skipLocked
+    }) : this.model.findAndCountAll({
+      where: params as WhereOptions,
+      order: orderJSON,
+      include: includeModels,
+      limit: paginationJSON.limit,
+      offset: paginationJSON.offset
+    })) : (transaction ? this.model.findAll({
+      where: params as WhereOptions,
+      order: orderJSON,
+      include: includeModels,
+      transaction,
+      lock: true,
+      skipLocked
+    }) : this.model.findAll({
+      where: params as WhereOptions,
+      order: orderJSON,
+      include: includeModels
+    }))
   }
 
   public async post({body, query, params}: ModelServiceArgs, transaction?: Transaction): Promise<any> {
