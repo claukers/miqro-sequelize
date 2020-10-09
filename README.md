@@ -6,11 +6,11 @@ this module provides an **auto migrations** cli for **sequelize**.
 
 to use **sequelize-auto-migrations** and seek for changes in model and create migrations.
 
-```npx miqro db:makemigrations```
+```npx @miqro/database makemigrations```
 
 to apply migrations
 
-```npx miqro db:migrate```
+```npx @miqro/database migrate```
 
 or
 
@@ -18,9 +18,9 @@ or
 
 to to both in an single step.
 
-```npx miqro db:automigrate```
+```npx @miqro/database automigrate```
 
-this is the same as running ```npx miqro db:makemigrations && npx miqro db:migrate```
+this is the same as running ```npx @miqro/database makemigrations && npx @miqro/database migrate```
 
 ## [OPTIONAL] using it as an alternative to sequelize-cli to init configuration
 
@@ -28,7 +28,7 @@ this is the same as running ```npx miqro db:makemigrations && npx miqro db:migra
 
 you can skip this if you already called ```sequelize-cli init```. 
 
-```npx miqro db:init```
+```npx @miqro/database init```
 
 ###### sequelize auto generated config
 
