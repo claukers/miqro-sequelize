@@ -10,19 +10,23 @@ import {main as migrationStatus} from "./migration-status";
 import {main as seed} from "./seed";
 import {main as undoSeed} from "./undo-seed";
 import {main as consoleCMD} from "./console";
+import {main as dumpData} from "./dump-data";
+import {main as pushData} from "./push-data";
 
 // noinspection SpellCheckingInspection
 CLIUtil.cliFlow({
-  init: {cb: init, description: "init sequelize configuration."},
+  init: {cb: init, description: "\t\tinit sequelize configuration."},
+  console: {cb: consoleCMD, description: "\t\truns a readline interface that send the input as a query"},
+  ["dump-data"]: {cb: dumpData, description: "\tdump the data of the database (only defined models)"},
+  ["push-data"]: {cb: pushData, description: "\tpush a dump to the database"},
+  automigrate: {cb: autoMigrate, description: "\truns makemigrations and migrate together"},
   makemigrations: {
     cb: makeMigrations,
-    description: "seeks changes in your models and creates migrations"
+    description: "\tseeks changes in your models and creates migrations"
   },
-  console: {cb: consoleCMD, description: "runs a readline interface that send the input as a query"},
-  migrate: {cb: migrate, description: "runs the migrations"},
-  automigrate: {cb: autoMigrate, description: "runs makemigrations and migrate together"},
-  seed: {cb: seed, description: "seeds your db"},
-  ["undo-seed"]: {cb: undoSeed, description: "undo all seeds from your db"},
-  ["migration-status"]: {cb: migrationStatus, description: "..."},
-  createmodel: {cb: createModel, description: "creates an example model"}
+  ["migration-status"]: {cb: migrationStatus, description: "npx sequelize-cli db:migrate:status"},
+  migrate: {cb: migrate, description: "\t\tnpx sequelize-cli db:migrate"},
+  seed: {cb: seed, description: "\t\tnpx sequelize-cli db:seed:all"},
+  ["undo-seed"]: {cb: undoSeed, description: "\tnpx sequelize-cli db:seed:undo:all"},
+  ["create-model"]: {cb: createModel, description: "\tcreates an example model"}
 }, "npx @miqro/database <command> [args]", console);
