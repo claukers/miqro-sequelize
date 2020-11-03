@@ -9,7 +9,7 @@
     "url": "https://github.com/claukers/miqro-sequelize.git"
   },
   "bin": {
-    "@miqro/database": "dist/cli/cli.js",
+    "database": "dist/cli/cli.js",
     "miqro-database": "dist/cli/cli.js"
   },
   "scripts": {
@@ -25,7 +25,7 @@
   "author": "claukers",
   "license": "ISC",
   "dependencies": {
-    "@miqro/core": "^0.8.15",
+    "@miqro/core": "^0.8.25",
     "deep-diff": "^1.0.2",
     "object-hash": "^2.0.3",
     "sequelize": "^6.3.5"
