@@ -125,7 +125,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
       for (const instance of instances) {
         tR.push(instance.update(body, transaction ? { transaction } : undefined));
       }
-      return tR;
+      return Promise.all(tR);
     } else if (instances.length === 1) {
       return instances[0].update(body, transaction ? { transaction } : undefined);
     } else {
@@ -148,7 +148,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
       for (const instance of instances) {
         tR.push(instance.destroy(transaction ? { transaction } : undefined));
       }
-      return tR;
+      return Promise.all(tR);
     } else if (instances.length === 1) {
       return instances[0].destroy(transaction ? { transaction } : undefined);
     } else {
