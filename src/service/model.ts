@@ -1,5 +1,5 @@
-import {ParseOptionsError, Session, SimpleMap, SimpleTypes, Util} from "@miqro/core";
-import {Database} from "./db";
+import { ParseOption, Session, SimpleMap, SimpleTypes } from "@miqro/core";
+import { Model } from "sequelize/types";
 
 export interface ModelServiceArgs {
   body: SimpleMap<SimpleTypes>;
@@ -7,6 +7,8 @@ export interface ModelServiceArgs {
   params: SimpleMap<SimpleTypes>;
   session?: Session;
 }
+
+export type ModelGet<T, T2> = Model<T, T2>[] | { rows: Model<T, T2>[]; count: number; };
 
 export interface ModelServiceInterface {
   get(options: ModelServiceArgs, transaction?: any, skipLocked?: boolean): Promise<any>;
@@ -20,47 +22,58 @@ export interface ModelServiceInterface {
   delete(options: ModelServiceArgs, transaction?: any): Promise<any>;
 }
 
-export const parseIncludeQuery = (includeQuery: any[], db = new Database()): any[] => {
-  const ret = [];
-  for (const includeModel of includeQuery) {
-    if (typeof includeModel === "string") {
-      const model = db.models[includeModel];
-      if (model) {
-        ret.push(model);
-      } else {
-        throw new ParseOptionsError(`query.include[${includeModel}] model doesnt exists!`);
-      }
-    } else if (typeof includeModel === "object") {
-      const includeO = Util.parseOptions("query.include[n]", includeModel, [
-        {name: "model", type: "string", required: true},
-        {name: "required", type: "boolean", required: true},
-        {name: "where", type: "object", required: true},
-        {name: "include", type: "array", arrayType: "any", required: false}
-      ], "no_extra");
-      const model = db.models[includeO.model as string];
-      if (model) {
-        if (includeO.include) {
-          ret.push({
-            model,
-            required: includeO.required,
-            where: includeO.where,
-            include: parseIncludeQuery(includeO.include as any[])
-          });
-        } else {
-          ret.push({
-            model,
-            required: includeO.required,
-            where: includeO.where
-          });
+export type ModelServiceIncludeQuery = { model: string; required?: boolean; where?: any, include?: { model: string; required?: boolean; where?: any }[] }[];
+
+export type ModelServicePaginationQuery = { limit: number; offset: number; search?: { columns: string[], query: string; } };
+
+export type ModelServiceOrderQuery = [string, "DESC" | "ASC"][];
+
+export interface ModelServiceOptions {
+  enableMultiInstanceDelete?: boolean;
+  enableMultiInstancePatch?: boolean;
+  disableIncludeQuery?: boolean;
+  disableOrderQuery?: boolean;
+  disablePaginationQuery?: boolean;
+}
+
+export const includeParseOption: ParseOption = {
+  name: "include", parseJSON: true, type: "array", arrayType: "nested", required: false, nestedOptions: {
+    mode: "no_extra",
+    options: [
+      { name: "model", type: "string", required: true },
+      { name: "required", type: "boolean", required: false },
+      { name: "where", type: "object", required: false },
+      {
+        name: "include", type: "array", arrayType: "nested", required: false, nestedOptions: {
+          mode: "no_extra",
+          options: [
+            { name: "model", type: "string", required: true },
+            { name: "required", type: "boolean", required: false },
+            { name: "where", type: "object", required: false }
+          ]
         }
-      } else {
-        throw new ParseOptionsError(`query.include[${includeO.model}] model doesnt exists!`);
       }
-    } else {
-      throw new ParseOptionsError(`problem with your query.include!`);
-    }
+    ]
   }
-  return ret;
 };
 
+export const paginationParseOption: ParseOption = {
+  name: "pagination", parseJSON: true, type: "nested", required: false, nestedOptions: {
+    mode: "no_extra",
+    options: [
+      { name: "limit", type: "number", required: true },
+      { name: "offset", type: "number", required: true },
+      {
+        name: "search", type: "nested", required: false, nestedOptions: {
+          mode: "no_extra",
+          options: [
+            { name: "columns", type: "array", arrayType: "string", required: true },
+            { name: "query", type: "string", required: true }
+          ]
+        }
+      }
+    ]
+  }
+};
 
+export const orderParseOption: ParseOption = { name: "order", parseJSON: true, type: "array", arrayType: "array", required: false };

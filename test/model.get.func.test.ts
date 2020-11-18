@@ -1,9 +1,9 @@
-import {resolve} from "path";
-import {Database, FakeDeleteModelService, getDB, ModelService} from "../src";
-import {before, describe, it} from "mocha";
+import { Util } from "@miqro/core";
+import { strictEqual } from "assert";
+import { before, describe, it } from "mocha";
+import { resolve } from "path";
+import { Database, FakeDeleteModelService, getDB, ModelService } from "../src";
 
-import {Util} from "@miqro/core";
-import {strictEqual} from "assert";
 
 process.env.NODE_ENV = "test";
 process.env.MIQRO_DIRNAME = resolve(__dirname, "data");
@@ -16,7 +16,7 @@ describe("ModelService Func Tests", function () {
 
   before((done) => {
     (async () => {
-      const {migrate, seed, initDBConfig} = require("../src/db");
+      const { migrate, seed, initDBConfig } = require("../src/db");
       process.chdir(process.env.MIQRO_DIRNAME as string);
       if (!dbLoaded) {
         dbLoaded = true;
@@ -130,6 +130,38 @@ describe("ModelService Func Tests", function () {
       if (!(result instanceof Array)) {
         strictEqual(result.count, 2);
         strictEqual(result.rows.length, 2);
+      } else {
+        strictEqual(true, false);
+      }
+    })().then(done).catch(done);
+  });
+
+  it("case 2 get with pagination and order and params 1 and search query", (done) => {
+    (async () => {
+      const db = new Database();
+      const service = new ModelService(db.models.post);
+      const result = await service.get({
+        params: {
+          name: "user2"
+        },
+        query: {
+          pagination: JSON.stringify({
+            limit: 10,
+            offset: 0,
+            search: {
+              query: "email3",
+              columns: ["email", "name"]
+            }
+          }),
+          order: JSON.stringify([
+            ["createdAt", "DESC"]
+          ])
+        },
+        body: {}
+      });
+      if (!(result instanceof Array)) {
+        strictEqual(result.count, 1);
+        strictEqual(result.rows.length, 1);
       } else {
         strictEqual(true, false);
       }
