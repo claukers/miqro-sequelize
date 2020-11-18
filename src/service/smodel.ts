@@ -113,6 +113,13 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
   /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
   public async patch({ body, query, params, session }: ModelServiceArgs, transaction?: Transaction): Promise<any> {
     Util.parseOptions("query", query, [], "no_extra");
+    const patch = Util.parseOptions("body", body, [], "add_extra");
+    if (
+      typeof patch !== "object" ||
+      Object.keys(patch).length === 0 ||
+      (patch as any) instanceof Array) {
+      throw new ParseOptionsError(`empty patch or patch not object`);
+    }
     const result = await this.get({
       body: {},
       query,
