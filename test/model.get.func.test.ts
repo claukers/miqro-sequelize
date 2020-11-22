@@ -130,6 +130,33 @@ describe("ModelService Func Tests", function () {
     })().then(done).catch(done);
   });
 
+  it("case 1 get sum", (done) => {
+    (async () => {
+      const db = getDB();
+      const service = new ModelService(db.models.post);
+      const result = await service.get({
+        params: {},
+        query: {
+          attributes: JSON.stringify([
+            {
+              fn: "sum",
+              col: "amount",
+              name: "total"
+            }
+          ])
+        },
+        body: {}
+      });
+      if (!(result instanceof Array)) {
+        strictEqual(true, false);
+      } else {
+        strictEqual(result.length, 1);
+        strictEqual((result[0] as any).dataValues.total, 100);
+      }
+
+    })().then(done).catch(done);
+  });
+
 
   it("deleted happy path", (done) => {
     (async () => {
