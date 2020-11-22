@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     text: DataTypes.STRING,
+    amount: DataTypes.INTEGER,
     bla28: {
       type: DataTypes.STRING,
       allowNull: true

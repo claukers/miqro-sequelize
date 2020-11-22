@@ -67,6 +67,10 @@
                     "field": "text",
                     "seqType": "Sequelize.STRING"
                 },
+                "deleted": {
+                    "field": "deleted",
+                    "seqType": "Sequelize.BOOLEAN"
+                },
                 "bla7": {
                     "allowNull": true,
                     "field": "bla7",
@@ -91,5 +95,5 @@
             "indexes": []
         }
     },
-    "revision": 4
+    "revision": 5
 }

@@ -54,6 +54,83 @@ describe("ModelService Func Tests", function () {
     })().then(done).catch(done);
   });
 
+  it("case 1 get sum group by name with pagination", (done) => {
+    (async () => {
+      const db = getDB();
+      const service = new ModelService(db.models.post);
+      const result = await service.get({
+        params: {},
+        query: {
+          attributes: JSON.stringify([
+            "name",
+            {
+              fn: "sum",
+              col: "amount",
+              name: "total"
+            }
+          ]),
+          group: JSON.stringify(["name"]),
+          pagination: JSON.stringify({
+            limit: 10,
+            offset: 1
+          }),
+          order: JSON.stringify([
+            ["name", "DESC"]
+          ])
+        },
+        body: {}
+      });
+      if (!(result instanceof Array)) {
+        if(result.count instanceof Array) {
+          strictEqual(result.count.length, 3);
+          strictEqual(result.rows.length, 2);
+          strictEqual((result.rows[0] as any).dataValues.total, 60);
+          strictEqual((result.rows[1] as any).dataValues.total, 10);
+        } else {
+          strictEqual(true, false);
+        }
+      } else {
+        strictEqual(true, false);
+      }
+
+    })().then(done).catch(done);
+  });
+
+  it("case 1 get sum group by name", (done) => {
+    (async () => {
+      const db = getDB();
+      const service = new ModelService(db.models.post);
+      const result = await service.get({
+        params: {},
+        query: {
+          attributes: JSON.stringify([
+            "name",
+            {
+              fn: "sum",
+              col: "amount",
+              name: "total"
+            }
+          ]),
+          group: JSON.stringify(["name"]),
+          order: JSON.stringify([
+            ["name", "DESC"]
+          ])
+        },
+        body: {}
+      });
+      if (!(result instanceof Array)) {
+        strictEqual(true, false);
+      } else {
+        strictEqual(result.length, 3);
+        strictEqual((result[0] as any).dataValues.total, 30);
+        strictEqual((result[1] as any).dataValues.total, 60);
+        strictEqual((result[2] as any).dataValues.total, 10);
+      }
+
+    })().then(done).catch(done);
+  });
+  
+
   it("deleted happy path", (done) => {
     (async () => {
       const db = getDB();
