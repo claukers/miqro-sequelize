@@ -8,7 +8,15 @@ export interface ModelServiceArgs {
   session?: Session;
 }
 
-export type ModelGet<T, T2> = Model<T, T2>[] | { rows: Model<T, T2>[]; count: number | {name: string; count: number;}[] };;
+export type ModelGetResult<T = any, T2 = any> =
+  Model<T, T2>[]
+  | { rows: Model<T, T2>[]; count: number | { name: string; count: number; }[] };
+
+export type ModelPostResult<T = any, T2 = any> = Model<T, T2> | Model<T, T2>[];
+
+export type ModelPatchResult<T = any, T2 = any> = Model<T, T2> | Model<T, T2>[] | null;
+
+export type ModelDeleteResult = void | void[] | null;
 
 export interface ModelServiceInterface {
   get(options: ModelServiceArgs, transaction?: any, skipLocked?: boolean): Promise<any>;

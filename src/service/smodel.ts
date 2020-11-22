@@ -5,8 +5,8 @@ import {Database} from "./db";
 import {
   attributesParseOption,
   groupParseOption,
-  includeParseOption,
-  ModelGet,
+  includeParseOption, ModelDeleteResult,
+  ModelGetResult, ModelPatchResult, ModelPostResult,
   ModelServiceArgs,
   ModelServiceIncludeQuery,
   ModelServiceOptions,
@@ -48,7 +48,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
     }
   }
 
-  public async get({body, query, params}: ModelServiceArgs, transaction?: Transaction, skipLocked?: boolean): Promise<ModelGet<T, T2>> {
+  public async get({body, query, params}: ModelServiceArgs, transaction?: Transaction, skipLocked?: boolean): Promise<ModelGetResult<T, T2>> {
     Util.parseOptions("body", body, [], "no_extra");
     const {pagination, include, order, attributes, group} = Util.parseOptions("query", query, this.getQueryParseOptions, "no_extra");
 
@@ -150,7 +150,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
     }))
   }
 
-  public async post({body, query, params}: ModelServiceArgs, transaction?: Transaction): Promise<any> {
+  public async post({body, query, params}: ModelServiceArgs, transaction?: Transaction): Promise<ModelPostResult<T, T2>> {
     Util.parseOptions("params", params, [], "no_extra");
     Util.parseOptions("query", query, [], "no_extra");
     // noinspection JSDeprecatedSymbols
@@ -158,7 +158,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
   }
 
   /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
-  public async patch({body, query, params, session}: ModelServiceArgs, transaction?: Transaction): Promise<any> {
+  public async patch({body, query, params, session}: ModelServiceArgs, transaction?: Transaction): Promise<ModelPatchResult<T, T2>> {
     Util.parseOptions("query", query, [], "no_extra");
     const patch = Util.parseOptions("body", body, [], "add_extra");
     if (
@@ -186,7 +186,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
     }
   }
 
-  public async delete({body, query, params, session}: ModelServiceArgs, transaction?: Transaction): Promise<any> {
+  public async delete({body, query, params, session}: ModelServiceArgs, transaction?: Transaction): Promise<ModelDeleteResult | ModelPatchResult<T, T2>> {
     Util.parseOptions("query", query, [], "no_extra");
     Util.parseOptions("body", body, [], "no_extra");
     const result = await this.get({

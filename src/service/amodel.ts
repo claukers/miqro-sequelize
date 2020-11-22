@@ -1,10 +1,10 @@
-import {ModelServiceArgs, ModelServiceInterface} from "./model";
+import {ModelGetResult, ModelServiceArgs, ModelServiceInterface} from "./model";
 import {MethodNotImplementedError} from "@miqro/core";
 
-export abstract class AbstractModelService implements ModelServiceInterface {
+export abstract class AbstractModelService<T = any, T2 = any> implements ModelServiceInterface {
   // noinspection JSUnusedLocalSymbols
   /* eslint-disable  @typescript-eslint/no-unused-vars */
-  public async get(options: ModelServiceArgs): Promise<any> {
+  public async get(options: ModelServiceArgs): Promise<ModelGetResult<T, T2>> {
     throw new MethodNotImplementedError("Method not implemented.");
   }
 

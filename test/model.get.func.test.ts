@@ -129,7 +129,7 @@ describe("ModelService Func Tests", function () {
 
     })().then(done).catch(done);
   });
-  
+
 
   it("deleted happy path", (done) => {
     (async () => {
