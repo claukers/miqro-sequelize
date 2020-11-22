@@ -1,5 +1,5 @@
 import {PostListModelService} from "./postlist";
-import {ModelDeleteResult, ModelGetResult, ModelPatchResult, ModelPostResult, ModelServiceArgs} from "./model";
+import {ModelGetResult, ModelPatchResult, ModelPostResult, ModelServiceArgs} from "./model";
 import {Transaction} from "sequelize";
 
 export class FakeDeleteModelService<T = any, T2 = any> extends PostListModelService<T, T2> {

@@ -1,7 +1,7 @@
 import {ModelService} from "./smodel";
 import {ModelPostResult, ModelServiceArgs} from "./model";
 import {Util} from "@miqro/core";
-import {Model, Transaction} from "sequelize";
+import {Transaction} from "sequelize";
 
 export class PostListModelService<T = any, T2 = any> extends ModelService<T, T2> {
 
