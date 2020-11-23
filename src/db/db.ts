@@ -1,6 +1,7 @@
 import {EventEmitter} from "events";
 import {ConfigPathResolver, SimpleMap, Util} from "@miqro/core";
 import {loadSequelizeRC} from "../util/loader";
+import {ModelCtor, Model, Transaction, Sequelize} from "sequelize";
 
 // noinspection SpellCheckingInspection
 export type DataBaseState = "stopped" | "starting" | "started" | "startstop" | "error";
@@ -16,9 +17,8 @@ export class Database extends EventEmitter {
 
   // noinspection SpellCheckingInspection
   public static events: DataBaseState[] = ["stopped", "starting", "started", "startstop", "error"];
-  public readonly models: SimpleMap<any> = {};
-  public readonly sequelize: any;
-  public readonly Sequelize: any;
+  public readonly models: SimpleMap<ModelCtor<Model<any>>> = {};
+  public readonly sequelize: Sequelize;
   private state: DataBaseState = "stopped";
 
   constructor(sequelizercPath = ConfigPathResolver.getSequelizeRCFilePath(), private logger = Util.getLogger("Database")) {
@@ -33,7 +33,6 @@ export class Database extends EventEmitter {
       throw e;
     }
     this.sequelize = models.sequelize;
-    this.Sequelize = models.Sequelize;
     /* eslint-disable  @typescript-eslint/no-var-requires */
     (this.sequelize as any).log = (text: string): void => {
       this.logger.debug(text);
@@ -45,17 +44,13 @@ export class Database extends EventEmitter {
     });
   }
 
-  public async transaction(transactionCB: (transaction: any) => PromiseLike<any>): Promise<any> {
-    await this.sequelize.transaction((transaction: any) => transactionCB(transaction));
+  public async transaction(transactionCB: (transaction: Transaction) => Promise<any>): Promise<any> {
+    return this.sequelize.transaction(transactionCB);
   }
 
   /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
-  public async query(q: { query: string; values: any[] }, t?: any): Promise<any> {
-    if (t) {
-      return this.sequelize.query(q, {transaction: t});
-    } else {
-      return this.sequelize.query(q);
-    }
+  public async query(q: { query: string; values: unknown[] }, transaction?: Transaction): Promise<any> {
+    return this.sequelize.query(q, {transaction});
   }
 
   public async start(): Promise<void> {
