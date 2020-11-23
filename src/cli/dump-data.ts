@@ -1,13 +1,11 @@
-import {Util, SimpleMap} from "@miqro/core";
-import {migrate} from "../db";
+import {Database, Util, SimpleMap} from "@miqro/core";
 import {resolve} from "path";
 import {writeFileSync} from "fs";
-import {Database} from "../service"
 
 export const main = async (): Promise<void> => {
   const logger = console;
   const outfile = process.argv[3];
-   if (process.argv.length !== 4) {
+  if (process.argv.length !== 4) {
     throw new Error(`arguments: <outfile>`);
   }
 
@@ -21,7 +19,7 @@ export const main = async (): Promise<void> => {
   const out: SimpleMap<any[]> = {};
   logger.info(`beware that if the model is not implicitly defined in db.models it will be dumped.`);
   const models = Object.keys(db.models);
-  for(const modelName of models) {
+  for (const modelName of models) {
     const rows = await db.models[modelName].findAll();
     out[modelName] = rows;
   }

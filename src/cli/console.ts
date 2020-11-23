@@ -1,6 +1,5 @@
-import {Util} from "@miqro/core";
+import {Database, Util} from "@miqro/core";
 import {createInterface} from "readline";
-import {getDB} from "../service";
 
 export const main = (): void => {
   if (process.argv.length !== 3) {
@@ -12,7 +11,7 @@ export const main = (): void => {
     input: process.stdin,
     output: process.stdout
   });
-  const db = getDB();
+  const db = Database.getInstance();
   db.on("error", (e) => {
     logger.error(e);
   });
