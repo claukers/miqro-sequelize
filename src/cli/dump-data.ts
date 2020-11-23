@@ -1,7 +1,7 @@
 import {Util, SimpleMap} from "@miqro/core";
 import {resolve} from "path";
 import {writeFileSync} from "fs";
-import {Database} from "../db/db";
+import {Database} from "../";
 
 export const main = async (): Promise<void> => {
   const logger = console;

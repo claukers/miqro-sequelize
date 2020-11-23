@@ -1,6 +1,6 @@
 import {Util} from "@miqro/core";
 import {createInterface} from "readline";
-import {Database} from "../db/db";
+import {Database} from "../";
 
 export const main = (): void => {
   if (process.argv.length !== 3) {
