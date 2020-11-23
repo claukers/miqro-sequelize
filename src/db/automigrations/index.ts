@@ -1,7 +1,8 @@
-import {loadSequelizeRC, Util} from "@miqro/core";
+import {Util} from "@miqro/core";
 import fs from "fs";
 import path from "path";
 import {executeMigration, getMigration, parseDifference, reverseModels, sortActions, writeMigration} from "./migrate";
+import {loadSequelizeRC} from "../../util/loader";
 
 // noinspection JSUnusedGlobalSymbols
 export const migrateImpl = async (): Promise<void> => {
