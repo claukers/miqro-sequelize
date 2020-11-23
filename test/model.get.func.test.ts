@@ -209,8 +209,8 @@ describe("ModelService Func Tests", function () {
         query: {
           limit: 10,
           offset: 0,
-          searchQuery: "email3",
-          searchColumns: ["email", "name"],
+          q: "email3",
+          columns: ["email", "name"],
           order: ["createdAt, DESC"]
         },
         body: {}

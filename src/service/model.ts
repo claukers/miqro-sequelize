@@ -59,6 +59,7 @@ export interface ModelServiceOptions {
   disableOrderQuery?: boolean;
   disableGroupQuery?: boolean;
   disablePaginationQuery?: boolean;
+  disableSearchQuery?: boolean;
 }
 
 // ?group=name&group=bla
@@ -66,17 +67,21 @@ export const groupParseOption: ParseOption = {
   name: "group", type: "array", arrayType: "string", required: false
 };
 
-// ?attribute=id&attribute=sum,amount,total
+// ?attributes=id&attributes=sum,amount,total
 export const attributesParseOption: ParseOption = {
   name: "attributes", type: "array", required: false
 };
 
-// ?limit=10&offset=0&searchColumns=name&searchColumns=age&searchQuery=text
+// ?limit=10&offset=0
 export const paginationParseOption: ParseOption[] = [
   {name: "limit", type: "number", required: false},
-  {name: "offset", type: "number", required: false},
-  {name: "searchColumns", type: "array", arrayType: "string", arrayMinLength: 1, required: false},
-  {name: "searchQuery", type: "string", required: false}
+  {name: "offset", type: "number", required: false}
+];
+
+// ?columns=name&columns=age&q=text
+export const searchParseOption: ParseOption[] = [
+  {name: "columns", type: "array", arrayType: "string", arrayMinLength: 1, required: false},
+  {name: "q", type: "string", required: false}
 ];
 
 // ?order=name,DESC&order=age,ASC

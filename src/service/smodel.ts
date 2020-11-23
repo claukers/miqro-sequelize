@@ -6,18 +6,21 @@ import {
   attributesParseOption,
   groupParseOption,
   ModelDeleteResult,
-  ModelGetResult, ModelPatchResult, ModelPostResult,
+  ModelGetResult,
+  ModelPatchResult,
+  ModelPostResult,
   ModelServiceArgs,
   ModelServiceOptions,
   orderParseOption,
-  paginationParseOption
+  paginationParseOption,
+  searchParseOption
 } from "./model";
 
 export class ModelService<T = any, T2 = any> extends AbstractModelService {
   protected getQueryParseOptions: ParseOption[];
 
   /* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
-  constructor(protected model: ModelCtor<Model<T, T2>>, protected db: Database = Database.getInstance(), protected options?: ModelServiceOptions) {
+  constructor(protected model: ModelCtor<Model<T, T2>>, protected options?: ModelServiceOptions) {
     super();
     this.getQueryParseOptions = [];
     if (!options) {
@@ -25,6 +28,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
       this.getQueryParseOptions.push(orderParseOption);
       this.getQueryParseOptions.push(attributesParseOption);
       this.getQueryParseOptions.push(groupParseOption);
+      this.getQueryParseOptions = this.getQueryParseOptions.concat(searchParseOption);
     } else {
       if (!options.disableOrderQuery) {
         this.getQueryParseOptions.push(orderParseOption);
@@ -38,12 +42,15 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
       if (!options.disableGroupQuery) {
         this.getQueryParseOptions.push(groupParseOption);
       }
+      if (!options.disableSearchQuery) {
+        this.getQueryParseOptions = this.getQueryParseOptions.concat(searchParseOption);
+      }
     }
   }
 
   public async get({body, query, params}: ModelServiceArgs, transaction?: Transaction, skipLocked?: boolean): Promise<ModelGetResult<T, T2>> {
     Util.parseOptions("body", body, [], "no_extra");
-    const {limit, offset, searchColumns, searchQuery, order, attributes, group} = Util.parseOptions("query", query, this.getQueryParseOptions, "no_extra");
+    const {limit, offset, columns, q, order, attributes, group} = Util.parseOptions("query", query, this.getQueryParseOptions, "no_extra");
 
     if (offset !== undefined && limit === undefined) {
       throw new ParseOptionsError(`query.limit needed for query.offset`);
@@ -53,7 +60,7 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
       throw new ParseOptionsError(`query.offset needed for query.limit`);
     }
 
-    if (searchColumns === undefined && searchQuery !== undefined) {
+    if (columns === undefined && q !== undefined) {
       throw new ParseOptionsError(`query.searchColumns needed for query.searchQuery`);
     }
 
@@ -90,11 +97,11 @@ export class ModelService<T = any, T2 = any> extends AbstractModelService {
         }
       }
     }
-    if (searchQuery && searchColumns) {
+    if (q !== undefined && columns !== undefined) {
       const searchParams: any = {};
-      for (const column of (searchColumns as string[])) {
+      for (const column of (columns as string[])) {
         searchParams[column] = {
-          [Op.like]: "%" + searchQuery + "%"
+          [Op.like]: "%" + q + "%"
         };
       }
       params = {
