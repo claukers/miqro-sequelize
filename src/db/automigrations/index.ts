@@ -67,7 +67,7 @@ export const migrateImpl = async (): Promise<void> => {
   }
 
   for (const file of migrationFiles) {
-    await new Promise((resolve, reject) => {
+    await new Promise<void>((resolve, reject) => {
       logger.info("Execute migration from file: " + file);
       executeMigration(queryInterface, path.join(migrationsFolder, file), fromPos, (err?: Error) => {
         if (err) {
