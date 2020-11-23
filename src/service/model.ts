@@ -1,5 +1,5 @@
 import {ParseOption, Session, SimpleMap, SimpleTypes} from "@miqro/core";
-import {Model} from "sequelize/types";
+import {Model, ModelCtor, WhereOptions} from "sequelize/types";
 
 export interface ModelServiceArgs {
   body: SimpleMap<SimpleTypes>;
@@ -30,74 +30,60 @@ export interface ModelServiceInterface {
   delete(options: ModelServiceArgs, transaction?: any): Promise<any>;
 }
 
-export type ModelServiceIncludeQuery = { model: string; required?: boolean; where?: any, include?: { model: string; required?: boolean; where?: any }[] }[];
-
-export type ModelServicePaginationQuery = { limit: number; offset: number; search?: { columns: string[], query: string; } };
-
-export type ModelServiceOrderQuery = [string, "DESC" | "ASC"][];
+export type ModelServiceInclude = {
+  model: ModelCtor<any>;
+  required?: boolean;
+  where?: WhereOptions,
+  include?: {
+    model: ModelCtor<any>;
+    required?: boolean;
+    where?: WhereOptions,
+    include?: {
+      model: ModelCtor<any>;
+      required?: boolean;
+      where?: WhereOptions,
+      include?: {
+        model: ModelCtor<any>;
+        required?: boolean;
+        where?: WhereOptions
+      }[]
+    }[]
+  }[]
+}[];
 
 export interface ModelServiceOptions {
   enableMultiInstanceDelete?: boolean;
   enableMultiInstancePatch?: boolean;
-  disableAttributeQuery?: boolean;
-  disableIncludeQuery?: boolean;
+  disableAttributesQuery?: boolean;
+  include?: ModelServiceInclude;
   disableOrderQuery?: boolean;
   disableGroupQuery?: boolean;
   disablePaginationQuery?: boolean;
 }
 
+// ?group=name&group=bla
 export const groupParseOption: ParseOption = {
-  name: "group", type: "array", arrayType: "string", required: false, parseJSON: true
+  name: "group", type: "array", arrayType: "string", required: false
 };
 
+// ?attribute=id&attribute=sum,amount,total
 export const attributesParseOption: ParseOption = {
-  name: "attributes", type: "array", parseJSON: true, required: false
+  name: "attributes", type: "array", required: false
 };
 
-export const includeParseOption: ParseOption = {
-  name: "include", parseJSON: true, type: "array", arrayType: "nested", required: false, nestedOptions: {
-    mode: "no_extra",
-    options: [
-      {name: "model", type: "string", required: true},
-      {name: "required", type: "boolean", required: false},
-      {name: "where", type: "object", required: false},
-      {
-        name: "include", type: "array", arrayType: "nested", required: false, nestedOptions: {
-          mode: "no_extra",
-          options: [
-            {name: "model", type: "string", required: true},
-            {name: "required", type: "boolean", required: false},
-            {name: "where", type: "object", required: false}
-          ]
-        }
-      }
-    ]
-  }
-};
+// ?limit=10&offset=0&searchColumns=name&searchColumns=age&searchQuery=text
+export const paginationParseOption: ParseOption[] = [
+  {name: "limit", type: "number", required: false},
+  {name: "offset", type: "number", required: false},
+  {name: "searchColumns", type: "array", arrayType: "string", arrayMinLength: 1, required: false},
+  {name: "searchQuery", type: "string", required: false}
+];
 
-export const paginationParseOption: ParseOption = {
-  name: "pagination", parseJSON: true, type: "nested", required: false, nestedOptions: {
-    mode: "no_extra",
-    options: [
-      {name: "limit", type: "number", required: true},
-      {name: "offset", type: "number", required: true},
-      {
-        name: "search", type: "nested", required: false, nestedOptions: {
-          mode: "no_extra",
-          options: [
-            {name: "columns", type: "array", arrayType: "string", required: true},
-            {name: "query", type: "string", required: true}
-          ]
-        }
-      }
-    ]
-  }
-};
-
+// ?order=name,DESC&order=age,ASC
 export const orderParseOption: ParseOption = {
   name: "order",
-  parseJSON: true,
   type: "array",
-  arrayType: "array",
+  arrayMinLength: 1,
+  arrayType: "string",
   required: false
 };

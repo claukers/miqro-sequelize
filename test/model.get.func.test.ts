@@ -1,8 +1,8 @@
-import { Util } from "@miqro/core";
-import { strictEqual } from "assert";
-import { before, describe, it } from "mocha";
-import { resolve } from "path";
-import { Database, FakeDeleteModelService, getDB, ModelService } from "../src";
+import {Util} from "@miqro/core";
+import {strictEqual} from "assert";
+import {before, describe, it} from "mocha";
+import {resolve} from "path";
+import {Database, FakeDeleteModelService, getDB, ModelService} from "../src";
 
 
 process.env.NODE_ENV = "test";
@@ -16,7 +16,7 @@ describe("ModelService Func Tests", function () {
 
   before((done) => {
     (async () => {
-      const { migrate, seed, initDBConfig } = require("../src/db");
+      const {migrate, seed, initDBConfig} = require("../src/db");
       process.chdir(process.env.MIQRO_DIRNAME as string);
       if (!dbLoaded) {
         dbLoaded = true;
@@ -34,13 +34,9 @@ describe("ModelService Func Tests", function () {
       const result = await service.get({
         params: {},
         query: {
-          pagination: JSON.stringify({
-            limit: 2,
-            offset: 1
-          }),
-          order: JSON.stringify([
-            ["createdAt", "DESC"]
-          ])
+          limit: 2,
+          offset: 1,
+          order: [" createdAt , DESC"]
         },
         body: {}
       });
@@ -61,27 +57,16 @@ describe("ModelService Func Tests", function () {
       const result = await service.get({
         params: {},
         query: {
-          attributes: JSON.stringify([
-            "name",
-            {
-              fn: "sum",
-              col: "amount",
-              name: "total"
-            }
-          ]),
-          group: JSON.stringify(["name"]),
-          pagination: JSON.stringify({
-            limit: 10,
-            offset: 1
-          }),
-          order: JSON.stringify([
-            ["name", "DESC"]
-          ])
+          attributes: ["name", "sum,amount,total"],
+          group: ["name"],
+          limit: 10,
+          offset: 1,
+          order: ["name, DESC"]
         },
         body: {}
       });
       if (!(result instanceof Array)) {
-        if(result.count instanceof Array) {
+        if (result.count instanceof Array) {
           strictEqual(result.count.length, 3);
           strictEqual(result.rows.length, 2);
           strictEqual((result.rows[0] as any).dataValues.total, 60);
@@ -103,18 +88,9 @@ describe("ModelService Func Tests", function () {
       const result = await service.get({
         params: {},
         query: {
-          attributes: JSON.stringify([
-            "name",
-            {
-              fn: "sum",
-              col: "amount",
-              name: "total"
-            }
-          ]),
-          group: JSON.stringify(["name"]),
-          order: JSON.stringify([
-            ["name", "DESC"]
-          ])
+          attributes: ["name", "sum,amount,total"],
+          group: ["name"],
+          order: ["name, DESC"]
         },
         body: {}
       });
@@ -137,13 +113,7 @@ describe("ModelService Func Tests", function () {
       const result = await service.get({
         params: {},
         query: {
-          attributes: JSON.stringify([
-            {
-              fn: "sum",
-              col: "amount",
-              name: "total"
-            }
-          ])
+          attributes: ["name", "sum,amount,total"]
         },
         body: {}
       });
@@ -165,13 +135,9 @@ describe("ModelService Func Tests", function () {
       const result = await service.get({
         params: {},
         query: {
-          pagination: JSON.stringify({
-            limit: 2,
-            offset: 0
-          }),
-          order: JSON.stringify([
-            ["createdAt", "DESC"]
-          ])
+          limit: 2,
+          offset: 0,
+          order: ["createdAt, DESC"]
         },
         body: {}
       });
@@ -192,13 +158,9 @@ describe("ModelService Func Tests", function () {
       const result = await service.get({
         params: {},
         query: {
-          pagination: JSON.stringify({
-            limit: 2,
-            offset: 1
-          }),
-          order: JSON.stringify([
-            ["createdAt", "DESC"]
-          ])
+          limit: "2",
+          offset: "1",
+          order: ["createdAt, DESC"]
         },
         body: {}
       });
@@ -221,13 +183,9 @@ describe("ModelService Func Tests", function () {
           name: "user2"
         },
         query: {
-          pagination: JSON.stringify({
-            limit: 10,
-            offset: 0
-          }),
-          order: JSON.stringify([
-            ["createdAt", "DESC"]
-          ])
+          limit: 10,
+          offset: 0,
+          order: ["createdAt, DESC"]
         },
         body: {}
       });
@@ -249,17 +207,11 @@ describe("ModelService Func Tests", function () {
           name: "user2"
         },
         query: {
-          pagination: JSON.stringify({
-            limit: 10,
-            offset: 0,
-            search: {
-              query: "email3",
-              columns: ["email", "name"]
-            }
-          }),
-          order: JSON.stringify([
-            ["createdAt", "DESC"]
-          ])
+          limit: 10,
+          offset: 0,
+          searchQuery: "email3",
+          searchColumns: ["email", "name"],
+          order: ["createdAt, DESC"]
         },
         body: {}
       });
@@ -281,13 +233,9 @@ describe("ModelService Func Tests", function () {
           email: "email1"
         },
         query: {
-          pagination: JSON.stringify({
-            limit: 10,
-            offset: 0
-          }),
-          order: JSON.stringify([
-            ["createdAt", "DESC"]
-          ])
+          limit: 10,
+          offset: 0,
+          order: ["createdAt, DESC"]
         },
         body: {}
       });
