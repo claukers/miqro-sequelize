@@ -3,7 +3,6 @@ import {ConfigPathResolver, SimpleMap, Util} from "@miqro/core";
 import {loadSequelizeRC} from "./util/loader";
 import {ModelCtor, Model, Transaction, Sequelize} from "sequelize";
 
-// noinspection SpellCheckingInspection
 export type DataBaseState = "stopped" | "starting" | "started" | "startstop" | "error";
 
 export class Database extends EventEmitter {
