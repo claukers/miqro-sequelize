@@ -4,7 +4,6 @@ import {readFileSync} from "fs";
 import {Database} from "../";
 
 export const main = async (): Promise<void> => {
-  const logger = console;
   const outfile = process.argv[3];
   if (process.argv.length !== 4) {
     throw new Error(`arguments: <outfile>`);
