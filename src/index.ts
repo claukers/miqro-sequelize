@@ -1,6 +1,7 @@
 import {EventEmitter} from "events";
-import {loadSequelizeRC, ConfigPathResolver, SimpleMap, Util} from "@miqro/core";
-import {ModelCtor, Model, Transaction, Sequelize} from "sequelize";
+import {ConfigFileNotFoundError, ConfigPathResolver, loadSequelizeRC, SimpleMap, Util} from "@miqro/core";
+import {Model, ModelCtor, Sequelize, Transaction} from "sequelize";
+import {existsSync} from "fs";
 
 export type DataBaseState = "stopped" | "starting" | "started" | "startstop" | "error";
 
@@ -23,6 +24,9 @@ export class Database extends EventEmitter {
     super();
     const paths = loadSequelizeRC(sequelizercPath);
     let models: any;
+    if (!existsSync(paths.modelsFolder)) {
+      throw new ConfigFileNotFoundError(`missing .sequelizerc["models-path"]=[${paths.modelsFolder}] file. maybe you didnt init your db config.`);
+    }
     try {
       /* eslint-disable  @typescript-eslint/no-var-requires */
       models = require(paths.modelsFolder);
