@@ -1,6 +1,5 @@
 import {EventEmitter} from "events";
-import {ConfigPathResolver, SimpleMap, Util} from "@miqro/core";
-import {loadSequelizeRC} from "./util/loader";
+import {loadSequelizeRC, ConfigPathResolver, SimpleMap, Util} from "@miqro/core";
 import {ModelCtor, Model, Transaction, Sequelize} from "sequelize";
 
 export type DataBaseState = "stopped" | "starting" | "started" | "startstop" | "error";

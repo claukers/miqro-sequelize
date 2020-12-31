@@ -2,7 +2,7 @@ import * as childProcess from "child_process";
 import {makemigrationsImpl} from "./automigrations";
 import {existsSync, mkdirSync, writeFileSync} from "fs";
 import {dirname, resolve} from "path";
-import {templates} from "../util/template";
+import {templates} from "../template";
 import {ConfigPathResolver} from "@miqro/core";
 
 const logger = console;
