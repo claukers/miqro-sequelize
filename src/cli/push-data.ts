@@ -5,21 +5,27 @@ import {Database} from "../";
 
 export const main = async (): Promise<void> => {
   const outfile = process.argv[3];
-  if (process.argv.length !== 4) {
-    throw new Error(`arguments: <outfile>`);
+  const models = process.argv[4];
+  if (process.argv.length !== 5) {
+    throw new Error(`arguments: <outfile> <models>`);
   }
 
   if (typeof outfile !== "string") {
     throw new Error(`<outfile> must be a string!`);
   }
 
+  if (typeof models !== "string") {
+    throw new Error(`<models> must be a string!`);
+  }
+
+  const modelList = models.split(",").map(o=>o.trim());
+
 
   Util.loadConfig();
   const db = Database.getInstance();
   const out: SimpleMap<any[]> = JSON.parse(readFileSync(resolve(process.cwd(), outfile)).toString());
-  const models = Object.keys(db.models);
-  for (const modelName of models) {
-    if (out[modelName]) {
+  for (const modelName of modelList) {
+    if (out[modelName] && db.models[modelName]) {
       await db.models[modelName].bulkCreate(out[modelName]);
     }
   }
