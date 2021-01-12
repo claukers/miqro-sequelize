@@ -7,7 +7,7 @@ export const main = async (): Promise<void> => {
   const outfile = process.argv[3];
   const models = process.argv[4];
   if (process.argv.length !== 5) {
-    throw new Error(`arguments: <outfile> <models>`);
+    throw new Error(`arguments: <outfile> <modelA,..>`);
   }
 
   if (typeof outfile !== "string") {
@@ -15,7 +15,7 @@ export const main = async (): Promise<void> => {
   }
 
   if (typeof models !== "string") {
-    throw new Error(`<models> must be a string!`);
+    throw new Error(`<modelA,..> must be a list of model names!`);
   }
 
   const modelList = models.split(",").map(o=>o.trim());
